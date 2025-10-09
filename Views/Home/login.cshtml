@@ -1,0 +1,26 @@
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="title">
+    <h2>Iniciar sesión / Log in</h2>
+</div>
+
+<section class="login-box">
+    <form>
+        <p for="username">Mail/Username:</p>
+        <input type="text" id="username" placeholder="Ingrese aquí">
+
+        <p for="password">Contraseña:</p>
+        <input type="password" id="password" placeholder="Ingrese aquí">
+
+        <p class="user-type">Tipo de usuario:</p>
+
+        <div class="button-group">
+            <button type="button" class="btn-yellow">Conductor</button>
+            <button type="button" class="btn-yellow">Servicio de emergencia</button>
+        </div>
+
+        <button type="button" class="btn-red">No tengo cuenta, registrarme</button>
+    </form>
+</section>

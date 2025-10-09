@@ -1,29 +1,38 @@
 ﻿<!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - NombreProyecto</title>
+    <title>@ViewData["Title"] - REACT</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
-
 <body>
-    <header>
-        NombreProyecto
+    <!-- Navbar -->
+    <header class="navbar">
+        <div class="logo">REACT</div>
+        <div class="icons">
+            <a href="#"><i class="user">👤</i></a>
+            <a href="/"><i class="home">🏠</i></a>
+        </div>
     </header>
 
+    <!-- Contenido principal -->
     <main role="main">
         @RenderBody()
     </main>
 
-    <footer>
-        &copy; @DateTime.Now.Year - NombreProyecto
+p
+    <footer class="footer">
+        <div class="icons">
+            <i>📷</i>
+            <i>📞</i>
+            <i>✉️</i>
+        </div>
+        <p>© @DateTime.Now.Year - Todos los derechos reservados</p>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-
 </html>

@@ -17,4 +17,12 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult Login()
+    {
+        return View("login");
+    }
+    public IActionResult Registrarse()
+    {
+        return View("registrarse");
+    }
 }
