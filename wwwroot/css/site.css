@@ -194,7 +194,7 @@ input {
 
 
 
-/*-------------------NUEVO ARREGLADO-------------------*/
+/*
 * {
   margin: 0;
   padding: 0;
@@ -202,7 +202,7 @@ input {
   font-family: "Raleway", sans-serif;
 }
 
-/* ---------- NAVBAR ---------- */
+
 .navbar {
   background-color: rgb(0, 51, 102);
   width: 100%;
@@ -223,7 +223,7 @@ input {
   font-size: 150%;
 }
 
-/* ---------- TÍTULO ---------- */
+/* ---------- TÍTULO ---------- *//*
 .title {
   background-color: rgb(0, 123, 255);
   color: rgb(255, 255, 255);
@@ -235,9 +235,10 @@ input {
   max-width: 600px;
   font-size: 160%;
   font-weight: bold;
-}
+}*/
 
 /* ---------- LOGIN ---------- */
+/*
 .login-box {
   background-color: rgb(140, 188, 255);
   width: 80%;
@@ -274,7 +275,7 @@ input {
   font-size: 105%;
 }
 
-/* ---------- BOTONES ---------- */
+
 .button-group {
   display: flex;
   justify-content: center;
@@ -311,8 +312,9 @@ input {
 .btn-red:hover {
   background-color: rgba(214, 52, 52, 0.9);
 }
+*/
 
-/* ---------- BOTÓN CENTRAL ---------- */
+/* ---------- BOTÓN CENTRAL ---------- 
 .btn-red.center {
   display: inline-block;
   background-color: rgb(255, 64, 64);
@@ -324,7 +326,7 @@ input {
   margin-top: 4%;
 }
 
-/* ---------- FOOTER ---------- */
+/* ---------- FOOTER ---------- 
 .footer {
   background-color: rgb(0, 51, 102);
   color: rgb(255, 214, 0);
@@ -342,7 +344,7 @@ input {
   font-size: 120%;
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* ---------- RESPONSIVE ---------- 
 @media (max-width: 600px) {
   .login-box {
     width: 90%;
@@ -358,4 +360,4 @@ input {
     width: 90%;
     font-size: 130%;
   }
-}
+}*/

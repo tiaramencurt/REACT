@@ -1,26 +1,38 @@
 @{
     ViewData["Title"] = "Iniciar Sesión";
 }
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NombreProyecto</title>
+    <link rel="stylesheet" href="site.css" asp-append-version="true" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+</head>
 
 <div class="title">
     <h2>Iniciar sesión / Log in</h2>
 </div>
 
-<section class="login-box">
-    <form>
-        <p for="username">Mail/Username:</p>
-        <input type="text" id="username" placeholder="Ingrese aquí">
 
-        <p for="password">Contraseña:</p>
-        <input type="password" id="password" placeholder="Ingrese aquí">
-
-        <p class="user-type">Tipo de usuario:</p>
+<form>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Username:</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Contraseña</label>
+    <input type="password" class="form-control" id="exampleInputPassword1">
+  </div>
+     <p class="user-type">Tipo de usuario:</p>
 
         <div class="button-group">
             <button type="button" class="btn-yellow">Conductor</button>
             <button type="button" class="btn-yellow">Servicio de emergencia</button>
         </div>
 
-        <button type="button" class="btn-red">No tengo cuenta, registrarme</button>
-    </form>
-</section>
+        
+
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+  </div> <a href="/Home/registrarse" class="btn-red center">No tengo cuenta, registrarme</a>
+</form>
