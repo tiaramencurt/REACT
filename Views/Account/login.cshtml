@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+<div>
+    <h1>Iniciar sesión</h1>
+
+    <form action='@Url.Action("Login", "Account")' method="post">
+        <input type="text" name="Usuario" placeholder="Ingresar usuario" required/>
+        <input type="password" name="Contraseña" placeholder="Ingresar contraseña" required/>
+        <input type="submit" value="Ingresar datos" />
+        @if(!ViewBag.mailExiste)
+        {               
+            <p>El usuario ingresado no existe</p>
+        }
+        @if(!ViewBag.contraseñaCoincide)
+        {
+            <p>La contraseña es incorrecta</p>
+        }
+    </form>
+</div>
+<a href='@Url.Action("Registrarse", "Account")'>Registrarse</a>  
