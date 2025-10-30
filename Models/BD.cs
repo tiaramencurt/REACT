@@ -99,5 +99,17 @@ public static class BD
             connection.Execute(query, new { PLatitud = Latitud, PLongitud = Longitud, PIdViaje = IdViaje });
         }
     }
+        public static List<Viaje> ObtenerViajesActivos()
+    {
+          string query = "SELECT * FROM Viajes WHERE Estado = 1";
+           using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+             List<Viaje> viajes = connection.conexion.Query<List<Viaje>>(query).ToList;
+             return viajes;
+        }
+           
+            
+    }
+    
 }
 

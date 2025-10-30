@@ -38,5 +38,9 @@ public class HomeController : Controller
         BD.GuardarUbicacion(Latitud, Longitud,IdViaje);
         return View ("Servicios");
     }
-   
+     public IActionResult CompararUbicacion(double Latitud, double Longitud)
+     {
+
+
+     }
 }
