@@ -15,14 +15,13 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        return View();
+        return View("Principal");
     }
-    public IActionResult Login()
+    public IActionResult CrearViaje ( int IdUsuario)
     {
-        return View("login");
+       bool viajeCreado =  BD.CrearViaje(IdUsuario);
+       ViewBag.viajeCreado = viajeCreado;
+       return View ("Principal");
     }
-    public IActionResult Registrarse()
-    {
-        return View("registrarse");
-    }
+   
 }

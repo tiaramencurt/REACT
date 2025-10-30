@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using Microsoft.Data.SqlClient;
 using Dapper;
 
-namespace TP07.Models;
+namespace REACT.Models;
 public class Usuario
 {
     [JsonProperty]

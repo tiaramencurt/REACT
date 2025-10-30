@@ -1,9 +1,9 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using TP07.Models;
+using REACT.Models;
 using BCrypt.Net;
 
-namespace TP07.Controllers;
+namespace REACT.Controllers;
 
 public class AccountController : Controller
 {
@@ -98,7 +98,7 @@ public class AccountController : Controller
                 rutaDestino = Path.Combine (carpeta, "default.png");
             }
                 string hash = BCrypt.Net.BCrypt.HashPassword(Contraseña1);
-                Usuario nuevoUsuario = new Usuario(Usuario, hash, Nombre, Apellido, rutaDestino);
+                Usuario nuevoUsuario = new Usuario(Usuario, hash, Nombre, Apellido );
                 bool registro = BD.Registrarse(nuevoUsuario);
                 if (!registro)
                 {

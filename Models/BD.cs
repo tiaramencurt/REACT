@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using Newtonsoft.Json;
 using BCrypt.Net;
-namespace TP07.Models;
+namespace REACT.Models;
 
 public static class BD
 {
@@ -45,7 +45,7 @@ public static class BD
             string query = "INSERT INTO Usuarios (Username, Password, Nombre, Apellido, Foto) VALUES (@PUsername, @PPassword, @PNombre, @PApellido, @PFoto)";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                connection.Execute(query, new { PUsername = usuario.Username, PPassword = usuario.Password, PNombre = usuario.Nombre, PApellido = usuario.Apellido, PFoto = usuario.Foto  });
+               // connection.Execute(query, new { PUsername = usuario.Username, PPassword = usuario.Password, PNombre = usuario.Nombre, PApellido = usuario.Apellido, PFoto = usuario.Foto  });
             }
             return true;
         }else
@@ -62,4 +62,14 @@ public static class BD
             connection.Execute(query, new { UltimoLogin = DateTime.Now, IdUsuario = IdUsuario });
         }
     }
+    public static bool CrearViaje(int IdUsuario)
+    {
+        string query = "INSERT INTO Viajes (IdUsuario, Estado, Latitud, Longitud) VALUES (@PIdUsuario, @PEstado, @PLatitud, @PLongitud)";
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Execute(query, new { PIdUsuario = IdUsuario, PEstado = true, PLatitud = 1, PLongitud = 1 });
+        }
+        return true;
+    }
 }
+
