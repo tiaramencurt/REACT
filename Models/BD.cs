@@ -91,5 +91,9 @@ public static class BD
            
             
     }
+    public static void GuardarUbicacion (double Latitud, double Longitud)
+    {
+        
+    }
 }
 

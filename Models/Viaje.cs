@@ -18,7 +18,7 @@ public class Viaje
     public double Latitud {get; private set;}
     [JsonProperty]
     public double Longitud {get; private set;}
-    
+     public Viaje() { } 
     public Viaje(int idusuario, bool estado, double latitud, double longitud)
     {
         this.IdUsuario = idusuario;

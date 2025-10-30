@@ -33,5 +33,10 @@ public class HomeController : Controller
        ViewBag.idViaje = null;
        return View ("Principal");
     }
+    public IActionResult GuardarUbicacion (double Latitud, double Longitud)
+    {
+        BD.ActualizarUbicacion(Latitud, Longitud);
+        return View ("Principal");
+    }
    
 }
