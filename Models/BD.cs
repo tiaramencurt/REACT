@@ -62,14 +62,34 @@ public static class BD
             connection.Execute(query, new { UltimoLogin = DateTime.Now, IdUsuario = IdUsuario });
         }
     }
-    public static bool CrearViaje(int IdUsuario)
+    public static int CrearViaje(int IdUsuario)
     {
-        string query = "INSERT INTO Viajes (IdUsuario, Estado, Latitud, Longitud) VALUES (@PIdUsuario, @PEstado, @PLatitud, @PLongitud)";
+        string query = "INSERT INTO Viajes (IdUsuario, Estado, Latitud, Longitud)  OUTPUT INSERTED.Id VALUES (@PIdUsuario, @PEstado, @PLatitud, @PLongitud)";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            connection.Execute(query, new { PIdUsuario = IdUsuario, PEstado = true, PLatitud = 1, PLongitud = 1 });
+            int idViaje =connection.ExecuteScalar<int>(query, new { PIdUsuario = IdUsuario, PEstado = true, PLatitud = 1, PLongitud = 1 });
+              return idViaje;
         }
-        return true;
+      
+    }
+    public static void FinalizarViaje(int IdViaje)
+    {
+        string query = "UPDATE Viajes SET Estado = @PEstado WHERE Id = @PIdViaje";
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Execute(query, new { PEstado = false, PIdViaje = IdViaje });
+        }
+    }
+    public static Viaje ObtenerUltimoViaje(int IdUsuario)
+    {
+          string query = "SELECT TOP 1 * FROM Viajes WHERE IdUsuario = @PIdUsuario ORDER BY Id DESC ";
+           using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+             Viaje viaje = connection.QueryFirstOrDefault<Viaje>(query, new { PIdUsuario = IdUsuario });
+             return viaje;
+        }
+           
+            
     }
 }
 

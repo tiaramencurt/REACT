@@ -15,12 +15,22 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        Viaje viaje = BD.ObtenerUltimoViaje(1);
+        ViewBag.estadoUltimoViaje = viaje.Estado;
+        ViewBag.idViaje = viaje.Id;
         return View("Principal");
     }
     public IActionResult CrearViaje ( int IdUsuario)
     {
-       bool viajeCreado =  BD.CrearViaje(IdUsuario);
-       ViewBag.viajeCreado = viajeCreado;
+       int idViaje =  BD.CrearViaje(IdUsuario);
+       ViewBag.idViaje = idViaje;
+       return View ("Principal");
+    }
+
+    public IActionResult FinalizarViaje ( int IdViaje)
+    {
+       BD.FinalizarViaje(IdViaje);
+       ViewBag.idViaje = null;
        return View ("Principal");
     }
    

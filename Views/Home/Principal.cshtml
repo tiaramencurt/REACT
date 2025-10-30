@@ -1,7 +1,16 @@
 @{
     ViewData["Title"] = "Principal";
+    bool? estadoUltimoViaje = ViewData["estadoUltimoViaje"] as bool?;
+ int? idViaje = ViewData["idViaje"] as int?;
 }
 
 <div class="BotonInicio">
-    <a href='@Url.Action("CrearViaje", "Home", new { IdUsuario = 1 })'>Crear viaje</a>
+    @if ( idViaje== null && (estadoUltimoViaje == null || estadoUltimoViaje == false ))
+    {
+        <a href='@Url.Action("CrearViaje", "Home", new { IdUsuario = 1 })'>Crear viaje</a>
+    }
+    else
+    {
+        <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })'>Finalizar viaje</a>
+    }
 </div>
