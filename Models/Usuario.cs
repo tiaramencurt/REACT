@@ -13,25 +13,18 @@ public class Usuario
     [JsonProperty]
     public string Username {get; private set;}
     [JsonProperty]
-    public string Password {get; private set;}
+    public string Contraseña {get; private set;}
     [JsonProperty]
     public string Mail {get; private set;}
     [JsonProperty]
-    public string Tipo {get; private set;}
-    [JsonProperty]
-    public bool Estado {get; private set;}
-    [JsonProperty]
-    public DateTime? UltimoLogin { get; private set; }
-    public Usuario()
-    {
-    }
-    public Usuario(string username, string password, string mail, string tipo)
+    public int Tipo {get; private set;}
+    
+    public Usuario(string username, string contraseña, string mail, int tipo)
     {
         this.Username = username;
-        this.Password = password;
+        this.Contraseña = contraseña;
         this.Mail = mail;
         this.Tipo = tipo;
-        this.Estado = false;
-        this.UltimoLogin = null;
     }
+   
 }

@@ -36,7 +36,7 @@ public class AccountController : Controller
                 ViewBag.mailExiste = false;
                 ViewBag.contraseñaCoincide = true;
                 return View("Login");
-            }else if(BCrypt.Net.BCrypt.Verify(Contraseña, usuario.Password)){
+            }else if(BCrypt.Net.BCrypt.Verify(Contraseña, usuario.Contraseña)){
                 HttpContext.Session.SetString("IdUsuario", usuario.Id.ToString());
                 BD.ActualizarFechaLogin(usuario.Id);
                 return RedirectToAction("MostrarTareas", "Home", new { Eliminadas = false });
@@ -98,7 +98,7 @@ public class AccountController : Controller
                 rutaDestino = Path.Combine (carpeta, "default.png");
             }
                 string hash = BCrypt.Net.BCrypt.HashPassword(Contraseña1);
-                Usuario nuevoUsuario = new Usuario(Usuario, hash, Nombre, Apellido );
+                Usuario nuevoUsuario = new Usuario(Usuario, hash, Nombre, 0 );
                 bool registro = BD.Registrarse(nuevoUsuario);
                 if (!registro)
                 {
