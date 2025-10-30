@@ -18,25 +18,25 @@ public class HomeController : Controller
         Viaje viaje = BD.ObtenerUltimoViaje(1);
         ViewBag.estadoUltimoViaje = viaje.Estado;
         ViewBag.idViaje = viaje.Id;
-        return View("Principal");
+        return View("Servicios");
     }
     public IActionResult CrearViaje ( int IdUsuario)
     {
        int idViaje =  BD.CrearViaje(IdUsuario);
        ViewBag.idViaje = idViaje;
-       return View ("Principal");
+       return View ("Servicios");
     }
 
     public IActionResult FinalizarViaje ( int IdViaje)
     {
        BD.FinalizarViaje(IdViaje);
        ViewBag.idViaje = null;
-       return View ("Principal");
+       return View ("Servicios");
     }
-    public IActionResult GuardarUbicacion (double Latitud, double Longitud)
+    public IActionResult GuardarUbicacion (double Latitud, double Longitud, int IdViaje)
     {
-        BD.ActualizarUbicacion(Latitud, Longitud);
-        return View ("Principal");
+        BD.GuardarUbicacion(Latitud, Longitud,IdViaje);
+        return View ("Servicios");
     }
    
 }

@@ -18,6 +18,7 @@
          <form id="formUbicacion" action="/Home/GuardarUbicacion" method="post">
     <input type="hidden" id="Latitud" name="Latitud">
     <input type="hidden" id="Longitud" name="Longitud">
+    <input type="hidden" id="IdViaje" name="IdViaje">
 </form>
     }
     
@@ -29,11 +30,12 @@ function pedirUbicacion() {
         // Dispara el cartel del navegador para pedir permiso
         navigator.geolocation.getCurrentPosition(
             function (position) {
-           document.getElementById("Latitud").value = pos.coords.latitude;
-        document.getElementById("Longitud").value = pos.coords.longitude;
+            document.getElementById("Latitud").value = position.coords.latitude;
+            document.getElementById("Longitud").value = position.coords.longitude;
+            document.getElementById("IdViaje").value = @idViaje;
 
-        // 📍 Llamamos al método del controller enviando el form
-        document.getElementById("formUbicacion").submit();
+            // 📍 Llamamos al método del controller enviando el form
+            document.getElementById("formUbicacion").submit();
             },
             function (error) {
                 alert("No se pudo obtener la ubicación o fue denegada.");

@@ -91,9 +91,13 @@ public static class BD
            
             
     }
-    public static void GuardarUbicacion (double Latitud, double Longitud)
+    public static void GuardarUbicacion (double Latitud, double Longitud, int IdViaje)
     {
-        
+        string query = "UPDATE Viajes SET Latitud = @PLatitud, Longitud = @PLongitud WHERE Id = @PIdViaje";
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Execute(query, new { PLatitud = Latitud, PLongitud = Longitud, PIdViaje = IdViaje });
+        }
     }
 }
 
