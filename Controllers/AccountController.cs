@@ -64,7 +64,7 @@ public class AccountController : Controller
         return View("registrarse");
     }
     [HttpPost]
-    public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Mail, bool Tipo)
+    public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Mail, string Tipo)
     {
         if (Usuario == null || Contraseña1 == null || Contraseña2 == null || Mail == null || Tipo == null)
         {
@@ -79,7 +79,15 @@ public class AccountController : Controller
             }else
             {
                 string hash = BCrypt.Net.BCrypt.HashPassword(Contraseña1);
-                Usuario nuevoUsuario = new Usuario(Usuario, hash, Mail, Tipo);
+                bool tipo;
+                if(Tipo == "0")
+                {
+                    tipo = false;
+                }else
+                {
+                    tipo = true;
+                }
+                Usuario nuevoUsuario = new Usuario(Usuario, hash, Mail, tipo);
                 bool registro = BD.Registrarse(nuevoUsuario);
                 if (!registro)
                 {
@@ -91,22 +99,5 @@ public class AccountController : Controller
             }
         }
     }
-    /*public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Nombre, string Apellido, string Foto)
-    {
-        if (Contraseña1 != Contraseña2)
-        {
-            ViewBag.mailExiste = false;
-            ViewBag.contraseñaCoincide = false;
-            return View("Registro");
-        }
-        Usuario nuevoUsuario = new Usuario(Usuario, Contraseña1, Nombre, Apellido, Foto);
-        bool registro = BD.Registrarse(nuevoUsuario);
-        if (!registro)
-        {
-            ViewBag.contraseñaCoincide = true;
-            ViewBag.mailExiste = true;
-            return View("Registro");
-        }
-        return RedirectToAction("Login"); 
-    }*/
+
 }
