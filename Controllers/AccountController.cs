@@ -39,7 +39,11 @@ public class AccountController : Controller
             }else if(BCrypt.Net.BCrypt.Verify(Contraseña, usuario.Contraseña)){
                 HttpContext.Session.SetString("IdUsuario", usuario.Id.ToString());
                 BD.ActualizarFechaLogin(usuario.Id);
-                return RedirectToAction("MostrarTareas", "Home", new { Eliminadas = false });
+                if()
+                {
+                    
+                }
+                return RedirectToAction("", "Home");
             }else{
                 ViewBag.mailExiste = true;
                 ViewBag.contraseñaCoincide = false;

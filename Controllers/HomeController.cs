@@ -20,6 +20,8 @@ public class HomeController : Controller
         ViewBag.idViaje = viaje.Id;
         return View("Servicios");
     }
+    public 
+
     public IActionResult CrearViaje ( int IdUsuario)
     {
        int idViaje =  BD.CrearViaje(IdUsuario);
@@ -38,9 +40,13 @@ public class HomeController : Controller
         BD.GuardarUbicacion(Latitud, Longitud,IdViaje);
         return View ("Servicios");
     }
-     public IActionResult CompararUbicacion(double Latitud, double Longitud)
-     {
+    public IActionResult CompararUbicacion(double Latitud, double Longitud, int IdViaje)
+    {
+        
+    }
+    public IActionResult HomeC()
+    {
 
-
-     }
+    }
 }
+  

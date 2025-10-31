@@ -104,7 +104,7 @@ public static class BD
           string query = "SELECT * FROM Viajes WHERE Estado = 1";
            using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-             List<Viaje> viajes = connection.conexion.Query<List<Viaje>>(query).ToList;
+             List<Viaje> viajes = connection.Query<Viaje>(query).ToList();
              return viajes;
         }
            

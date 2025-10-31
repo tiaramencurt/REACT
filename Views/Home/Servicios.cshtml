@@ -27,14 +27,12 @@
 <script>
 function pedirUbicacion() {
     if (navigator.geolocation) {
-        // Dispara el cartel del navegador para pedir permiso
         navigator.geolocation.getCurrentPosition(
             function (position) {
             document.getElementById("Latitud").value = position.coords.latitude;
             document.getElementById("Longitud").value = position.coords.longitude;
             document.getElementById("IdViaje").value = @idViaje;
 
-            // 📍 Llamamos al método del controller enviando el form
             document.getElementById("formUbicacion").submit();
             },
             function (error) {
