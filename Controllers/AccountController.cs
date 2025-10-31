@@ -38,7 +38,6 @@ public class AccountController : Controller
                 return View("Login");
             }else if(BCrypt.Net.BCrypt.Verify(Contraseña, usuario.Contraseña)){
                 HttpContext.Session.SetString("IdUsuario", usuario.Id.ToString());
-                BD.ActualizarFechaLogin(usuario.Id);
                 if(usuario.Tipo == false)
                 {
                     return RedirectToAction("HomeC", "Home");
@@ -65,7 +64,7 @@ public class AccountController : Controller
         return View("Registro");
     }
     [HttpPost]
-    public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Mail, int Tipo)
+    public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Mail, bool Tipo)
     {
         if (Usuario == null || Contraseña1 == null || Contraseña2 == null || Mail == null || Tipo == null)
         {

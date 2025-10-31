@@ -39,20 +39,55 @@ public class HomeController : Controller
         BD.GuardarUbicacion(Latitud, Longitud,IdViaje);
         return View ("Servicios");
     }
-    public IActionResult CompararUbicacion(double Latitud, double Longitud, int IdViaje)
+   [HttpPost][HttpPost]
+/*public ActionResult CompararUbicacion(double Latitud, double Longitud, int IdViaje)
+{
+    Viaje viajeParticular = new Viaje();
+    viajeParticular.Id = IdViaje;
+    viajeParticular.Latitud = Latitud;
+    viajeParticular.Longitud = Longitud;
+
+    List<Viaje> viajesEmergencia = BD.ObtenerViajesActivos();
+
+    double distanciaMinima = double.MaxValue;
+
+    foreach (Viaje viajeEmergencia in viajesEmergencia)
     {
-        List <Viaje> listViajes = BD.ObtenerViajesActivos();
-        
+        double distanciaKm = viajeParticular.CalcularDistancia(viajeEmergencia);
+        double distanciaMetros = distanciaKm * 1000;
+
+        if (distanciaMetros < distanciaMinima)
+        {
+            distanciaMinima = distanciaMetros;
+        }
     }
+
+
+    string color = "green"; 
+    if (distanciaMinima <= 100)
+    {
+        color = "red"; 
+    }
+    else if (distanciaMinima <= 300)
+    {
+        color = "yellow"; 
+    }
+
+    // 5️⃣ Mandamos datos a la vista
+    TempData["Distancia"] = (int)Math.Round(distanciaMinima);
+    TempData["Color"] = color;
+
+    return RedirectToAction("Principal");
+}*/
     public IActionResult HomeC()
     {
             Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
             ViewBag.usuario = usuario;
             return View("Particulares");
     }
-        public IActionResult HomeSE()
+    /*    public IActionResult HomeSE()
     {
         
-    }
+    }*/
 }
   

@@ -42,10 +42,10 @@ public static class BD
     {
         if(TraerUsuario(usuario.Username) == null)
         {
-            string query = "INSERT INTO Usuarios (Username, Password, Nombre, Apellido, Foto) VALUES (@PUsername, @PPassword, @PNombre, @PApellido, @PFoto)";
+            string query = "INSERT INTO Usuarios (Mail, Contraseña, Username, Tipo) VALUES (@PMail, @PContraseña, @PUsername, @PTipo)";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-               // connection.Execute(query, new { PUsername = usuario.Username, PPassword = usuario.Password, PNombre = usuario.Nombre, PApellido = usuario.Apellido, PFoto = usuario.Foto  });
+               connection.Execute(query, new { PUsername = usuario.Username, PContraseña = usuario.Contraseña, PMail = usuario.Mail, PTipo = usuario.Tipo  });
             }
             return true;
         }else
