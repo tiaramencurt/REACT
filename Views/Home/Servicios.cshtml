@@ -1,25 +1,24 @@
 @{
     ViewData["Title"] = "Principal";
     bool? estadoUltimoViaje = ViewData["estadoUltimoViaje"] as bool?;
- int? idViaje = ViewData["idViaje"] as int?;
+    int? idViaje = ViewData["idViaje"] as int?;
 }
 
 <div class="BotonInicio">
-    @if ( idViaje== null && (estadoUltimoViaje == null || estadoUltimoViaje == false ))
+    @if ( idViaje == null && (estadoUltimoViaje == null || estadoUltimoViaje == false ))
     {
-        <a href='@Url.Action("CrearViaje", "Home", new { IdUsuario = 1 })'>Crear viaje</a>
+        <a href='@Url.Action("CrearViaje", "Home", new { IdUsuario = ViewBag.usuario.Id })'>Crear viaje</a>
     }
     else
     {
         <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })'>Finalizar viaje</a>
-         <button type="button" onclick="pedirUbicacion()">Enviar ubicación</button>
+        <button type="button" onclick="pedirUbicacion()">Enviar ubicación</button>
         
-        
-         <form id="formUbicacion" action="/Home/GuardarUbicacion" method="post">
-    <input type="hidden" id="Latitud" name="Latitud">
-    <input type="hidden" id="Longitud" name="Longitud">
-    <input type="hidden" id="IdViaje" name="IdViaje">
-</form>
+        <form id="formUbicacion" action="/Home/GuardarUbicacion" method="post">
+            <input type="hidden" id="Latitud" name="Latitud">
+            <input type="hidden" id="Longitud" name="Longitud">
+            <input type="hidden" id="IdViaje" name="IdViaje">
+        </form>
     }
     
 </div>

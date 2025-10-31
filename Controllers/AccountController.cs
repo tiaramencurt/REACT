@@ -20,7 +20,7 @@ public class AccountController : Controller
     {
         ViewBag.mailExiste = true;
         ViewBag.contraseñaCoincide = true;
-        return View("Login");
+        return View("login");
     }
     [HttpPost]
     public IActionResult Login(string Usuario, string Contraseña)
@@ -35,7 +35,7 @@ public class AccountController : Controller
             {
                 ViewBag.mailExiste = false;
                 ViewBag.contraseñaCoincide = true;
-                return View("Login");
+                return View("login");
             }else if(BCrypt.Net.BCrypt.Verify(Contraseña, usuario.Contraseña)){
                 HttpContext.Session.SetString("IdUsuario", usuario.Id.ToString());
                 if(usuario.Tipo == false)
@@ -48,7 +48,7 @@ public class AccountController : Controller
             }else{
                 ViewBag.mailExiste = true;
                 ViewBag.contraseñaCoincide = false;
-                return View("Login");
+                return View("login");
             }
         }
     }
@@ -61,7 +61,7 @@ public class AccountController : Controller
     {
         ViewBag.contraseñaCoincide = true;
         ViewBag.mailExiste = false;
-        return View("Registro");
+        return View("registrarse");
     }
     [HttpPost]
     public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Mail, bool Tipo)
@@ -75,7 +75,7 @@ public class AccountController : Controller
             {
                 ViewBag.mailExiste = false;
                 ViewBag.contraseñaCoincide = false;
-                return View("Registro");
+                return View("registrarse");
             }else
             {
                 string hash = BCrypt.Net.BCrypt.HashPassword(Contraseña1);
@@ -85,7 +85,7 @@ public class AccountController : Controller
                 {
                     ViewBag.contraseñaCoincide = true;
                     ViewBag.mailExiste = true;
-                    return View("Registro");
+                    return View("registrarse");
                 }
                 return RedirectToAction("Login"); 
             }

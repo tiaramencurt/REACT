@@ -5,13 +5,15 @@
 <div>
     <h1>Registrarse</h1>
     <form action='@Url.Action("Registrarse", "Account")' method="post" enctype="multipart/form-data">
-        <input type="text" name="Username" placeholder="Ingresar nombre de usuario" required />
+        <input type="text" name="Usuario" placeholder="Ingresar nombre de usuario" required />
         <input type="text" name="Mail" placeholder="Ingresar mail" required />
         <input type="password" name="Contraseña1" placeholder="Ingresar contraseña" required />
         <input type="password" name="Contraseña2" placeholder="Ingresar de nuevo la contraseña" required />
         <p>Tipo:</p>
-        <button type="submit" name="Tipo" value="Conductor">Registrarse como Cliente</button>
-        <button type="submit" name="Tipo" value="Servicios de emergencia">Registrarse como Administrador</button>
+        <select required>
+            <option value="true">Registrarse como Servicio de Emergencia</option>
+            <option value="false">Registrarse como Conductor</option>
+        </select>
         @if (ViewBag.mailExiste)
         {
             <p>El usuario ingresado ya fue registrado anteriormente</p>
@@ -20,6 +22,7 @@
         {
             <p>Ambas contraseñas no coinciden</p>
         }
+        <button type="submit">Registrarse</button>
     </form>
 </div>
 <a href='@Url.Action("Login", "Account")'>Iniciar sesión</a>

@@ -15,12 +15,8 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
-        Viaje viaje = BD.ObtenerUltimoViaje(1);
-        ViewBag.estadoUltimoViaje = viaje.Estado;
-        ViewBag.idViaje = viaje.Id;
-        return View("Servicios");
+        return View();
     }
-
     public IActionResult CrearViaje ( int IdUsuario)
     {
        int idViaje =  BD.CrearViaje(IdUsuario);
@@ -85,9 +81,15 @@ public class HomeController : Controller
             ViewBag.usuario = usuario;
             return View("Particulares");
     }
-    /*    public IActionResult HomeSE()
+      public IActionResult HomeSE()
     {
-        
-    }*/
+        Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
+        ViewBag.usuario = usuario;
+        Viaje viaje = BD.ObtenerUltimoViaje(1);
+        ViewBag.estadoUltimoViaje = viaje.Estado;
+        ViewBag.idViaje = viaje.Id;
+        return View("Servicios");
+
+    }
 }
   
