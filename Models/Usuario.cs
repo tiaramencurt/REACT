@@ -17,9 +17,9 @@ public class Usuario
     [JsonProperty]
     public string Mail {get; private set;}
     [JsonProperty]
-    public int Tipo {get; private set;}
+    public bool Tipo {get; private set;}
     
-    public Usuario(string username, string contraseña, string mail, int tipo)
+    public Usuario(string username, string contraseña, string mail, bool tipo)
     {
         this.Username = username;
         this.Contraseña = contraseña;

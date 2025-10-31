@@ -101,7 +101,7 @@ public static class BD
     }
         public static List<Viaje> ObtenerViajesActivos()
     {
-          string query = "SELECT * FROM Viajes WHERE Estado = 1";
+          string query = "SELECT Viajes.Id, Viajes.IdUsuario, Viajes.Estado, Viajes.Latitud, Viajes.Longitud FROM Viajes INNER JOIN Usuarios ON Viajes.IdUsuario = Usuarios.Id WHERE Viajes.Estado = 1 AND Usuarios.Tipo = 1";
            using (SqlConnection connection = new SqlConnection(_connectionString))
         {
              List<Viaje> viajes = connection.Query<Viaje>(query).ToList();

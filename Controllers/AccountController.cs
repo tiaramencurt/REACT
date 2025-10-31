@@ -39,11 +39,13 @@ public class AccountController : Controller
             }else if(BCrypt.Net.BCrypt.Verify(Contraseña, usuario.Contraseña)){
                 HttpContext.Session.SetString("IdUsuario", usuario.Id.ToString());
                 BD.ActualizarFechaLogin(usuario.Id);
-                if()
+                if(usuario.Tipo == false)
                 {
-                    
+                    return RedirectToAction("HomeC", "Home");
+                }else
+                {
+                    return RedirectToAction("HomeSE", "Home");
                 }
-                return RedirectToAction("", "Home");
             }else{
                 ViewBag.mailExiste = true;
                 ViewBag.contraseñaCoincide = false;
@@ -63,9 +65,9 @@ public class AccountController : Controller
         return View("Registro");
     }
     [HttpPost]
-    public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Nombre, string Apellido, IFormFile Foto)
+    public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Mail, int Tipo)
     {
-        if (Usuario == null || Contraseña1 == null || Contraseña2 == null || Nombre == null || Apellido == null)
+        if (Usuario == null || Contraseña1 == null || Contraseña2 == null || Mail == null || Tipo == null)
         {
             return RedirectToAction("Registrarse");
         }else
@@ -75,34 +77,10 @@ public class AccountController : Controller
                 ViewBag.mailExiste = false;
                 ViewBag.contraseñaCoincide = false;
                 return View("Registro");
-            }
-            string carpeta = null;
-            string rutaDestino = null;
-            string nombreFoto = null;
-            if (Foto != null && Foto.Length > 0)
+            }else
             {
-                carpeta = Path.Combine(_env.WebRootPath, "imagenes");
-                if (!Directory.Exists(carpeta))
-                {
-                    Directory.CreateDirectory(carpeta);
-                }
-                nombreFoto = Guid.NewGuid().ToString() + Path.GetExtension(Foto.FileName);
-                rutaDestino = Path.Combine(carpeta, nombreFoto);
-                using (var stream = new FileStream(rutaDestino, FileMode.Create))
-                {
-                    Foto.CopyTo(stream);
-                }
-            }
-            else
-            {
-                carpeta = Path.Combine(_env.WebRootPath, "imagenes");
-                if (!Directory. Exists(carpeta)){
-                    Directory.CreateDirectory (carpeta);
-                }
-                rutaDestino = Path.Combine (carpeta, "default.png");
-            }
                 string hash = BCrypt.Net.BCrypt.HashPassword(Contraseña1);
-                Usuario nuevoUsuario = new Usuario(Usuario, hash, Nombre, 0 );
+                Usuario nuevoUsuario = new Usuario(Usuario, hash, Mail, Tipo);
                 bool registro = BD.Registrarse(nuevoUsuario);
                 if (!registro)
                 {
@@ -111,6 +89,7 @@ public class AccountController : Controller
                     return View("Registro");
                 }
                 return RedirectToAction("Login"); 
+            }
         }
     }
     /*public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Nombre, string Apellido, string Foto)
