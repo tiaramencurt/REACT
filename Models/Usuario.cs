@@ -26,5 +26,8 @@ public class Usuario
         this.Mail = mail;
         this.Tipo = tipo;
     }
+    public Usuario()
+    {
+    }
    
 }

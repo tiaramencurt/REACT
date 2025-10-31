@@ -7,7 +7,6 @@
     <form action='@Url.Action("Login", "Account")' method="post">
         <input type="text" name="Usuario" placeholder="Ingresar usuario" required/>
         <input type="password" name="Contraseña" placeholder="Ingresar contraseña" required/>
-        <input type="submit" value="Ingresar datos" />
         @if(!ViewBag.mailExiste)
         {               
             <p>El usuario ingresado no existe</p>
