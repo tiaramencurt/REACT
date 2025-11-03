@@ -20,6 +20,8 @@ public class HomeController : Controller
     public IActionResult CrearViaje ( int IdUsuario)
     {
        int idViaje =  BD.CrearViaje(IdUsuario);
+        Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
+        ViewBag.usuario = usuario;
        ViewBag.idViaje = idViaje;
        return View ("Servicios");
     }
@@ -27,6 +29,8 @@ public class HomeController : Controller
     public IActionResult FinalizarViaje ( int IdViaje)
     {
        BD.FinalizarViaje(IdViaje);
+        Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
+        ViewBag.usuario = usuario;
        ViewBag.idViaje = null;
        return View ("Servicios");
     }
@@ -85,9 +89,16 @@ public class HomeController : Controller
     {
         Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
         ViewBag.usuario = usuario;
-        Viaje viaje = BD.ObtenerUltimoViaje(1);
-        ViewBag.estadoUltimoViaje = viaje.Estado;
-        ViewBag.idViaje = viaje.Id;
+        Viaje viaje = BD.ObtenerUltimoViaje(int.Parse(HttpContext.Session.GetString("IdUsuario")));
+        if(viaje == null)
+        {
+            ViewBag.estadoUltimoViaje = false;
+            ViewBag.idViaje = null;
+        }else
+        {
+            ViewBag.estadoUltimoViaje = viaje.Estado;
+            ViewBag.idViaje = viaje.Id;
+        }
         return View("Servicios");
 
     }
