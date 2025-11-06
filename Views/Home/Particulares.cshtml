@@ -1,38 +1,47 @@
 @{
     ViewData["Title"] = "Particulares";
-}
-
-<h2>Modo Particular</h2>
-
-<p>Presioná el botón para enviar tu ubicación actual y verificar si hay un servicio de emergencia cerca.</p>
-
-<button type="button" onclick="pedirUbicacion()">Enviar ubicación</button>
-
-<form id="formUbicacion" action="/Home/CompararUbicacion" method="post">
-    <input type="hidden" id="Latitud" name="Latitud">
-    <input type="hidden" id="Longitud" name="Longitud">
-</form>
-@{
+    bool? estadoUltimoViaje = ViewBag.estadoUltimoViaje as bool?;
+    int? idViaje = ViewBag.idViaje as int?;
     string color = TempData["Color"] as string;
     var distancia = TempData["Distancia"];
 }
 
-@if (!string.IsNullOrEmpty(color))
+<h2>Modo Particular</h2>
+
+<div>
+    @if (idViaje == null || estadoUltimoViaje == false)
+    {
+        <a href='@Url.Action("CrearViaje","Home")'>Crear viaje</a>
+    }
+    else
+    {
+        <a href='@Url.Action("FinalizarViaje","Home", new { IdViaje = idViaje })'>Finalizar viaje</a>
+        <button type="button" onclick="pedirUbicacion()">Enviar ubicación</button>
+
+        <form id="formUbicacion" action="/Home/CompararUbicacion" method="post">
+    <input type="hidden" id="Latitud" name="Latitud">
+    <input type="hidden" id="Longitud" name="Longitud">
+    <input type="hidden" id="IdViaje" name="IdViaje" value="@ViewBag.idViaje">
+</form>
+    }
+</div>
+
+@if (!string.IsNullOrEmpty(color) && distancia != null)
 {
-    <h3>Vehículo de emergencia cercano</h3>
+   
     <p>Distancia mínima: @distancia metros.</p>
 
     @if (color == "red")
     {
-        <p>⚠️ Estás muy cerca de un servicio de emergencia. Despejá el paso.</p>
+        <p> Estás muy cerca de un servicio de emergencia. Despejá el paso.</p>
     }
     else if (color == "yellow")
     {
-        <p>🚧 Un vehículo de emergencia se aproxima. Mantené precaución.</p>
+        <p> Un vehículo de emergencia se aproxima. Mantené precaución.</p>
     }
     else
     {
-        <p>✅ No hay servicios de emergencia cerca por ahora.</p>
+        <p> No hay servicios de emergencia cerca por ahora.</p>
     }
 
     <p>Color: @color</p>
@@ -43,11 +52,15 @@ function pedirUbicacion() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             function (position) {
-                document.getElementById("Latitud").value = position.coords.latitude;
-                document.getElementById("Longitud").value = position.coords.longitude;
+                   const lat = position.coords.latitude.toString().replace('.', ',');
+                   const lon = position.coords.longitude.toString().replace('.', ',');
+                   
+             document.getElementById("Latitud").value  = lat;
+             document.getElementById("Longitud").value = lon;
+
                 document.getElementById("formUbicacion").submit();
             },
-            function (error) {
+            function () {
                 alert("No se pudo obtener la ubicación o fue denegada.");
             }
         );

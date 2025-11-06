@@ -2,6 +2,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using REACT.Models;
 using BCrypt.Net;
+using System.Linq;
 
 namespace REACT.Controllers;
 

@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using REACT.Models;
+using System.Globalization;
 
 namespace REACT.Controllers;
 
@@ -36,44 +37,55 @@ public class HomeController : Controller
             return RedirectToAction("Inicio");
         }
 
-       
-        public IActionResult GuardarUbicacion(double Latitud, double Longitud, int IdViaje)
-        {
-            BD.GuardarUbicacion(Latitud, Longitud, IdViaje);
-            return RedirectToAction("Inicio");
-        }
+          [HttpPost]
+      public IActionResult GuardarUbicacion(string Latitud, string Longitud, int IdViaje)
+{
+    double lat = double.Parse(Latitud, CultureInfo.InvariantCulture);
+    double lon = double.Parse(Longitud, CultureInfo.InvariantCulture);
+    BD.GuardarUbicacion(lat, lon, IdViaje);
+    return RedirectToAction("Inicio");
+}
+
 
         
         [HttpPost]
-        public IActionResult CompararUbicacion(double Latitud, double Longitud, int IdViaje = 0)
-        {
-            Viaje viajeParticular = new Viaje
-            {
-                Id = IdViaje,
-                Latitud = Latitud,
-                Longitud = Longitud
-            };
+       public IActionResult CompararUbicacion(string Latitud, string Longitud, int IdViaje = 0)
+{
+    double lat = double.Parse(Latitud, CultureInfo.InvariantCulture);
+    double lon = double.Parse(Longitud, CultureInfo.InvariantCulture);
+    if (IdViaje > 0) BD.GuardarUbicacion(lat, lon, IdViaje);
 
-            List<Viaje> viajesEmergencia = BD.ObtenerViajesActivos() ?? new List<Viaje>();
+    Viaje viajeParticular = new Viaje { Id = IdViaje, Latitud = lat, Longitud = lon };
 
-            double distanciaMinimaMetros = viajesEmergencia
-                .Where(v => v.Id != IdViaje) 
-                .Select(v => viajeParticular.CalcularDistancia(v) * 1000.0) 
-                .DefaultIfEmpty(double.MaxValue)
-                .Min();
+    List<Viaje> viajesEmergencia = BD.ObtenerViajesActivos() ?? new List<Viaje>();
+    List<Viaje> viajesValidos = new List<Viaje>();
+    foreach (Viaje v in viajesEmergencia)
+        if (v.Latitud != 0 && v.Longitud != 0) viajesValidos.Add(v);
 
-            string color = distanciaMinimaMetros <= 100 ? "red"
-                         : distanciaMinimaMetros <= 300 ? "yellow"
-                         : "green";
+    if (viajesValidos.Count == 0)
+    {
+        TempData["Distancia"] = 0;
+        TempData["Color"] = "green";
+        return RedirectToAction("Inicio");
+    }
 
-            TempData["Distancia"] = (int)Math.Round(distanciaMinimaMetros);
-            TempData["Color"] = color;
+    double minMetros = double.MaxValue;
+    foreach (Viaje v in viajesValidos)
+    {
+        if (v.Id == IdViaje) continue;
+        double km = viajeParticular.CalcularDistancia(v);
+        double m = km * 1000.0;
+        if (m < minMetros) minMetros = m;
+    }
 
-            return RedirectToAction("Inicio");
-        }
+    string color = (minMetros <= 100) ? "red" : (minMetros <= 300) ? "yellow" : "green";
+    TempData["Distancia"] = (int)Math.Round(minMetros);
+    TempData["Color"] = color;
+    return RedirectToAction("Inicio");
+}
 
-       
-        public IActionResult Inicio()
+
+       public IActionResult Inicio()
         {
             string idStr = HttpContext.Session.GetString("IdUsuario");
             if (string.IsNullOrEmpty(idStr))
@@ -100,4 +112,5 @@ public class HomeController : Controller
             else                       
                 return View("Particulares");
         }
-    }
+}
+    

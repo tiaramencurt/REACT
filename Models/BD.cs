@@ -10,7 +10,6 @@ namespace REACT.Models;
 public static class BD
 {
     private static string _connectionString = @"Server=localhost; DataBase=REACT; Integrated Security=True; TrustServerCertificate=True;";
-    //private static string _connectionString = @"Server=localhost\SQLEXPRESS;Database=REACT;Trusted_Connection=True;Integrated Security=True; TrustServerCertificate=True;";
     public static Usuario TraerUsuario(string username)
     {
         string query = "SELECT * FROM Usuarios WHERE Username = @Username";
@@ -64,13 +63,16 @@ public static class BD
     }
     public static int CrearViaje(int IdUsuario)
     {
-        string query = "INSERT INTO Viajes (IdUsuario, Estado, Latitud, Longitud)  OUTPUT INSERTED.Id VALUES (@PIdUsuario, @PEstado, @PLatitud, @PLongitud)";
-        using (SqlConnection connection = new SqlConnection(_connectionString))
+        const string query = @"
+            INSERT INTO Viajes (IdUsuario, Estado, Latitud, Longitud)
+            OUTPUT INSERTED.Id
+            VALUES (@PIdUsuario, @PEstado, @PLatitud, @PLongitud);";
+
+        using (var connection = new SqlConnection(_connectionString))
         {
-            int idViaje =connection.ExecuteScalar<int>(query, new { PIdUsuario = IdUsuario, PEstado = true, PLatitud = 1, PLongitud = 1 });
-              return idViaje;
+            int idViaje = connection.ExecuteScalar<int>(query, new { PIdUsuario = IdUsuario, PEstado = true,  PLatitud = 0.0,  PLongitud = 0.0});
+            return idViaje;
         }
-      
     }
     public static void FinalizarViaje(int IdViaje)
     {

@@ -5,22 +5,21 @@
 }
 
 <div class="BotonInicio">
-    @if ( idViaje == null && (estadoUltimoViaje == null || estadoUltimoViaje == false ))
+   @if (idViaje == null || estadoUltimoViaje == false)
     {
-        <a href='@Url.Action("CrearViaje", "Home", new { IdUsuario = ViewBag.usuario.Id })'>Crear viaje</a>
+        <a href='@Url.Action("CrearViaje", "Home")'>Crear viaje</a>
     }
     else
     {
         <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })'>Finalizar viaje</a>
         <button type="button" onclick="pedirUbicacion()">Enviar ubicación</button>
-        
+
         <form id="formUbicacion" action="/Home/GuardarUbicacion" method="post">
-            <input type="hidden" id="Latitud" name="Latitud">
-            <input type="hidden" id="Longitud" name="Longitud">
-            <input type="hidden" id="IdViaje" name="IdViaje">
+            <input type="hidden" id="Latitud" name="Latitud" />
+            <input type="hidden" id="Longitud" name="Longitud" />
+            <input type="hidden" id="IdViaje" name="IdViaje" value="@idViaje" />
         </form>
     }
-    
 </div>
 
 <script>
@@ -28,13 +27,13 @@ function pedirUbicacion() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             function (position) {
-            document.getElementById("Latitud").value = position.coords.latitude;
-            document.getElementById("Longitud").value = position.coords.longitude;
-            document.getElementById("IdViaje").value = @idViaje;
-
-            document.getElementById("formUbicacion").submit();
+                document.getElementById("Latitud").value = position.coords.latitude;
+                document.getElementById("Longitud").value = position.coords.longitude;
+                
+                document.getElementById("IdViaje").value = '@idViaje';
+                document.getElementById("formUbicacion").submit();
             },
-            function (error) {
+            function () {
                 alert("No se pudo obtener la ubicación o fue denegada.");
             }
         );

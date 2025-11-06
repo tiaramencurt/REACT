@@ -26,19 +26,26 @@ public class Viaje
         this.Latitud = latitud;
         this.Longitud = longitud;
     }
-     public double CalcularDistancia(Viaje viajeEmergencia)
-        {
-            const double R = 6371.0;
-            double dLat = (viajeEmergencia.Latitud - this.Latitud) * Math.PI / 180.0;
-            double dLon = (viajeEmergencia.Longitud - this.Longitud) * Math.PI / 180.0;
+   public double CalcularDistancia(Viaje otro)
+{
+    const double R = 6371.0; 
+    double lat1 = GradosARadianes(this.Latitud);
+    double lon1 = GradosARadianes(this.Longitud);
+    double lat2 = GradosARadianes(otro.Latitud);
+    double lon2 = GradosARadianes(otro.Longitud);
 
-            double a = Math.Sin(dLat / 2) * Math.Sin(dLat / 2) +
-                       Math.Cos(this.Latitud * Math.PI / 180.0) *
-                       Math.Cos(viajeEmergencia.Latitud * Math.PI / 180.0) *
-                       Math.Sin(dLon / 2) * Math.Sin(dLon / 2);
+    double dlat = lat2 - lat1;
+    double dlon = lon2 - lon1;
 
-            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+    double a = Math.Sin(dlat / 2) * Math.Sin(dlat / 2) +
+               Math.Cos(lat1) * Math.Cos(lat2) *
+               Math.Sin(dlon / 2) * Math.Sin(dlon / 2);
+    double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
+    return R * c; 
+}
 
-            return R * c; 
-        }
+private static double GradosARadianes(double grados)
+{
+    return grados * Math.PI / 180.0;
+}
 }
