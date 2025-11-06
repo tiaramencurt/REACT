@@ -1,3 +1,256 @@
+
+/* ==========================
+   REACT - Estilos Generales
+   ========================== */
+
+   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+       font-family: "Montserrat", sans-serif;
+   }
+   
+   body {
+       background-color: #f8faff;
+       color: #0B3D91;
+       min-height: 100vh;
+       display: flex;
+       flex-direction: column;
+   }
+   
+   /* ==========================
+      HEADER / NAVBAR
+      ========================== */
+   
+   header {
+       background-color: #0B3D91;
+       color: white;
+       padding: 1rem 2rem;
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+   }
+   
+   header h1 {
+       font-size: 1.5rem;
+       letter-spacing: 1px;
+   }
+   
+   header nav a {
+       color: white;
+       text-decoration: none;
+       margin-left: 1.5rem;
+       font-weight: 600;
+       transition: color 0.3s;
+   }
+   
+   header nav a:hover {
+       color: #FFCC00;
+   }
+   
+   /* ==========================
+      SECCIÓN HERO (Index)
+      ========================== */
+   
+   .hero {
+       background: linear-gradient(135deg, #0B3D91, #1c56d3);
+       color: white;
+       text-align: center;
+       padding: 5rem 2rem;
+   }
+   
+   .hero h1 {
+       font-size: 3rem;
+       font-weight: 700;
+       letter-spacing: 2px;
+   }
+   
+   .hero h2 {
+       font-size: 1.4rem;
+       margin-top: 1rem;
+       font-weight: 400;
+   }
+   
+   /* ==========================
+      INFO SECTION
+      ========================== */
+   
+   .info-section {
+       display: grid;
+       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+       gap: 1.5rem;
+       padding: 3rem 5%;
+   }
+   
+   .info-card {
+       background-color: white;
+       border-radius: 12px;
+       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+       padding: 2rem;
+       transition: transform 0.3s;
+   }
+   
+   .info-card:hover {
+       transform: translateY(-5px);
+   }
+   
+   .info-card h3 {
+       color: #0B3D91;
+       font-size: 1.4rem;
+       margin-bottom: 0.8rem;
+   }
+   
+
+  
+   
+   .button-group {
+       display: flex;
+       justify-content: center;
+       margin-top: 2rem;
+       gap: 1.5rem;
+   }
+   
+   .button-group a, button {
+       background-color: #0B3D91;
+       color: white;
+       text-decoration: none;
+       padding: 0.8rem 1.5rem;
+       border-radius: 25px;
+       font-weight: 600;
+       transition: background-color 0.3s, transform 0.3s;
+       border: none;
+       cursor: pointer;
+   }
+   
+   .button-group a:hover, button:hover {
+       background-color: #FFCC00;
+       color: #0B3D91;
+       transform: translateY(-2px);
+   }
+   
+   /* ==========================
+      FORMULARIOS (Login / Registro)
+      ========================== */
+   
+   form {
+       display: flex;
+       flex-direction: column;
+       gap: 1rem;
+       margin: 2rem auto;
+       width: 100%;
+       max-width: 400px;
+   }
+   
+   input[type="text"],
+   input[type="password"],
+   input[type="email"],
+   select {
+       padding: 0.8rem;
+       border: 1.5px solid #0B3D91;
+       border-radius: 8px;
+       outline: none;
+       transition: border-color 0.3s;
+   }
+   
+   input:focus, select:focus {
+       border-color: #FFCC00;
+   }
+   
+   button[type="submit"] {
+       background-color: #0B3D91;
+       color: white;
+       border: none;
+       border-radius: 25px;
+       padding: 0.8rem;
+       font-weight: 600;
+       transition: background-color 0.3s;
+   }
+   
+   button[type="submit"]:hover {
+       background-color: #FFCC00;
+       color: #0B3D91;
+   }
+   
+   form p {
+       color: #FF4D4D;
+       text-align: center;
+       font-weight: 600;
+   }
+   
+   /* ==========================
+      PARTICULARES Y SERVICIOS
+      ========================== */
+   
+   h2 {
+       text-align: center;
+       margin-top: 2rem;
+       color: #0B3D91;
+   }
+   
+   p {
+       text-align: center;
+       margin: 0.5rem auto;
+       max-width: 600px;
+       font-size: 1rem;
+   }
+   
+   .BotonInicio {
+       display: flex;
+       flex-direction: column;
+       align-items: center;
+       margin-top: 2rem;
+       gap: 1rem;
+   }
+   
+   .BotonInicio a {
+       background-color: #0B3D91;
+       color: white;
+       padding: 0.8rem 2rem;
+       border-radius: 30px;
+       text-decoration: none;
+       font-weight: 600;
+   }
+   
+   .BotonInicio a:hover {
+       background-color: #FFCC00;
+       color: #0B3D91;
+   }
+   
+   /* ==========================
+      COLORES DE ESTADO
+      ========================== */
+   
+   .red {
+       color: #FF4D4D;
+       font-weight: 700;
+   }
+   
+   .yellow {
+       color: #FFCC00;
+       font-weight: 700;
+   }
+   
+   .green {
+       color: #2ecc71;
+       font-weight: 700;
+   }
+   
+   /* ==========================
+      FOOTER
+      ========================== */
+   
+   footer {
+       background-color: #0B3D91;
+       color: white;
+       text-align: center;
+       padding: 1rem;
+       margin-top: auto;
+       font-size: 0.9rem;
+   }
+   
+
 /*
 * {
   margin: 0;

@@ -77,7 +77,20 @@ public IActionResult CompararUbicacion(string Latitud, string Longitud, int IdVi
         if (m < minMetros) minMetros = m;
     }
 
-    string color = (minMetros <= 100) ? "red" : (minMetros <= 300) ? "yellow" : "green";
+        string color;
+
+        if (minMetros <= 100)
+        {
+            color = "red";
+        }
+        else if (minMetros <= 300)
+        {
+            color = "yellow";
+        }
+        else
+        {
+            color = "green";
+        }    
     TempData["Distancia"] = (int)Math.Round(minMetros);
     TempData["Color"] = color;
     return RedirectToAction("Inicio");
