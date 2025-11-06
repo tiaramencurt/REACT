@@ -13,101 +13,91 @@ public class HomeController : Controller
         _logger = logger;
     }
 
-    public IActionResult Index()
-    {
-        return View();
-    }
-    public IActionResult CrearViaje ( int IdUsuario)
-    {
-       int idViaje =  BD.CrearViaje(IdUsuario);
-        Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
-        ViewBag.usuario = usuario;
-       ViewBag.idViaje = idViaje;
-       if(usuario.Tipo == true)
-       {
-        return View ("Servicios");
-       }else
-       {
-        return View ("Particulares");
-       }
-    }
-
-    public IActionResult FinalizarViaje ( int IdViaje)
-    {
-       BD.FinalizarViaje(IdViaje);
-        Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
-        ViewBag.usuario = usuario;
-       ViewBag.idViaje = null;
-       return View ("Servicios");
-    }
-    public IActionResult GuardarUbicacion (double Latitud, double Longitud, int IdViaje)
-    {
-        BD.GuardarUbicacion(Latitud, Longitud, IdViaje);
-        return View ("Servicios");
-    }
-[HttpPost]
-public ActionResult CompararUbicacion(double Latitud, double Longitud, int IdViaje)
-{
-    Viaje viajeParticular = new Viaje();
-    viajeParticular.Id = IdViaje;
-    viajeParticular.Latitud = Latitud;
-    viajeParticular.Longitud = Longitud;
-
-    List<Viaje> viajesEmergencia = BD.ObtenerViajesActivos();
-
-    double distanciaMinima = double.MaxValue;
-
-    foreach (Viaje viajeEmergencia in viajesEmergencia)
-    {
-        double distanciaKm = viajeParticular.CalcularDistancia(viajeEmergencia);
-        double distanciaMetros = distanciaKm * 1000;
-
-        if (distanciaMetros < distanciaMinima)
+      public IActionResult Index()
         {
-            distanciaMinima = distanciaMetros;
+            return View();
+        }
+
+      
+        public IActionResult CrearViaje()
+        {
+             string idStr = HttpContext.Session.GetString("IdUsuario");
+    if (string.IsNullOrEmpty(idStr))
+        return RedirectToAction("Login", "Account");
+
+    int id = int.Parse(idStr);
+    BD.CrearViaje(id);
+    return RedirectToAction("Inicio");
+        }
+
+        public IActionResult FinalizarViaje(int IdViaje)
+        {
+            BD.FinalizarViaje(IdViaje);
+            return RedirectToAction("Inicio");
+        }
+
+       
+        public IActionResult GuardarUbicacion(double Latitud, double Longitud, int IdViaje)
+        {
+            BD.GuardarUbicacion(Latitud, Longitud, IdViaje);
+            return RedirectToAction("Inicio");
+        }
+
+        
+        [HttpPost]
+        public IActionResult CompararUbicacion(double Latitud, double Longitud, int IdViaje = 0)
+        {
+            Viaje viajeParticular = new Viaje
+            {
+                Id = IdViaje,
+                Latitud = Latitud,
+                Longitud = Longitud
+            };
+
+            List<Viaje> viajesEmergencia = BD.ObtenerViajesActivos() ?? new List<Viaje>();
+
+            double distanciaMinimaMetros = viajesEmergencia
+                .Where(v => v.Id != IdViaje) 
+                .Select(v => viajeParticular.CalcularDistancia(v) * 1000.0) 
+                .DefaultIfEmpty(double.MaxValue)
+                .Min();
+
+            string color = distanciaMinimaMetros <= 100 ? "red"
+                         : distanciaMinimaMetros <= 300 ? "yellow"
+                         : "green";
+
+            TempData["Distancia"] = (int)Math.Round(distanciaMinimaMetros);
+            TempData["Color"] = color;
+
+            return RedirectToAction("Inicio");
+        }
+
+       
+        public IActionResult Inicio()
+        {
+            string idStr = HttpContext.Session.GetString("IdUsuario");
+            if (string.IsNullOrEmpty(idStr))
+                return RedirectToAction("Login", "Account");
+
+            Usuario usuario = BD.TraerUsuarioPorId(int.Parse(idStr));
+            ViewBag.usuario = usuario;
+
+            Viaje viaje = BD.ObtenerUltimoViaje(usuario.Id);
+            if (viaje == null)
+            {
+                ViewBag.estadoUltimoViaje = false;
+                ViewBag.idViaje = null;
+            }
+            else
+            {
+                ViewBag.estadoUltimoViaje = viaje.Estado;
+                ViewBag.idViaje = viaje.Id;
+            }
+
+            
+            if (usuario.Tipo == true) 
+                return View("Servicios");
+            else                       
+                return View("Particulares");
         }
     }
-
-
-    string color = "green"; 
-    if (distanciaMinima <= 100)
-    {
-        color = "red"; 
-    }
-    else if (distanciaMinima <= 300)
-    {
-        color = "yellow"; 
-    }
-
-    TempData["Distancia"] = (int)Math.Round(distanciaMinima);
-    TempData["Color"] = color;
-
-    return RedirectToAction("Principal");
-}
-    public IActionResult Home()
-    {
-            Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
-            ViewBag.usuario = usuario;
-            if(usuario.Tipo == true)
-            {
-             return View("Particulares");
-            }
-            else 
-            {
-                 Viaje viaje = BD.ObtenerUltimoViaje(int.Parse(HttpContext.Session.GetString("IdUsuario")));
-                if(viaje == null)
-                {
-                    ViewBag.estadoUltimoViaje = false;
-                    ViewBag.idViaje = null;
-                }
-                else
-                {
-                    ViewBag.estadoUltimoViaje = viaje.Estado;
-                    ViewBag.idViaje = viaje.Id;
-                }
-                return View("Servicios");
-            }
-    }
-
-}
-  

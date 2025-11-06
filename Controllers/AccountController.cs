@@ -40,10 +40,10 @@ public class AccountController : Controller
                 HttpContext.Session.SetString("IdUsuario", usuario.Id.ToString());
                 if(usuario.Tipo == false)
                 {
-                    return RedirectToAction("HomeC", "Home");
+                    return RedirectToAction("Inicio", "Home");
                 }else
                 {
-                    return RedirectToAction("HomeSE", "Home");
+                    return RedirectToAction("Inicio", "Home");
                 }
             }else{
                 ViewBag.mailExiste = true;
@@ -64,9 +64,9 @@ public class AccountController : Controller
         return View("registrarse");
     }
     [HttpPost]
-    public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Mail, string Tipo)
+    public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Mail, bool Tipo)
     {
-        if (Usuario == null || Contraseña1 == null || Contraseña2 == null || Mail == null || Tipo == null)
+        if (Usuario == null || Contraseña1 == null || Contraseña2 == null || Mail == null )
         {
             return RedirectToAction("Registrarse");
         }else
@@ -79,15 +79,8 @@ public class AccountController : Controller
             }else
             {
                 string hash = BCrypt.Net.BCrypt.HashPassword(Contraseña1);
-                bool tipo;
-                if(Tipo == "0")
-                {
-                    tipo = false;
-                }else
-                {
-                    tipo = true;
-                }
-                Usuario nuevoUsuario = new Usuario(Usuario, hash, Mail, tipo);
+                
+                Usuario nuevoUsuario = new Usuario(Usuario, hash, Mail, Tipo);
                 bool registro = BD.Registrarse(nuevoUsuario);
                 if (!registro)
                 {

@@ -11,8 +11,8 @@
         <input type="password" name="Contraseña2" placeholder="Ingresar de nuevo la contraseña" required />
         <p>Tipo:</p>
         <select name="Tipo" required>
-            <option value="1">Registrarse como Servicio de Emergencia</option>
-            <option value="0">Registrarse como Conductor</option>
+            <option value="true">Registrarse como Servicio de Emergencia</option>
+            <option value="false">Registrarse como Conductor</option>
         </select>
         @if (ViewBag.mailExiste)
         {
