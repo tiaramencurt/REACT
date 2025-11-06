@@ -23,7 +23,13 @@ public class HomeController : Controller
         Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
         ViewBag.usuario = usuario;
        ViewBag.idViaje = idViaje;
-       return View ("Servicios");
+       if(usuario.Tipo == true)
+       {
+        return View ("Servicios");
+       }else
+       {
+        return View ("Particulares");
+       }
     }
 
     public IActionResult FinalizarViaje ( int IdViaje)
@@ -36,11 +42,11 @@ public class HomeController : Controller
     }
     public IActionResult GuardarUbicacion (double Latitud, double Longitud, int IdViaje)
     {
-        BD.GuardarUbicacion(Latitud, Longitud,IdViaje);
+        BD.GuardarUbicacion(Latitud, Longitud, IdViaje);
         return View ("Servicios");
     }
-   [HttpPost][HttpPost]
-/*public ActionResult CompararUbicacion(double Latitud, double Longitud, int IdViaje)
+[HttpPost]
+public ActionResult CompararUbicacion(double Latitud, double Longitud, int IdViaje)
 {
     Viaje viajeParticular = new Viaje();
     viajeParticular.Id = IdViaje;
@@ -73,34 +79,35 @@ public class HomeController : Controller
         color = "yellow"; 
     }
 
-    // 5️⃣ Mandamos datos a la vista
     TempData["Distancia"] = (int)Math.Round(distanciaMinima);
     TempData["Color"] = color;
 
     return RedirectToAction("Principal");
-}*/
-    public IActionResult HomeC()
+}
+    public IActionResult Home()
     {
             Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
             ViewBag.usuario = usuario;
-            return View("Particulares");
+            if(usuario.Tipo == true)
+            {
+             return View("Particulares");
+            }
+            else 
+            {
+                 Viaje viaje = BD.ObtenerUltimoViaje(int.Parse(HttpContext.Session.GetString("IdUsuario")));
+                if(viaje == null)
+                {
+                    ViewBag.estadoUltimoViaje = false;
+                    ViewBag.idViaje = null;
+                }
+                else
+                {
+                    ViewBag.estadoUltimoViaje = viaje.Estado;
+                    ViewBag.idViaje = viaje.Id;
+                }
+                return View("Servicios");
+            }
     }
-      public IActionResult HomeSE()
-    {
-        Usuario usuario = BD.TraerUsuarioPorId(int.Parse(HttpContext.Session.GetString("IdUsuario")));
-        ViewBag.usuario = usuario;
-        Viaje viaje = BD.ObtenerUltimoViaje(int.Parse(HttpContext.Session.GetString("IdUsuario")));
-        if(viaje == null)
-        {
-            ViewBag.estadoUltimoViaje = false;
-            ViewBag.idViaje = null;
-        }else
-        {
-            ViewBag.estadoUltimoViaje = viaje.Estado;
-            ViewBag.idViaje = viaje.Id;
-        }
-        return View("Servicios");
 
-    }
 }
   
