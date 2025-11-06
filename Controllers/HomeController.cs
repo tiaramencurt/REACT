@@ -38,21 +38,20 @@ public class HomeController : Controller
         }
 
           [HttpPost]
-      public IActionResult GuardarUbicacion(string Latitud, string Longitud, int IdViaje)
+     [HttpPost]
+public IActionResult GuardarUbicacion(string Latitud, string Longitud, int IdViaje)
 {
-    double lat = double.Parse(Latitud, CultureInfo.InvariantCulture);
-    double lon = double.Parse(Longitud, CultureInfo.InvariantCulture);
+    double lat = double.Parse(Latitud.Replace(',', '.'), CultureInfo.InvariantCulture);
+    double lon = double.Parse(Longitud.Replace(',', '.'), CultureInfo.InvariantCulture);
     BD.GuardarUbicacion(lat, lon, IdViaje);
     return RedirectToAction("Inicio");
 }
 
-
-        
-        [HttpPost]
-       public IActionResult CompararUbicacion(string Latitud, string Longitud, int IdViaje = 0)
+[HttpPost]
+public IActionResult CompararUbicacion(string Latitud, string Longitud, int IdViaje = 0)
 {
-    double lat = double.Parse(Latitud, CultureInfo.InvariantCulture);
-    double lon = double.Parse(Longitud, CultureInfo.InvariantCulture);
+    double lat = double.Parse(Latitud.Replace(',', '.'), CultureInfo.InvariantCulture);
+    double lon = double.Parse(Longitud.Replace(',', '.'), CultureInfo.InvariantCulture);
     if (IdViaje > 0) BD.GuardarUbicacion(lat, lon, IdViaje);
 
     Viaje viajeParticular = new Viaje { Id = IdViaje, Latitud = lat, Longitud = lon };
@@ -83,7 +82,6 @@ public class HomeController : Controller
     TempData["Color"] = color;
     return RedirectToAction("Inicio");
 }
-
 
        public IActionResult Inicio()
         {

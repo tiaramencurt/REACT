@@ -27,10 +27,10 @@ function pedirUbicacion() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             function (position) {
-                document.getElementById("Latitud").value = position.coords.latitude;
-                document.getElementById("Longitud").value = position.coords.longitude;
-                
-                document.getElementById("IdViaje").value = '@idViaje';
+                const lat = position.coords.latitude.toString().replace('.', ',');
+                const lon = position.coords.longitude.toString().replace('.', ',');
+                document.getElementById("Latitud").value  = lat;
+                document.getElementById("Longitud").value = lon;
                 document.getElementById("formUbicacion").submit();
             },
             function () {
