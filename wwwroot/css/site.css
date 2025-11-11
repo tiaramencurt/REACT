@@ -1,255 +1,255 @@
 
-/* ==========================
-   REACT - Estilos Generales
-   ========================== */
+/* Variables de Color */
+:root {
+    --color-primary: #001f3f; /* Azul Marino Oscuro - Fondo, Footer */
+    --color-secondary: #ff4136; /* Rojo - Botones principales, Alerta Roja */
+    --color-tertiary: #ffdc00; /* Amarillo - Botones secundarios, Alerta Amarilla */
+    --color-background-light: #f4f7f6; /* Fondo de la página */
+    --color-card-background: #0074d9; /* Azul más claro para cards/formularios */
+    --color-text-light: #ffffff;
+    --color-text-dark: #333333;
+    --color-success: #2ecc40; /* Verde para no hay emergencias cerca */
+}
 
-   @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap');
+/* --- ESTILO GENERAL --- */
 
-   * {
-       margin: 0;
-       padding: 0;
-       box-sizing: border-box;
-       font-family: "Montserrat", sans-serif;
-   }
-   
-   body {
-       background-color: #f8faff;
-       color: #0B3D91;
-       min-height: 100vh;
-       display: flex;
-       flex-direction: column;
-   }
-   
-   /* ==========================
-      HEADER / NAVBAR
-      ========================== */
-   
-   header {
-       background-color: #0B3D91;
-       color: white;
-       padding: 1rem 2rem;
-       display: flex;
-       justify-content: space-between;
-       align-items: center;
-   }
-   
-   header h1 {
-       font-size: 1.5rem;
-       letter-spacing: 1px;
-   }
-   
-   header nav a {
-       color: white;
-       text-decoration: none;
-       margin-left: 1.5rem;
-       font-weight: 600;
-       transition: color 0.3s;
-   }
-   
-   header nav a:hover {
-       color: #FFCC00;
-   }
-   
-   /* ==========================
-      SECCIÓN HERO (Index)
-      ========================== */
-   
-   .hero {
-       background: linear-gradient(135deg, #0B3D91, #1c56d3);
-       color: white;
-       text-align: center;
-       padding: 5rem 2rem;
-   }
-   
-   .hero h1 {
-       font-size: 3rem;
-       font-weight: 700;
-       letter-spacing: 2px;
-   }
-   
-   .hero h2 {
-       font-size: 1.4rem;
-       margin-top: 1rem;
-       font-weight: 400;
-   }
-   
-   /* ==========================
-      INFO SECTION
-      ========================== */
-   
-   .info-section {
-       display: grid;
-       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-       gap: 1.5rem;
-       padding: 3rem 5%;
-   }
-   
-   .info-card {
-       background-color: white;
-       border-radius: 12px;
-       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-       padding: 2rem;
-       transition: transform 0.3s;
-   }
-   
-   .info-card:hover {
-       transform: translateY(-5px);
-   }
-   
-   .info-card h3 {
-       color: #0B3D91;
-       font-size: 1.4rem;
-       margin-bottom: 0.8rem;
-   }
-   
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-  
-   
-   .button-group {
-       display: flex;
-       justify-content: center;
-       margin-top: 2rem;
-       gap: 1.5rem;
-   }
-   
-   .button-group a, button {
-       background-color: #0B3D91;
-       color: white;
-       text-decoration: none;
-       padding: 0.8rem 1.5rem;
-       border-radius: 25px;
-       font-weight: 600;
-       transition: background-color 0.3s, transform 0.3s;
-       border: none;
-       cursor: pointer;
-   }
-   
-   .button-group a:hover, button:hover {
-       background-color: #FFCC00;
-       color: #0B3D91;
-       transform: translateY(-2px);
-   }
-   
-   /* ==========================
-      FORMULARIOS (Login / Registro)
-      ========================== */
-   
-   form {
-       display: flex;
-       flex-direction: column;
-       gap: 1rem;
-       margin: 2rem auto;
-       width: 100%;
-       max-width: 400px;
-   }
-   
-   input[type="text"],
-   input[type="password"],
-   input[type="email"],
-   select {
-       padding: 0.8rem;
-       border: 1.5px solid #0B3D91;
-       border-radius: 8px;
-       outline: none;
-       transition: border-color 0.3s;
-   }
-   
-   input:focus, select:focus {
-       border-color: #FFCC00;
-   }
-   
-   button[type="submit"] {
-       background-color: #0B3D91;
-       color: white;
-       border: none;
-       border-radius: 25px;
-       padding: 0.8rem;
-       font-weight: 600;
-       transition: background-color 0.3s;
-   }
-   
-   button[type="submit"]:hover {
-       background-color: #FFCC00;
-       color: #0B3D91;
-   }
-   
-   form p {
-       color: #FF4D4D;
-       text-align: center;
-       font-weight: 600;
-   }
-   
-   /* ==========================
-      PARTICULARES Y SERVICIOS
-      ========================== */
-   
-   h2 {
-       text-align: center;
-       margin-top: 2rem;
-       color: #0B3D91;
-   }
-   
-   p {
-       text-align: center;
-       margin: 0.5rem auto;
-       max-width: 600px;
-       font-size: 1rem;
-   }
-   
-   .BotonInicio {
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       margin-top: 2rem;
-       gap: 1rem;
-   }
-   
-   .BotonInicio a {
-       background-color: #0B3D91;
-       color: white;
-       padding: 0.8rem 2rem;
-       border-radius: 30px;
-       text-decoration: none;
-       font-weight: 600;
-   }
-   
-   .BotonInicio a:hover {
-       background-color: #FFCC00;
-       color: #0B3D91;
-   }
-   
-   /* ==========================
-      COLORES DE ESTADO
-      ========================== */
-   
-   .red {
-       color: #FF4D4D;
-       font-weight: 700;
-   }
-   
-   .yellow {
-       color: #FFCC00;
-       font-weight: 700;
-   }
-   
-   .green {
-       color: #2ecc71;
-       font-weight: 700;
-   }
-   
-   /* ==========================
-      FOOTER
-      ========================== */
-   
-   footer {
-       background-color: #0B3D91;
-       color: white;
-       text-align: center;
-       padding: 1rem;
-       margin-top: auto;
-       font-size: 0.9rem;
-   }
-   
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    background-color: var(--color-background-light);
+    color: var(--color-text-dark);
+}
+
+/* Simulación de un contenedor principal si no se usa <main> o una clase en _Layout */
+div[class]:not([class*="group"]) {
+    padding: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- ENCABEZADOS Y FOOTER (Asumiendo que están en _Layout) --- */
+
+/* **NOTA:** Si no puedes modificar el HTML, deberás asegurar que tu _Layout.cshtml incluya estilos para el header/footer que coincidan con el prototipo. Asumo un footer simple y fijo. */
+
+footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 10px 20px;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 0.8em;
+}
+
+/* --- ESTILO DE BOTONES Y ENLACES --- */
+
+button, a {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Botones Rojos (Iniciar sesión, Login) - Predominan */
+button[type="submit"], a[href*="Login"], a[href*="FinalizarViaje"] {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+}
+
+/* Botones Amarillos (Registrarse, Crear viaje) */
+a[href*="Registrarse"], a[href*="CrearViaje"], button:not([type="submit"]), a[onclick*="pedirUbicacion"] {
+    background-color: var(--color-tertiary);
+    color: var(--color-text-dark);
+}
+
+/* Contenedor de botones para centrar en Index.cshtml */
+.button-group.center {
+    text-align: center;
+    margin-top: 20px;
+    padding: 0; /* Deshace el padding del div si aplica */
+}
+
+/* Contenedor de botones en Servicios.cshtml */
+.BotonInicio {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* --- HOME/INDEX.CSHTML (Landing Page) --- */
+
+/* Simulación de la sección Hero (el primer <section>) */
+section.hero {
+    background-color: var(--color-secondary); /* Rojo para el hero */
+    color: var(--color-text-light);
+    padding: 40px 20px;
+    text-align: center;
+}
+
+section.hero h1 {
+    font-size: 3em;
+    margin-bottom: 5px;
+}
+
+section.hero h2 {
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+/* Sección principal de información (el primer <main>) */
+main.info-section {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto 80px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Tarjetas de información (los divs dentro de main.info-section) */
+main.info-section > div {
+    background-color: var(--color-card-background);
+    color: var(--color-text-light);
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main.info-section > div h3 {
+    border-bottom: 2px solid var(--color-tertiary);
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+/* El grupo de botones debe ocupar todo el ancho */
+main.info-section > .button-group.center {
+    grid-column: 1 / -1;
+}
+
+/* --- ACCOUNT/LOGIN y ACCOUNT/REGISTRARSE (Formularios) --- */
+
+/* Contenedor del formulario (el primer <div> dentro de la vista) */
+div:has(h1) {
+    background-color: var(--color-card-background);
+    padding: 30px;
+    margin: 40px auto;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+div:has(h1) h1 {
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: var(--color-text-light);
+}
+
+div:has(h1) form {
+    display: flex;
+    flex-direction: column;
+}
+
+div:has(h1) input[type="text"], 
+div:has(h1) input[type="password"],
+div:has(h1) select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f7f7f7;
+    color: var(--color-text-dark);
+}
+
+/* Mensajes de error/advertencia */
+div:has(h1) p {
+    color: var(--color-tertiary); 
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+div:has(h1) a {
+    color: var(--color-tertiary);
+    margin-top: 15px;
+    text-decoration: none;
+    background: none;
+    display: block;
+}
+
+/* --- HOME/PARTICULARES (Detección de Ubicación) --- */
+
+/* El <h2> "Modo Particular" */
+main > h2 {
+    font-size: 1.5em;
+    color: var(--color-primary);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Estilo para los resultados de la comparación de ubicación */
+main > h3 {
+    color: var(--color-tertiary);
+    margin-top: 20px;
+    text-align: center;
+}
+
+/* Contenedor de la alerta (Se asume que la alerta es el primer <p> después del h3) */
+main > h3 + p:first-of-type,
+main > p:nth-of-type(2),
+main > p:nth-of-type(3) {
+    /* Base para todas las alertas */
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+    max-width: 400px;
+    margin: 10px auto;
+}
+
+/* Alerta Roja (⚠️ Estás muy cerca...) */
+main > h3 + p:not([class]):contains("Despejá el paso") {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+}
+
+/* Alerta Amarilla (🚧 Un vehículo...) */
+main > h3 + p:not([class]):contains("Mantené precaución") {
+    background-color: var(--color-tertiary);
+    color: var(--color-text-dark);
+}
+
+/* Alerta Segura (✅ No hay servicios...) */
+main > h3 + p:not([class]):contains("No hay servicios") {
+    background-color: var(--color-success);
+    color: var(--color-text-light);
+}
+
+/* Ocultar "Color: @color" si existe */
+main > p:last-of-type:contains("Color:") {
+    display: none;
+}
+
+/* --- Responsive Básico --- */
+
+@media (max-width: 768px) {
+    main.info-section {
+        grid-template-columns: 1fr;
+    }
+}
 
 /*
 * {
