@@ -9,10 +9,8 @@ body {
   color: rgb(10, 35, 66);
   line-height: 1.6;
 }
-
-/* --- ESTILOS DE TEXTO GENERALES --- */
 .title {
-  font-weight: 800; /* extrabold */
+  font-weight: 800;
   font-size: 200%;
   color: white;
   margin-right: 10%;
@@ -25,12 +23,12 @@ body {
 }
 
 .subtitle {
-  font-weight: 700; /* bold */
+  font-weight: 700;
   font-size: 175%;
 }
 
 .paragraph {
-  font-weight: 400; /* regular */
+  font-weight: 400;
   font-size: 115%;
 }
 
