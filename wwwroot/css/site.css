@@ -114,7 +114,7 @@ body {
 }
 
 .titulo img {
-  width: 25%;
+  width: 10%;
   height: auto;
   border-radius: 12px;
   margin-bottom: 2%;
@@ -131,19 +131,18 @@ body {
   margin: 3% auto;
   background-color: rgb(210, 230, 255);
   border-radius: 12px;
-  padding: 4% 6%;
+  padding: 4%;
   text-align: center;
 }
 
 .contenedor-texto h3 {
-  font-size: 160%;
+  font-size: 130%;
   font-weight: bold;
   color: rgb(10, 35, 120);
   margin-bottom: 2%;
 }
 
 .contenedor-texto p {
-  font-size: 110%;
   font-weight: 400;
   color: rgb(10, 40, 80);
   margin-bottom: 2%;
