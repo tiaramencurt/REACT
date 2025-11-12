@@ -16,8 +16,8 @@
         }
         else
         {
-            <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="primary-button">Finalizar viaje</a>
-            <button type="button" onclick="pedirUbicacion()" class="secondary-button">Enviar ubicación</button>
+            <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="secondary-button">Finalizar viaje</a>
+            <button type="button" onclick="pedirUbicacion()" class="primary-button">Enviar ubicación</button>
 
             <form id="formUbicacion" action="/Home/CompararUbicacion" method="post">
                 <input type="hidden" id="Latitud" name="Latitud">
