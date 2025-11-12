@@ -8,23 +8,26 @@
 </head>
 <body>
 
-    <header class="navbar">
-        <div class="logo">REACT</div>
-        <div class="icons">
-            <a href="#"><i class="user">👤</i></a>
-            <a href="/"><i class="home">🏠</i></a>
-        </div>
+    <header>
+        <section>
+            <h1>REACT</h1>
+        </section>
+        <nav>
+            <a href="#"><span>👤</span></a>
+            <a href="/"><span>🏠</span></a>
+        </nav>
     </header>
 
     <main role="main">
         @RenderBody()
     </main>
-    <footer class="footer">
-        <div class="icons">
-            <i>📷</i>
-            <i>📞</i>
-            <i>✉️</i>
-        </div>
+    
+    <footer>
+        <section>
+            <span>📷</span>
+            <span>📞</span>
+            <span>✉️</span>
+        </section>
         <p>© @DateTime.Now.Year - Todos los derechos reservados</p>
     </footer>
 

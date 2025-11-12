@@ -6,46 +6,49 @@
     var distancia = TempData["Distancia"];
 }
 
-<h2>Modo Particular</h2>
+<main>
+    <section>
+        <h2>Modo Particular</h2>
 
-<div>
-    @if (idViaje == null || estadoUltimoViaje == false)
-    {
-        <a href='@Url.Action("CrearViaje","Home")'>Crear viaje</a>
-    }
-    else
-    {
-        <a href='@Url.Action("FinalizarViaje","Home", new { IdViaje = idViaje })'>Finalizar viaje</a>
-        <button type="button" onclick="pedirUbicacion()">Enviar ubicación</button>
+        @if (idViaje == null || estadoUltimoViaje == false)
+        {
+            <a href='@Url.Action("CrearViaje", "Home")'>Crear viaje</a>
+        }
+        else
+        {
+            <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })'>Finalizar viaje</a>
+            <button type="button" onclick="pedirUbicacion()">Enviar ubicación</button>
 
-        <form id="formUbicacion" action="/Home/CompararUbicacion" method="post">
-    <input type="hidden" id="Latitud" name="Latitud">
-    <input type="hidden" id="Longitud" name="Longitud">
-    <input type="hidden" id="IdViaje" name="IdViaje" value="@ViewBag.idViaje">
-</form>
-    }
-</div>
+            <form id="formUbicacion" action="/Home/CompararUbicacion" method="post">
+                <input type="hidden" id="Latitud" name="Latitud">
+                <input type="hidden" id="Longitud" name="Longitud">
+                <input type="hidden" id="IdViaje" name="IdViaje" value="@ViewBag.idViaje">
+            </form>
+        }
+    </section>
 
-@if (!string.IsNullOrEmpty(color) && distancia != null)
-{
-   
-    <p>Distancia mínima: @distancia metros.</p>
+    @if (!string.IsNullOrEmpty(color) && distancia != null)
+    {
+        <section>
+            <p>Distancia mínima: @distancia metros.</p>
 
-    @if (color == "red")
-    {
-        <p> Estás muy cerca de un servicio de emergencia. Despejá el paso.</p>
-    }
-    else if (color == "yellow")
-    {
-        <p> Un vehículo de emergencia se aproxima. Mantené precaución.</p>
-    }
-    else
-    {
-        <p> No hay servicios de emergencia cerca por ahora.</p>
-    }
+            @if (color == "red")
+            {
+                <p>Estás muy cerca de un servicio de emergencia. Despejá el paso.</p>
+            }
+            else if (color == "yellow")
+            {
+                <p>Un vehículo de emergencia se aproxima. Mantené precaución.</p>
+            }
+            else
+            {
+                <p>No hay servicios de emergencia cerca por ahora.</p>
+            }
 
-    <p>Color: @color</p>
-}
+            <p>Color: @color</p>
+        </section>
+    }
+</main>
 
 <script>
 function pedirUbicacion() {
