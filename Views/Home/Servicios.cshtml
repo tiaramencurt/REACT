@@ -4,23 +4,28 @@
     int? idViaje = ViewBag.idViaje as int?;
 }
 
-<div class="BotonInicio">
-   @if (idViaje == null || estadoUltimoViaje == false)
-    {
-        <a href='@Url.Action("CrearViaje", "Home")'>Crear viaje</a>
-    }
-    else
-    {
-        <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })'>Finalizar viaje</a>
-        <button type="button" onclick="pedirUbicacion()">Enviar ubicación</button>
+<main>
+    <section class="principal">
+        <h2>Modo Servicio de emergencia</h2>
 
-        <form id="formUbicacion" action="/Home/GuardarUbicacion" method="post">
-            <input type="hidden" id="Latitud" name="Latitud" />
-            <input type="hidden" id="Longitud" name="Longitud" />
-            <input type="hidden" id="IdViaje" name="IdViaje" value="@idViaje" />
-        </form>
-    }
-</div>
+        @if (idViaje == null || estadoUltimoViaje == false)
+        {
+            <a href='@Url.Action("CrearViaje", "Home")'>Crear viaje</a>
+        }
+        else
+        {
+            <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })'>Finalizar viaje</a>
+            <button type="button" onclick="pedirUbicacion()">Enviar ubicación</button>
+
+            <form id="formUbicacion" action="/Home/GuardarUbicacion" method="post">
+                <input type="hidden" id="Latitud" name="Latitud" />
+                <input type="hidden" id="Longitud" name="Longitud" />
+                <input type="hidden" id="IdViaje" name="IdViaje" value="@idViaje" />
+            </form>
+        }
+    </section>
+</main>
+
 
 <script>
 function pedirUbicacion() {

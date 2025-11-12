@@ -7,7 +7,7 @@
 }
 
 <main>
-    <section>
+    <section class="principal">
         <h2>Modo Particular</h2>
 
         @if (idViaje == null || estadoUltimoViaje == false)
@@ -29,7 +29,7 @@
 
     @if (!string.IsNullOrEmpty(color) && distancia != null)
     {
-        <section>
+        <section class="colores">
             <p>Distancia mínima: @distancia metros.</p>
 
             @if (color == "red")

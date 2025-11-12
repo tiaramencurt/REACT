@@ -1,616 +1,112 @@
-
-/* Variables de Color */
-:root {
-    --color-primary: #001f3f; /* Azul Marino Oscuro - Fondo, Footer */
-    --color-secondary: #ff4136; /* Rojo - Botones principales, Alerta Roja */
-    --color-tertiary: #ffdc00; /* Amarillo - Botones secundarios, Alerta Amarilla */
-    --color-background-light: #f4f7f6; /* Fondo de la página */
-    --color-card-background: #0074d9; /* Azul más claro para cards/formularios */
-    --color-text-light: #ffffff;
-    --color-text-dark: #333333;
-    --color-success: #2ecc40; /* Verde para no hay emergencias cerca */
-}
-
-/* --- ESTILO GENERAL --- */
-
 * {
-    box-sizing: border-box;
     margin: 0;
     padding: 0;
-}
+  }
 
+  /* ----------- GENERAL ----------- */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb(255, 255, 255);
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+}
+
+/* ----------- TIPOGRAFÍA ----------- */
+h1 {
+    font-weight: 800;
+    font-size: 32px;
+}
+
+h2 {
+    font-weight: 700;
+    font-size: 28px;
+    color: rgb(200, 0, 0);
+    margin-top: 10px;
+}
+
+h3 {
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-weight: 400;
+    font-size: 18px;
+    color: rgb(20, 40, 90);
+    margin: 0 0 20px 0;
     line-height: 1.6;
-    background-color: var(--color-background-light);
-    color: var(--color-text-dark);
 }
 
-/* Simulación de un contenedor principal si no se usa <main> o una clase en _Layout */
-div[class]:not([class*="group"]) {
+/* ----------- LANDING ----------- */
+.Landing .titulo img {
+    width: 250px;
+    display: block;
+    margin: 30px auto 10px auto;
+    border-radius: 8px;
+}
+
+.Landing .contenedor-texto {
+    background-color: rgb(0, 70, 160);
+    color: rgb(230, 240, 255);
+    width: 80%;
+    margin: 20px auto;
     padding: 20px;
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* --- ENCABEZADOS Y FOOTER (Asumiendo que están en _Layout) --- */
-
-/* **NOTA:** Si no puedes modificar el HTML, deberás asegurar que tu _Layout.cshtml incluya estilos para el header/footer que coincidan con el prototipo. Asumo un footer simple y fijo. */
-
-footer {
-    background-color: var(--color-primary);
-    color: var(--color-text-light);
-    padding: 10px 20px;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    font-size: 0.8em;
-}
-
-/* --- ESTILO DE BOTONES Y ENLACES --- */
-
-button, a {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    text-decoration: none;
-    text-align: center;
+    border-radius: 12px;
     display: inline-block;
-    margin: 5px;
+}
+
+.Landing .contenedor-texto h3 {
+    color: rgb(230, 240, 255);
+}
+
+.Landing .contenedor-texto p {
+    color: rgb(210, 230, 255);
+}
+
+/* ----------- BOTONES ----------- */
+a {
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 15px 10px;
+}
+
+a[href*="Login"], 
+a[href*="Registrarse"] {
+    background-color: rgb(255, 210, 40);
+    color: rgb(0, 0, 0);
     transition: background-color 0.3s ease;
 }
 
-/* Botones Rojos (Iniciar sesión, Login) - Predominan */
-button[type="submit"], a[href*="Login"], a[href*="FinalizarViaje"] {
-    background-color: var(--color-secondary);
-    color: var(--color-text-light);
+a[href*="Login"]:hover,
+a[href*="Registrarse"]:hover {
+    background-color: rgb(255, 230, 80);
 }
 
-/* Botones Amarillos (Registrarse, Crear viaje) */
-a[href*="Registrarse"], a[href*="CrearViaje"], button:not([type="submit"]), a[onclick*="pedirUbicacion"] {
-    background-color: var(--color-tertiary);
-    color: var(--color-text-dark);
+/* ----------- DETALLES DE TEXTO ----------- */
+::placeholder {
+    font-style: italic;
+    font-size: 16px;
 }
 
-/* Contenedor de botones para centrar en Index.cshtml */
-.button-group.center {
-    text-align: center;
-    margin-top: 20px;
-    padding: 0; /* Deshace el padding del div si aplica */
-}
-
-/* Contenedor de botones en Servicios.cshtml */
-.BotonInicio {
-    text-align: center;
-    margin-top: 20px;
-}
-
-/* --- HOME/INDEX.CSHTML (Landing Page) --- */
-
-/* Simulación de la sección Hero (el primer <section>) */
-section.hero {
-    background-color: var(--color-secondary); /* Rojo para el hero */
-    color: var(--color-text-light);
-    padding: 40px 20px;
-    text-align: center;
-}
-
-section.hero h1 {
-    font-size: 3em;
-    margin-bottom: 5px;
-}
-
-section.hero h2 {
-    font-size: 1.2em;
-    font-weight: normal;
-}
-
-/* Sección principal de información (el primer <main>) */
-main.info-section {
-    padding: 20px;
-    max-width: 900px;
-    margin: 20px auto 80px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-/* Tarjetas de información (los divs dentro de main.info-section) */
-main.info-section > div {
-    background-color: var(--color-card-background);
-    color: var(--color-text-light);
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-main.info-section > div h3 {
-    border-bottom: 2px solid var(--color-tertiary);
-    padding-bottom: 5px;
-    margin-bottom: 10px;
-    font-size: 1.1em;
-}
-
-/* El grupo de botones debe ocupar todo el ancho */
-main.info-section > .button-group.center {
-    grid-column: 1 / -1;
-}
-
-/* --- ACCOUNT/LOGIN y ACCOUNT/REGISTRARSE (Formularios) --- */
-
-/* Contenedor del formulario (el primer <div> dentro de la vista) */
-div:has(h1) {
-    background-color: var(--color-card-background);
-    padding: 30px;
-    margin: 40px auto;
-    max-width: 400px;
+button {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    background-color: rgb(255, 210, 40);
+    color: rgb(0, 0, 0);
+    border: none;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    color: var(--color-text-light);
-    text-align: center;
+    padding: 10px 25px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-div:has(h1) h1 {
-    font-size: 1.8em;
-    margin-bottom: 20px;
-    color: var(--color-text-light);
+button:hover {
+    background-color: rgb(255, 230, 80);
 }
-
-div:has(h1) form {
-    display: flex;
-    flex-direction: column;
-}
-
-div:has(h1) input[type="text"], 
-div:has(h1) input[type="password"],
-div:has(h1) select {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f7f7f7;
-    color: var(--color-text-dark);
-}
-
-/* Mensajes de error/advertencia */
-div:has(h1) p {
-    color: var(--color-tertiary); 
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-div:has(h1) a {
-    color: var(--color-tertiary);
-    margin-top: 15px;
-    text-decoration: none;
-    background: none;
-    display: block;
-}
-
-/* --- HOME/PARTICULARES (Detección de Ubicación) --- */
-
-/* El <h2> "Modo Particular" */
-main > h2 {
-    font-size: 1.5em;
-    color: var(--color-primary);
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-/* Estilo para los resultados de la comparación de ubicación */
-main > h3 {
-    color: var(--color-tertiary);
-    margin-top: 20px;
-    text-align: center;
-}
-
-/* Contenedor de la alerta (Se asume que la alerta es el primer <p> después del h3) */
-main > h3 + p:first-of-type,
-main > p:nth-of-type(2),
-main > p:nth-of-type(3) {
-    /* Base para todas las alertas */
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    max-width: 400px;
-    margin: 10px auto;
-}
-
-/* Alerta Roja (⚠️ Estás muy cerca...) */
-main > h3 + p:not([class]):contains("Despejá el paso") {
-    background-color: var(--color-secondary);
-    color: var(--color-text-light);
-}
-
-/* Alerta Amarilla (🚧 Un vehículo...) */
-main > h3 + p:not([class]):contains("Mantené precaución") {
-    background-color: var(--color-tertiary);
-    color: var(--color-text-dark);
-}
-
-/* Alerta Segura (✅ No hay servicios...) */
-main > h3 + p:not([class]):contains("No hay servicios") {
-    background-color: var(--color-success);
-    color: var(--color-text-light);
-}
-
-/* Ocultar "Color: @color" si existe */
-main > p:last-of-type:contains("Color:") {
-    display: none;
-}
-
-/* --- Responsive Básico --- */
-
-@media (max-width: 768px) {
-    main.info-section {
-        grid-template-columns: 1fr;
-    }
-}
-
-/*
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
-}
-
-
-.navbar {
-  background-color:#003366;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 30px;
-  color: var(--blanco);
-}
-
-.logo {
-  font-weight: 800;
-  font-size: 20px;
-}
-
-.icons i {
-  margin-left: 15px;
-  font-size: 24px;
-}
-
-.title {
-  background-color: #007bff;
-  color: #ffffff;
-  text-align: center;
-  padding: 10px;
-  border-radius: 8px;
-  margin: 30px auto;
-  width: 80%;
-  max-width: 600px;
-}
-
-.login-box {
-  background-color: #8cbcff;
-  width: 80%;
-  max-width: 500px;
-  margin: 0 auto 40px;
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-label {
-  display: block;
-  font-weight: 600;
-  margin-top: 10px;
-  text-align: left;
-}
-
-input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 20px;
-  border: none;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  outline: none;
-}
-
-.user-type {
-  font-weight: 700;
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
-
-.button-group {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 15px;
-}
-
-.btn-yellow {
-  background-color:#ffd600 ;
-  border: none;
-  padding: 10px 25px;
-  border-radius: 25px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: transform 0.2s;
-}
-
-.btn-yellow:hover {
-  transform: scale(1.05);
-}
-
-.btn-red {
-  background-color: #ff4040;
-  color: #ffffff;
-  border: none;
-  padding: 10px 25px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.btn-red:hover {
-  background-color: #d63434;
-}
-
-.footer {
-  background-color: #003366;
-  color: #ffd600;
-  text-align: center;
-  padding: 15px;
-  position: relative;
-}
-
-.footer .icons {
-  margin-bottom: 5px;
-}
-
-.footer i {
-  margin: 0 10px;
-  font-size: 20px;
-}
-
-
-@media (max-width: 600px) {
-  .login-box {
-    width: 90%;
-    padding: 20px;
-  }
-
-  .btn-yellow,
-  .btn-red {
-    width: 100%;
-  }
-}
-
-.title {
-  text-align: center;
-  background-color: #8cbcff;
-  color: #000;
-  font-weight: bold;
-  font-size: 28px;
-  margin: 30px auto 20px auto;
-  padding: 10px;
-  width: 60%;
-  border-radius: 8px;
-}
-
-.login-box {
-  background-color: #8cbcff;
-  width: 60%;
-  max-width: 500px;
-  margin: 0 auto 40px auto;
-  padding: 30px;
-  border-radius: 20px;
-  text-align: center;
-}
-
-.login-box label {
-  display: block;
-  text-align: left;
-  font-weight: 600;
-  margin: 10px 0 5px 10px;
-}
-
-.login-box input {
-  width: 80%;
-  padding: 10px;
-  border-radius: 20px;
-  border: none;
-  margin-bottom: 15px;
-  font-size: 14px;
-  text-align: center;
-}
-
-.user-type {
-  font-weight: bold;
-  margin: 15px 0 10px 0;
-}
-
-.btn-red.center {
-  display: inline-block;
-  background-color: #ff4040;
-  color: white;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 10px;
-  font-weight: bold;
-  margin-top: 15px;
-}*/
-
-
-
-
-/*
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Raleway", sans-serif;
-}
-
-
-.navbar {
-  background-color: rgb(0, 51, 102);
-  width: 100%;
-  padding: 2% 5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: rgb(255, 255, 255);
-}
-
-.logo {
-  font-weight: 800;
-  font-size: 130%;
-}
-
-.icons i {
-  margin-left: 5%;
-  font-size: 150%;
-}
-
-/* ---------- TÍTULO ---------- *//*
-.title {
-  background-color: rgb(0, 123, 255);
-  color: rgb(255, 255, 255);
-  text-align: center;
-  padding: 2%;
-  border-radius: 12px;
-  margin: 4% auto;
-  width: 80%;
-  max-width: 600px;
-  font-size: 160%;
-  font-weight: bold;
-}*/
-
-/* ---------- LOGIN ---------- */
-/*
-.login-box {
-  background-color: rgb(140, 188, 255);
-  width: 80%;
-  max-width: 500px;
-  margin: 0 auto 5% auto;
-  padding: 4%;
-  border-radius: 20px;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.login-box label {
-  display: block;
-  text-align: left;
-  font-weight: 600;
-  margin: 2% 0 1% 10%;
-  font-size: 100%;
-}
-
-.login-box input {
-  width: 80%;
-  padding: 2%;
-  border-radius: 20px;
-  border: none;
-  margin-bottom: 4%;
-  font-size: 100%;
-  text-align: center;
-  background-color: rgb(255, 255, 255);
-}
-
-.user-type {
-  font-weight: bold;
-  margin: 4% 0 3% 0;
-  font-size: 105%;
-}
-
-
-.button-group {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 3%;
-  margin-bottom: 4%;
-}
-
-.btn-yellow {
-  background-color: rgb(255, 214, 0);
-  border: none;
-  padding: 2% 6%;
-  border-radius: 25px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
-
-.btn-yellow:hover {
-  transform: scale(1.05);
-}
-
-.btn-red {
-  background-color: rgb(255, 64, 64);
-  color: rgb(255, 255, 255);
-  border: none;
-  padding: 2% 6%;
-  border-radius: 12px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.btn-red:hover {
-  background-color: rgba(214, 52, 52, 0.9);
-}
-*/
-
-/* ---------- BOTÓN CENTRAL ---------- 
-.btn-red.center {
-  display: inline-block;
-  background-color: rgb(255, 64, 64);
-  color: rgb(255, 255, 255);
-  text-decoration: none;
-  padding: 2% 6%;
-  border-radius: 12px;
-  font-weight: bold;
-  margin-top: 4%;
-}
-
-/* ---------- FOOTER ---------- 
-.footer {
-  background-color: rgb(0, 51, 102);
-  color: rgb(255, 214, 0);
-  text-align: center;
-  padding: 3%;
-  font-size: 95%;
-}
-
-.footer .icons {
-  margin-bottom: 1%;
-}
-
-.footer i {
-  margin: 0 3%;
-  font-size: 120%;
-}
-
-/* ---------- RESPONSIVE ---------- 
-@media (max-width: 600px) {
-  .login-box {
-    width: 90%;
-    padding: 5%;
-  }
-
-  .btn-yellow,
-  .btn-red {
-    width: 100%;
-  }
-
-  .title {
-    width: 90%;
-    font-size: 130%;
-  }
-}*/
