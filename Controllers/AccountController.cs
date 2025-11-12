@@ -88,8 +88,10 @@ public class AccountController : Controller
                     ViewBag.contraseñaCoincide = true;
                     ViewBag.mailExiste = true;
                     return View("registrarse");
+                }else
+                {
+                    return RedirectToAction("Login"); 
                 }
-                return RedirectToAction("Login"); 
             }
         }
     }
