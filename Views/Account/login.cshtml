@@ -4,24 +4,23 @@
 
 <main>
     <section class="Ingreso">
-        <h1>Iniciar sesión</h1>
+        <h1 class="title">Iniciar sesión</h1>
 
         <form action='@Url.Action("Login", "Account")' method="post">
-            <input type="text" name="Usuario" placeholder="Ingresar usuario" required />
-            <input type="password" name="Contraseña" placeholder="Ingresar contraseña" required />
+            <div class="entrada"><p class="label">Username: </p><input type="text" name="Usuario" placeholder="Ingresar usuario" required class="placeholder"/></div><br>
+            <div class="entrada"><p class="label">Constraseña: </p><input type="password" name="Contraseña" placeholder="Ingresar contraseña" required class="placeholder"/></div><br>
 
             @if (!ViewBag.mailExiste)
             {
-                <p>El usuario ingresado no existe</p>
+                <p class="error-message">El usuario ingresado no existe</p>
             }
             @if (!ViewBag.contraseñaCoincide)
             {
-                <p>La contraseña es incorrecta</p>
+                <p class="error-message">La contraseña es incorrecta</p>
             }
 
-            <button type="submit">Iniciar sesión</button>
-
-            <a href='@Url.Action("Registrarse", "Account")'>Registrate si no tenes cuenta</a>
+            <button type="submit" class="primary-button">Iniciar sesión</button><br />
+            <a href='@Url.Action("Registrarse", "Account")' class="secondary-button">Registrate si no tenes cuenta</a>
         </form>
     </section>
 </main>

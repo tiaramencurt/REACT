@@ -4,13 +4,13 @@
 
 <main>
     <section class="Ingreso">
-        <h1>Registrarse</h1>
+        <h1 class="title">Registrarse</h1>
 
         <form action='@Url.Action("Registrarse", "Account")' method="post" enctype="multipart/form-data">
-            <input type="text" name="Usuario" placeholder="Ingresar nombre de usuario" required />
-            <input type="text" name="Mail" placeholder="Ingresar mail" required />
-            <input type="password" name="Contraseña1" placeholder="Ingresar contraseña" required />
-            <input type="password" name="Contraseña2" placeholder="Ingresar de nuevo la contraseña" required />
+            <div class="entrada"><p class="label">Username: </p><input type="text" name="Usuario" placeholder="Ingresar usuario" required class="placeholder"/></div><br>
+            <div class="entrada"><p class="label">Mail: </p><input type="text" name="Usuario" placeholder="Ingresar mail" required class="placeholder"/></div><br>
+            <div class="entrada"><p class="label">Constraseña: </p><input type="password" name="Contraseña1" placeholder="Ingresar contraseña" required class="placeholder"/></div><br>
+            <div class="entrada"><p class="label">Constraseña: </p><input type="password" name="Contraseña2" placeholder="Ingresar nuevamente la contraseña" required class="placeholder"/></div><br>
 
             <p>Tipo:</p>
             <select name="Tipo" required>
@@ -20,16 +20,16 @@
 
             @if (ViewBag.mailExiste)
             {
-                <p>El usuario ingresado ya fue registrado anteriormente</p>
+                <p class="error-message">El usuario ingresado ya fue registrado anteriormente</p>
             }
             @if (!ViewBag.contraseñaCoincide)
             {
-                <p>Ambas contraseñas no coinciden</p>
+                <p class="error-message">Ambas contraseñas no coinciden</p>
             }
 
-            <button type="submit">Registrarse</button>
+            <button type="submit" class="primary-button">Registrarse</button>
 
-            <a href='@Url.Action("Login", "Account")'>Iniciar sesión si ya tenes cuenta</a>
+            <a href='@Url.Action("Login", "Account")' class="secondary-button">Iniciar sesión si ya tenes cuenta</a>
         </form>
     </section>
 </main>

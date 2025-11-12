@@ -8,16 +8,16 @@
 
 <main>
     <section class="principal">
-        <h2>Modo Particular</h2>
+        <h1 class="title">Modo Particular</h1>
 
         @if (idViaje == null || estadoUltimoViaje == false)
         {
-            <a href='@Url.Action("CrearViaje", "Home")'>Crear viaje</a>
+            <a href='@Url.Action("CrearViaje", "Home")' class="primary-button">Crear viaje</a>
         }
         else
         {
-            <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })'>Finalizar viaje</a>
-            <button type="button" onclick="pedirUbicacion()">Enviar ubicación</button>
+            <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="primary-button">Finalizar viaje</a>
+            <button type="button" onclick="pedirUbicacion()" class="secondary-button">Enviar ubicación</button>
 
             <form id="formUbicacion" action="/Home/CompararUbicacion" method="post">
                 <input type="hidden" id="Latitud" name="Latitud">

@@ -14,6 +14,14 @@ body {
 .title {
   font-weight: 800; /* extrabold */
   font-size: 200%;
+  color: white;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  background-color: blue;
+  width: 80%;
+  text-align: center;
+  border-radius: 6px;
 }
 
 .subtitle {
@@ -27,23 +35,62 @@ body {
 }
 
 .primary-button {
-  font-weight: 600; /* semibold */
-  font-size: 120%;
+  font-weight: 600;
+  color: yellow;
+  border-color: yellow;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0.7%;
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
+  font-size: 110%;
+  margin-bottom: 1%;
 }
 
 .secondary-button {
-  font-weight: 500; /* medium */
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  width: 40%;
+  padding: 0.5%;
+  background-color: red;
   font-size: 110%;
+  margin-bottom: 1%;
+  margin-left: 30%;
+  margin-right: 30%;
 }
 
-.label {
+.Ingreso form
+{
+  background-color: rgb(210, 230, 255);
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+  padding: 2%;
+  border-radius: 20px;
+}
+
+.entrada{
+  width: 60%;
+  margin-left: 20%;
+  margin-right: 20%;
+}
+
+.entrada p {
   font-weight: 600;
   font-size: 100%;
 }
 
-.placeholder {
+.entrada input  {
   font-style: italic;
   font-size: 100%;
+  width: 100%;
+  padding: 2%;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 1%;
 }
 
 .list-item-primary {
@@ -63,6 +110,8 @@ body {
 
 .error-message {
   font-weight: 700;
+  text-align: center;
+  margin-bottom: 1%;
   font-size: 90%;
   color: rgb(200, 0, 0);
 }
@@ -163,12 +212,10 @@ body {
   font-weight: 600;
   font-size: 115%;
   border-radius: 12px;
-  transition: 0.3s;
 }
 
 .Landing div a:hover {
   background-color: rgb(255, 210, 0);
-  transform: scale(1.05);
 }
 
 /* --- RESPONSIVE --- */
