@@ -11,13 +11,13 @@
             <div class="entrada"><p class="label">Mail: </p><input type="text" name="Mail" placeholder="Ingresar mail" required class="placeholder"/></div><br>
             <div class="entrada"><p class="label">Constraseña: </p><input type="password" name="Contraseña1" placeholder="Ingresar contraseña" required class="placeholder"/></div><br>
             <div class="entrada"><p class="label">Constraseña: </p><input type="password" name="Contraseña2" placeholder="Ingresar nuevamente la contraseña" required class="placeholder"/></div><br>
-
+            <div class="entrada">
             <p>Tipo:</p>
             <select name="Tipo" required>
                 <option value="true">Registrarse como Servicio de Emergencia</option>
                 <option value="false">Registrarse como Conductor</option>
-            </select>
-
+            </select><br>
+            </div>
             @if (ViewBag.mailExiste)
             {
                 <p class="error-message">El usuario ingresado ya fue registrado anteriormente</p>

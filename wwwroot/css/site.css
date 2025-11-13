@@ -5,13 +5,12 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  background-color: rgb(255, 255, 255);
-  color: rgb(10, 35, 66);
+  background-color: #ffffff;
+  color: #002F6C; 
   line-height: 1.6;
-  text-align: center; /* CENTRA TODO EL TEXTO POR DEFECTO */
+  text-align: center;
 }
 
-/* --- TITULOS --- */
 .color-indicador{
   width: 200px; 
   height: 200px;
@@ -19,13 +18,14 @@ body {
   margin-right: 45%;
   margin-top:1%;
 }
+
 .title {
   font-weight: 800;
   font-size: 200%;
-  color: white;
-  background-color: blue;
+  color: #ffffff; 
+  background-color: #0059ff;
   width: 80%;
-  margin: 0 auto 5% auto; /* CENTRADO */
+  margin: 0 auto 5% auto;
   text-align: center;
   border-radius: 6px;
 }
@@ -42,35 +42,33 @@ body {
   text-align: center;
 }
 
-/* --- BOTONES --- */
 .primary-button {
   font-weight: 600;
-  color: yellow;
-  border-color: yellow;
-  background-color: white;
+  color: #ffcc00;
+  border-color: #ffcc00;
+  background-color: #ffffff;
   border-radius: 5px;
   padding: 0.7%;
   width: 20%;
-  margin: 0 auto 1% auto; /* CENTRADO */
+  margin: 0 auto 1% auto;
   font-size: 110%;
 }
 
 .secondary-button {
   font-weight: 500;
-  color: white;
+  color: #ffffff;
   text-decoration: none;
   border-radius: 5px;
   width: 40%;
   padding: 0.5%;
-  background-color: red;
+  background-color: #ff1926;
   font-size: 110%;
-  margin: 0 auto 1% auto; /* CENTRADO */
+  margin: 0 auto 1% auto;
   display: block;
 }
 
-/* --- FORMULARIO INGRESO --- */
 .Ingreso form {
-  background-color: rgb(210, 230, 255);
+  background-color: #A0C3FF;
   width: 60%;
   margin: 2% auto;
   padding: 2%;
@@ -98,7 +96,16 @@ body {
   margin-bottom: 1%;
 }
 
-/* --- LIST ITEMS --- */
+.entrada select{
+  font-style: italic;
+  font-size: 100%;
+  width: 100%;
+  padding: 2%;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 1%;
+}
+
 .list-item-primary {
   font-weight: 600;
   font-size: 100%;
@@ -111,7 +118,6 @@ body {
   text-align: center;
 }
 
-/* --- TEXTO AUXILIAR --- */
 .helper-text {
   font-style: italic;
   font-size: 90%;
@@ -123,7 +129,7 @@ body {
   text-align: center;
   margin-bottom: 1%;
   font-size: 90%;
-  color: rgb(200, 0, 0);
+  color: #ff1926;
 }
 
 .meta-data {
@@ -136,7 +142,7 @@ body {
 .badge {
   font-weight: 700;
   font-size: 85%;
-  background-color: rgb(255, 220, 40);
+  background-color: #ffcc00;
   color: rgb(0, 0, 0);
   padding: 1% 2%;
   border-radius: 6px;
@@ -147,15 +153,14 @@ body {
 .tooltip {
   font-weight: 400;
   font-size: 85%;
-  background-color: rgba(10, 35, 66, 0.9);
-  color: rgb(255, 255, 255);
+  background-color: #002F6C;
+  color: #ffffff;
   padding: 1% 2%;
   border-radius: 6px;
   display: inline-block;
   margin: 1% auto;
 }
 
-/* --- QUOTES --- */
 .quote-text {
   font-weight: 300;
   font-style: italic;
@@ -170,7 +175,6 @@ body {
   text-align: center;
 }
 
-/* --- LANDING PAGE --- */
 .Landing {
   text-align: center;
 }
@@ -190,13 +194,13 @@ body {
 .titulo h2 {
   font-size: 175%;
   font-weight: bold;
-  color: rgb(200, 0, 0);
+  color: #ff1926;
 }
 
 .contenedor-texto {
   width: 80%;
   margin: 3% auto;
-  background-color: rgb(210, 230, 255);
+  background-color: #A0C3FF;
   border-radius: 12px;
   padding: 4%;
   text-align: center;
@@ -205,17 +209,16 @@ body {
 .contenedor-texto h3 {
   font-size: 130%;
   font-weight: bold;
-  color: rgb(10, 35, 120);
+  color: #002F6C;
   margin-bottom: 2%;
 }
 
 .contenedor-texto p {
   font-weight: 400;
-  color: rgb(10, 40, 80);
+  color: #002F6C;
   margin-bottom: 2%;
 }
 
-/* --- BOTONES LANDING --- */
 .Landing div {
   margin: 4% 0;
 }
@@ -224,7 +227,7 @@ body {
   display: inline-block;
   padding: 2% 5%;
   margin: 1% 2%;
-  background-color: rgb(255, 220, 40);
+  background-color: #ffcc00;
   color: rgb(0, 0, 0);
   text-decoration: none;
   font-weight: 600;
@@ -233,18 +236,36 @@ body {
 }
 
 .Landing div a:hover {
-  background-color: rgb(255, 210, 0);
+  background-color: #ffcc00;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 800px) {
-  .titulo img {
-    width: 45%;
+
+  .color-indicador{
+    width: 60%;
+    height: auto;
+    margin: 2% auto;
+  }
+
+  .Ingreso form {
+    width: 80%; 
+    margin: 4% auto;
+    padding: 5%;
   }
 
   .contenedor-texto {
-    width: 90%;
+    width: 80%; 
+    margin: 4% auto;
     padding: 6%;
+  }
+
+  .titulo {
+    width: 50%;
+    margin: 6% auto 3% auto;
+  }
+
+  .titulo img {
+    width: 45%;
   }
 
   .contenedor-texto h3 {
@@ -258,5 +279,24 @@ body {
   .Landing div a {
     padding: 3% 6%;
     font-size: 105%;
+    width: 80%;
+  }
+
+  .entrada {
+    width: 100%;
+  }
+
+  .entrada input {
+    padding: 3%;
+    font-size: 100%;
+  }
+
+  .primary-button,
+  .secondary-button {
+    width: 80%;
+    padding: 3% 0;
+    font-size: 105%;
   }
 }
+
+
