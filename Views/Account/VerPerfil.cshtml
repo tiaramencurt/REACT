@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Ver Perfil";
+}
+
+<section>
+    <h1 class="title">Perfil</h1>
+</section>
+
+<section class="informacion">
+    <h3>Username: @ViewBag.Usuario.Username</h3>
+    <h3>Mail: @ViewBag.Usuario.Mail</h3>
+    @if(@ViewBag.Usuario.Tipo == 1)
+    {
+        <h3>Tipo: Servicio de emergencia</h3>
+    }else
+    {
+        <h3>Tipo: Particular</h3>
+    }
+</section> 
+<div>
+    <a href='@Url.Action("CerrarSesion", "Home")' class="secondary-button">Cerrar Sesión</a>
+</div>

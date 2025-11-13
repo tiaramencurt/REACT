@@ -23,6 +23,19 @@ public class AccountController : Controller
         ViewBag.contraseñaCoincide = true;
         return View("login");
     }
+    public IActionResult VerPerfil()
+    {
+            string idStr = HttpContext.Session.GetString("IdUsuario");
+            if (string.IsNullOrEmpty(idStr))
+            {
+                return RedirectToAction("Login", "Account");
+            }else
+            {
+                Usuario usuario = BD.TraerUsuarioPorId(int.Parse(idStr));
+                ViewBag.Usuario = usuario;
+            }
+        return View("VerPerfil");
+    }
     [HttpPost]
     public IActionResult Login(string Usuario, string Contraseña)
     {

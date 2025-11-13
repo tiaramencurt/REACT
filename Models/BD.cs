@@ -22,14 +22,19 @@ public static class BD
         }
     }
     public static Usuario TraerUsuarioPorId(int IdUsuario)
+{
+    string query = "TraerUsuarioPorId";
+    using (SqlConnection connection = new SqlConnection(_connectionString))
     {
-        string query = "TraerUsuarioPorId";
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { PIdUsuario = IdUsuario}, commandType: CommandType.StoredProcedure);
-            return usuario;
-        }
+        Usuario usuario = connection.QueryFirstOrDefault<Usuario>(
+            query,
+            new { IdUsuario = IdUsuario },
+            commandType: CommandType.StoredProcedure
+        );
+        return usuario;
     }
+}
+
     public static Usuario Login(string username, string password)
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
