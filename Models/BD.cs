@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.Data.SqlClient;
 using Dapper;
 using System.Collections.Generic;
@@ -13,19 +14,19 @@ public static class BD
     //private static string _connectionString = @"Server=localhost\SQLEXPRESS;Database=REACT;Trusted_Connection=True;Integrated Security=True; TrustServerCertificate=True;";
     public static Usuario TraerUsuario(string username)
     {
-        string query = "SELECT * FROM Usuarios WHERE Username = @Username";
+        string query = "TraerUsuario";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { Username = username});
+            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { Username = username}, commandType: CommandType.StoredProcedure);
             return usuario;
         }
     }
     public static Usuario TraerUsuarioPorId(int IdUsuario)
     {
-        string query = "SELECT * FROM Usuarios WHERE Id = @PIdUsuario";
+        string query = "TraerUsuarioPorId";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { PIdUsuario = IdUsuario});
+            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { PIdUsuario = IdUsuario}, commandType: CommandType.StoredProcedure);
             return usuario;
         }
     }
@@ -33,8 +34,8 @@ public static class BD
     {
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            string query = "SELECT * FROM Usuarios WHERE Username = @Username AND Password = @Password";
-            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { Username = username, Password = password });
+            string query = "Login";
+            Usuario usuario = connection.QueryFirstOrDefault<Usuario>(query, new { Username = username, Password = password }, commandType: CommandType.StoredProcedure);
             return usuario;
         }
     }
@@ -42,10 +43,10 @@ public static class BD
     {
         if(TraerUsuario(usuario.Username) == null)
         {
-            string query = "INSERT INTO Usuarios (Mail, Contraseña, Username, Tipo) VALUES (@PMail, @PContraseña, @PUsername, @PTipo)";
+            string query = "Registrarse";
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-               connection.Execute(query, new { PUsername = usuario.Username, PContraseña = usuario.Contraseña, PMail = usuario.Mail, PTipo = usuario.Tipo  });
+               connection.Execute(query, new { PUsername = usuario.Username, PContraseña = usuario.Contraseña, PMail = usuario.Mail, PTipo = usuario.Tipo  }, commandType: CommandType.StoredProcedure);
             }
             return true;
         }else
@@ -54,41 +55,31 @@ public static class BD
         }
     }
 
-    public static void ActualizarFechaLogin(int IdUsuario)
-    {
-        string query = "UPDATE Usuarios SET UltimoLogin = @UltimoLogin WHERE Id = @IdUsuario";
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            connection.Execute(query, new { UltimoLogin = DateTime.Now, IdUsuario = IdUsuario });
-        }
-    }
+
     public static int CrearViaje(int IdUsuario)
     {
-        const string query = @"
-            INSERT INTO Viajes (IdUsuario, Estado, Latitud, Longitud)
-            OUTPUT INSERTED.Id
-            VALUES (@PIdUsuario, @PEstado, @PLatitud, @PLongitud);";
+        const string query = "CrearViaje";
 
-        using (var connection = new SqlConnection(_connectionString))
+        using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            int idViaje = connection.ExecuteScalar<int>(query, new { PIdUsuario = IdUsuario, PEstado = true,  PLatitud = 0.0,  PLongitud = 0.0});
+            int idViaje = connection.ExecuteScalar<int>(query, new { PIdUsuario = IdUsuario, PEstado = true,  PLatitud = 0.0,  PLongitud = 0.0}, commandType: CommandType.StoredProcedure);
             return idViaje;
         }
     }
     public static void FinalizarViaje(int IdViaje)
     {
-        string query = "UPDATE Viajes SET Estado = @PEstado WHERE Id = @PIdViaje";
+        string query = "FinalizarViaje";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            connection.Execute(query, new { PEstado = false, PIdViaje = IdViaje });
+            connection.Execute(query, new { PEstado = false, PIdViaje = IdViaje }, commandType: CommandType.StoredProcedure);
         }
     }
     public static Viaje ObtenerUltimoViaje(int IdUsuario)
     {
-          string query = "SELECT TOP 1 * FROM Viajes WHERE IdUsuario = @PIdUsuario ORDER BY Id DESC ";
+          string query = "ObtenerUltimoViaje";
            using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-             Viaje viaje = connection.QueryFirstOrDefault<Viaje>(query, new { PIdUsuario = IdUsuario });
+             Viaje viaje = connection.QueryFirstOrDefault<Viaje>(query, new { PIdUsuario = IdUsuario }, commandType: CommandType.StoredProcedure);
              return viaje;
         }
            
@@ -96,18 +87,18 @@ public static class BD
     }
     public static void GuardarUbicacion (double Latitud, double Longitud, int IdViaje)
     {
-        string query = "UPDATE Viajes SET Latitud = @PLatitud, Longitud = @PLongitud WHERE Id = @PIdViaje";
+        string query = "GuardarUbicacion";
         using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-            connection.Execute(query, new { PLatitud = Latitud, PLongitud = Longitud, PIdViaje = IdViaje });
+            connection.Execute(query, new { PLatitud = Latitud, PLongitud = Longitud, PIdViaje = IdViaje }, commandType: CommandType.StoredProcedure);
         }
     }
         public static List<Viaje> ObtenerViajesActivos()
     {
-          string query = "SELECT Viajes.Id, Viajes.IdUsuario, Viajes.Estado, Viajes.Latitud, Viajes.Longitud FROM Viajes INNER JOIN Usuarios ON Viajes.IdUsuario = Usuarios.Id WHERE Viajes.Estado = 1 AND Usuarios.Tipo = 1";
+          string query = "ObtenerViajesActivos";
            using (SqlConnection connection = new SqlConnection(_connectionString))
         {
-             List<Viaje> viajes = connection.Query<Viaje>(query).ToList();
+             List<Viaje> viajes = connection.Query<Viaje>(query, commandType: CommandType.StoredProcedure).ToList();
              return viajes;
         }
            
