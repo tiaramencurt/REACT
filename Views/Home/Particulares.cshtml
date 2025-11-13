@@ -44,23 +44,29 @@
             {
                 <p>No hay servicios de emergencia cerca por ahora.</p>
             }
-
-            <p>Color: @color</p>
+            <div id="color-indicator" class="color-indicador"></div>
         </section>
     }
 </main>
 
 <script>
+window.onload = function() {
+    var color = '@color';
+    var indicador = document.getElementById('color-indicator');
+    if (color && indicador) {
+        indicador.style.backgroundColor = color;
+    }
+}
+
+
 function pedirUbicacion() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
             function (position) {
-                   const lat = position.coords.latitude.toString().replace('.', ',');
-                   const lon = position.coords.longitude.toString().replace('.', ',');
-                   
-             document.getElementById("Latitud").value  = lat;
-             document.getElementById("Longitud").value = lon;
-
+                const lat = position.coords.latitude.toString().replace('.', ',');
+                const lon = position.coords.longitude.toString().replace('.', ',');
+                document.getElementById("Latitud").value  = lat;
+                document.getElementById("Longitud").value = lon;
                 document.getElementById("formUbicacion").submit();
             },
             function () {

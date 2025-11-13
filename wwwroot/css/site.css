@@ -8,16 +8,24 @@ body {
   background-color: rgb(255, 255, 255);
   color: rgb(10, 35, 66);
   line-height: 1.6;
+  text-align: center; /* CENTRA TODO EL TEXTO POR DEFECTO */
+}
+
+/* --- TITULOS --- */
+.color-indicador{
+  width: 200px; 
+  height: 200px;
+  margin-left: 45%;
+  margin-right: 45%;
+  margin-top:1%;
 }
 .title {
   font-weight: 800;
   font-size: 200%;
   color: white;
-  margin-right: 10%;
-  margin-left: 10%;
-  margin-bottom: 5%;
   background-color: blue;
   width: 80%;
+  margin: 0 auto 5% auto; /* CENTRADO */
   text-align: center;
   border-radius: 6px;
 }
@@ -25,13 +33,16 @@ body {
 .subtitle {
   font-weight: 700;
   font-size: 175%;
+  text-align: center;
 }
 
 .paragraph {
   font-weight: 400;
   font-size: 115%;
+  text-align: center;
 }
 
+/* --- BOTONES --- */
 .primary-button {
   font-weight: 600;
   color: yellow;
@@ -40,10 +51,8 @@ body {
   border-radius: 5px;
   padding: 0.7%;
   width: 20%;
-  margin-left: 40%;
-  margin-right: 40%;
+  margin: 0 auto 1% auto; /* CENTRADO */
   font-size: 110%;
-  margin-bottom: 1%;
 }
 
 .secondary-button {
@@ -55,25 +64,23 @@ body {
   padding: 0.5%;
   background-color: red;
   font-size: 110%;
-  margin-bottom: 1%;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin: 0 auto 1% auto; /* CENTRADO */
+  display: block;
 }
 
-.Ingreso form
-{
+/* --- FORMULARIO INGRESO --- */
+.Ingreso form {
   background-color: rgb(210, 230, 255);
   width: 60%;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin: 2% auto;
   padding: 2%;
   border-radius: 20px;
+  text-align: center;
 }
 
-.entrada{
+.entrada {
   width: 60%;
-  margin-left: 20%;
-  margin-right: 20%;
+  margin: 0 auto;
 }
 
 .entrada p {
@@ -81,7 +88,7 @@ body {
   font-size: 100%;
 }
 
-.entrada input  {
+.entrada input {
   font-style: italic;
   font-size: 100%;
   width: 100%;
@@ -91,19 +98,24 @@ body {
   margin-bottom: 1%;
 }
 
+/* --- LIST ITEMS --- */
 .list-item-primary {
   font-weight: 600;
   font-size: 100%;
+  text-align: center;
 }
 
 .list-item-secondary {
   font-weight: 700;
   font-size: 110%;
+  text-align: center;
 }
 
+/* --- TEXTO AUXILIAR --- */
 .helper-text {
   font-style: italic;
   font-size: 90%;
+  text-align: center;
 }
 
 .error-message {
@@ -118,6 +130,7 @@ body {
   font-weight: 300;
   font-style: italic;
   font-size: 90%;
+  text-align: center;
 }
 
 .badge {
@@ -127,6 +140,8 @@ body {
   color: rgb(0, 0, 0);
   padding: 1% 2%;
   border-radius: 6px;
+  display: inline-block;
+  margin: 1% auto;
 }
 
 .tooltip {
@@ -136,18 +151,23 @@ body {
   color: rgb(255, 255, 255);
   padding: 1% 2%;
   border-radius: 6px;
+  display: inline-block;
+  margin: 1% auto;
 }
 
+/* --- QUOTES --- */
 .quote-text {
   font-weight: 300;
   font-style: italic;
   font-size: 115%;
+  text-align: center;
 }
 
 .quote-reference {
   font-weight: 500;
   font-style: italic;
   font-size: 90%;
+  text-align: center;
 }
 
 /* --- LANDING PAGE --- */
@@ -195,7 +215,7 @@ body {
   margin-bottom: 2%;
 }
 
-/* --- BOTONES --- */
+/* --- BOTONES LANDING --- */
 .Landing div {
   margin: 4% 0;
 }
