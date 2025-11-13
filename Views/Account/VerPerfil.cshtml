@@ -9,7 +9,7 @@
 <section class="informacion">
     <h3>Username: @ViewBag.Usuario.Username</h3>
     <h3>Mail: @ViewBag.Usuario.Mail</h3>
-    @if(@ViewBag.Usuario.Tipo == 1)
+    @if(@ViewBag.Usuario.Tipo == true)
     {
         <h3>Tipo: Servicio de emergencia</h3>
     }else
@@ -18,5 +18,5 @@
     }
 </section> 
 <div>
-    <a href='@Url.Action("CerrarSesion", "Home")' class="secondary-button">Cerrar Sesión</a>
+    <a href='@Url.Action("CerrarSesion", "Account")' class="secondary-button">Cerrar Sesión</a>
 </div>
