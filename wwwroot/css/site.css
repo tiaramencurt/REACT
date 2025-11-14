@@ -62,7 +62,7 @@ body {
   background-color: #ff1926;
   border-radius: 12px;
   padding: 0.8rem;
-  width: 15%;
+  width: 40%;
   margin: 1rem auto;
   font-size: 1.1rem;
   text-decoration: none;
@@ -151,6 +151,7 @@ body {
 
 .titulo img {
   width: 12%;
+  box-shadow: none;
 }
 
 .titulo h2 {
