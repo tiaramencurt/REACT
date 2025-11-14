@@ -4,12 +4,60 @@
   box-sizing: border-box;
 }
 
+
 body {
   font-family: 'Raleway', sans-serif;
   background-color: #ffffff;
   color: #002F6C;
   line-height: 1.7;
   text-align: center;
+}
+
+header {
+  background-color: #002F6C;
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- Logo izquierda --- */
+header section {
+  display: flex;
+  align-items: center;
+}
+
+header section img {
+  width: 45px;       /* logo blanco */
+  height: auto;
+  display: block;
+}
+
+/* --- Iconos derecha --- */
+header nav {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* MISMO TAMAÑO para ambos iconos */
+header nav a img {
+  width: 34px;       /* tamaño uniforme */
+  height: 34px;      /* fuerza igualdad exacta */
+  object-fit: contain;
+  display: block;
+}
+
+/* eliminar sombras por si vienen heredadas */
+header img {
+  box-shadow: none !important;
+}
+
+
+
+main {
+  margin: 2%
 }
 
 .title {
@@ -33,7 +81,6 @@ body {
   opacity: 0.9;
 }
 
-/* --- Botones modernizados --- */
 
 .primary-button {
   font-weight: 600;
@@ -60,7 +107,7 @@ body {
   background-color: #ff1926;
   border-radius: 12px;
   padding: 0.8rem;
-  width: 40%;
+  width: 25%;
   margin: 1rem auto;
   font-size: 1.1rem;
   text-decoration: none;
@@ -73,7 +120,6 @@ body {
   transform: translateY(-3px);
 }
 
-/* --- Formulario modernizado --- */
 
 .Ingreso form {
   background-color: #d7e4ff;
@@ -115,7 +161,6 @@ body {
   box-shadow: 0 0 8px rgba(0, 89, 255, 0.4);
 }
 
-/* --- Indicadores y badges --- */
 
 .badge {
   font-weight: 700;
@@ -180,7 +225,6 @@ body {
   font-size: larger;
 }
 
-/* Botones de opciones */
 .Landing div a {
   display: inline-block;
   padding: 1rem 2rem;
@@ -198,6 +242,19 @@ body {
 .Landing div a:hover {
   background-color: #e6b800;
   transform: translateY(-3px);
+}
+
+.informacion h3{
+  font-size: xx-large;
+}
+
+.color-indicador {
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
+  border-radius: 30px;
+  height: 100px;
+  margin-top: 3%;
 }
 
 @media (max-width: 800px) {
@@ -258,5 +315,9 @@ body {
     font-size: medium;
     margin-left: 5%;
     margin-right: 5%;
+  }
+
+  .informacion h3{
+    font-size: medium;
   }
 }

@@ -10,12 +10,11 @@
 
     <header>
         <section>
-            <h1>REACT</h1>
+            <a href='@Url.Action("Index", "Home")'><img src="/imagenes/Logo blanco.png" alt="Logo react"></a>
         </section>
         <nav>
-            <img src="imagenes/logo completo (2).jpg" alt="logo react">
-            <a href='@Url.Action("VerPerfil", "Account")'><img src="imagenes/Usuario.png" alt="Usuario"></a>
-            <a href="/">v</a>
+            <a href='@Url.Action("VerPerfil", "Account")'><img src="/imagenes/Usuario.png" alt="Usuario"></a>
+            <a href='@Url.Action("Inicio", "Home")'><img src="/imagenes/Home.png" alt="Home"></a>
         </nav>
     </header>
 
@@ -25,9 +24,8 @@
     
     <footer>
         <section>
-            <span>📷</span>
-            <span>📞</span>
-            <span>✉️</span>
+            <a href='@Url.Action("VerPerfil", "Account")'><img src="/imagenes/Logo instagram.png" alt="Instagram"></a>
+            <a href='@Url.Action("Inicio", "Home")'><img src="/imagenes/Logo mail.png" alt="Mail"></a>
         </section>
         <p>© @DateTime.Now.Year - Todos los derechos reservados</p>
     </footer>
