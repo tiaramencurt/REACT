@@ -25,15 +25,16 @@ public class AccountController : Controller
     }
     public IActionResult VerPerfil()
     {
-            string idStr = HttpContext.Session.GetString("IdUsuario");
-            if (string.IsNullOrEmpty(idStr))
-            {
-                return RedirectToAction("Login", "Account");
-            }else
-            {
-                Usuario usuario = BD.TraerUsuarioPorId(int.Parse(idStr));
-                ViewBag.Usuario = usuario;
-            }
+        string idStr = HttpContext.Session.GetString("IdUsuario");
+        if (string.IsNullOrEmpty(idStr))
+        {
+            return RedirectToAction("Login", "Account");
+        }
+        else
+        {
+            Usuario usuario = BD.TraerUsuarioPorId(int.Parse(idStr));
+            ViewBag.Usuario = usuario;
+        }
         return View("VerPerfil");
     }
     [HttpPost]
@@ -42,7 +43,8 @@ public class AccountController : Controller
         if (Usuario == null || Contraseña == null)
         {
             return RedirectToAction("Login");
-        }else
+        }
+        else
         {
             Usuario usuario = BD.TraerUsuario(Usuario);
             if (usuario == null)
@@ -50,16 +52,21 @@ public class AccountController : Controller
                 ViewBag.mailExiste = false;
                 ViewBag.contraseñaCoincide = true;
                 return View("login");
-            }else if(BCrypt.Net.BCrypt.Verify(Contraseña, usuario.Contraseña)){
+            }
+            else if (BCrypt.Net.BCrypt.Verify(Contraseña, usuario.Contraseña))
+            {
                 HttpContext.Session.SetString("IdUsuario", usuario.Id.ToString());
-                if(usuario.Tipo == false)
-                {
-                    return RedirectToAction("Inicio", "Home");
-                }else
+                if (usuario.Tipo == false)
                 {
                     return RedirectToAction("Inicio", "Home");
                 }
-            }else{
+                else
+                {
+                    return RedirectToAction("Inicio", "Home");
+                }
+            }
+            else
+            {
                 ViewBag.mailExiste = true;
                 ViewBag.contraseñaCoincide = false;
                 return View("login");
@@ -80,20 +87,22 @@ public class AccountController : Controller
     [HttpPost]
     public IActionResult Registrarse(string Usuario, string Contraseña1, string Contraseña2, string Mail, bool Tipo)
     {
-        if (Usuario == null || Contraseña1 == null || Contraseña2 == null || Mail == null )
+        if (Usuario == null || Contraseña1 == null || Contraseña2 == null || Mail == null)
         {
             return RedirectToAction("Registrarse");
-        }else
+        }
+        else
         {
             if (Contraseña1 != Contraseña2)
             {
                 ViewBag.mailExiste = false;
                 ViewBag.contraseñaCoincide = false;
                 return View("registrarse");
-            }else
+            }
+            else
             {
                 string hash = BCrypt.Net.BCrypt.HashPassword(Contraseña1);
-                
+
                 Usuario nuevoUsuario = new Usuario(Usuario, hash, Mail, Tipo);
                 bool registro = BD.Registrarse(nuevoUsuario);
                 if (!registro)
@@ -101,9 +110,10 @@ public class AccountController : Controller
                     ViewBag.contraseñaCoincide = true;
                     ViewBag.mailExiste = true;
                     return View("registrarse");
-                }else
+                }
+                else
                 {
-                    return RedirectToAction("Login"); 
+                    return RedirectToAction("Login");
                 }
             }
         }

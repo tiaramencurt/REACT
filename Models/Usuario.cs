@@ -9,16 +9,16 @@ namespace REACT.Models;
 public class Usuario
 {
     [JsonProperty]
-    public int Id {get; private set;}
+    public int Id { get; private set; }
     [JsonProperty]
-    public string Username {get; private set;}
+    public string Username { get; private set; }
     [JsonProperty]
-    public string Contraseña {get; private set;}
+    public string Contraseña { get; private set; }
     [JsonProperty]
-    public string Mail {get; private set;}
+    public string Mail { get; private set; }
     [JsonProperty]
-    public bool Tipo {get; private set;}
-    
+    public bool Tipo { get; private set; }
+
     public Usuario(string username, string contraseña, string mail, bool tipo)
     {
         this.Username = username;
@@ -29,5 +29,5 @@ public class Usuario
     public Usuario()
     {
     }
-   
+
 }
