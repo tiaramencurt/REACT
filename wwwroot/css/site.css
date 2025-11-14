@@ -14,46 +14,39 @@ body {
 }
 
 header {
+  position: sticky;   
+  top: 0;
   background-color: #002F6C;
-  width: 100%;
-  padding: 0.6rem 1.2rem;
+  padding: 1rem 2rem; 
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* --- Logo izquierda --- */
 header section {
   display: flex;
   align-items: center;
 }
 
 header section img {
-  width: 45px;       /* logo blanco */
+  width: 55px;             
   height: auto;
   display: block;
 }
 
-/* --- Iconos derecha --- */
 header nav {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.5rem; 
 }
 
-/* MISMO TAMAÑO para ambos iconos */
 header nav a img {
-  width: 34px;       /* tamaño uniforme */
-  height: 34px;      /* fuerza igualdad exacta */
+  width: 38px;
+  height: 38px;
   object-fit: contain;
   display: block;
 }
-
-/* eliminar sombras por si vienen heredadas */
-header img {
-  box-shadow: none !important;
-}
-
 
 
 main {
@@ -256,6 +249,42 @@ main {
   height: 100px;
   margin-top: 3%;
 }
+
+footer {
+  background-color: #002F6C;
+
+  padding: 1rem 2rem;       
+  margin: 0;
+  margin-top: 2rem;
+
+  text-align: center;       
+  color: rgb(255, 221, 0);  
+}
+
+
+footer section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;        
+  margin-bottom: 0.8rem;
+}
+
+footer section img {
+  width: 38px;
+  height: 38px;
+  object-fit: contain;
+  display: block;
+  box-shadow: none !important;
+}
+
+footer p {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0;
+  color: rgb(255, 221, 0);  
+}
+
 
 @media (max-width: 800px) {
   .title{
