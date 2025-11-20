@@ -63,9 +63,11 @@ public class HomeController : Controller
         }
     }
 
-    [HttpPost]
-    public IActionResult CompararUbicacion(string Latitud, string Longitud, int IdViaje = 0)
+    public Data CompararUbicacion(string Latitud, string Longitud, int IdViaje = 0)
     {
+
+        int distancia = 0;
+        string color = "green";
         double lat = double.Parse(Latitud.Replace(',', '.'), CultureInfo.InvariantCulture);
         double lon = double.Parse(Longitud.Replace(',', '.'), CultureInfo.InvariantCulture);
         if (IdViaje > 0) BD.GuardarUbicacion(lat, lon, IdViaje);
@@ -76,12 +78,7 @@ public class HomeController : Controller
         {
             if (v.Latitud != 0 && v.Longitud != 0) viajesValidos.Add(v);
         }
-        if (viajesValidos.Count == 0)
-        {
-            TempData["Distancia"] = 0;
-            TempData["Color"] = "green";
-            return RedirectToAction("Inicio");
-        }
+ 
 
         double minMetros = double.MaxValue;
         foreach (Viaje v in viajesValidos)
@@ -92,7 +89,6 @@ public class HomeController : Controller
             if (m < minMetros) minMetros = m;
         }
 
-        string color;
 
         if (minMetros <= 100)
         {
@@ -106,9 +102,9 @@ public class HomeController : Controller
         {
             color = "green";
         }
-        TempData["Distancia"] = (int)Math.Round(minMetros);
-        TempData["Color"] = color;
-        return RedirectToAction("Inicio");
+        distancia = (int)Math.Round(minMetros);
+        Data info = new Data(color, distancia);
+        return info;
     }
 
     public IActionResult Inicio()

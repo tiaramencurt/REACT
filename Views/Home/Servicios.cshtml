@@ -15,7 +15,6 @@
         else
         {
             <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="secondary-button">Finalizar viaje</a>
-            <button type="button" onclick="pedirUbicacion()" class="primary-button">Enviar ubicación</button>
 
             <form id="formUbicacion" action="/Home/GuardarUbicacion" method="post">
                 <input type="hidden" id="Latitud" name="Latitud" />
@@ -28,22 +27,58 @@
 
 
 <script>
-function pedirUbicacion() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            function (position) {
-                const lat = position.coords.latitude.toString().replace('.', ',');
-                const lon = position.coords.longitude.toString().replace('.', ',');
-                document.getElementById("Latitud").value  = lat;
-                document.getElementById("Longitud").value = lon;
-                document.getElementById("formUbicacion").submit();
-            },
-            function () {
-                alert("No se pudo obtener la ubicación o fue denegada.");
-            }
-        );
-    } else {
-        alert("Tu navegador no soporta geolocalización.");
+    var idViaje = @(idViaje ?? 0);
+    var viajeActivo = @((idViaje != null && estadoUltimoViaje == true).ToString().ToLower());
+
+    function pedirUbicacion() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    const lat = position.coords.latitude.toString().replace('.', ',');
+                    const lon = position.coords.longitude.toString().replace('.', ',');
+                    document.getElementById("Latitud").value = lat;
+                    document.getElementById("Longitud").value = lon;
+                    document.getElementById("formUbicacion").submit();
+                },
+                function () {
+                    alert("No se pudo obtener la ubicación o fue denegada.");
+                }
+            );
+        } else {
+            alert("Tu navegador no soporta geolocalización.");
+        }
     }
-}
+
+    function enviarUbicacionAuto() {
+        if (!viajeActivo || idViaje === 0) return;
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    const lat = position.coords.latitude.toString().replace('.', ',');
+                    const lon = position.coords.longitude.toString().replace('.', ',');
+
+                    const params = new URLSearchParams();
+                    params.append('Latitud', lat);
+                    params.append('Longitud', lon);
+                    params.append('IdViaje', idViaje);
+
+                    fetch('/Home/GuardarUbicacion', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded'
+                        },
+                        body: params.toString()
+                    });
+                }
+            );
+        }
+    }
+
+    window.onload = function () {
+        if (viajeActivo && idViaje !== 0) {
+            enviarUbicacionAuto();
+            setInterval(enviarUbicacionAuto, 5000);
+        }
+    }
 </script>

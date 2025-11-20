@@ -17,7 +17,6 @@
         else
         {
             <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="secondary-button">Finalizar viaje</a>
-            <button type="button" onclick="pedirUbicacion()" class="primary-button">Enviar ubicación</button>
 
             <form id="formUbicacion" action="/Home/CompararUbicacion" method="post">
                 <input type="hidden" id="Latitud" name="Latitud">
@@ -50,31 +49,58 @@
 </main>
 
 <script>
-window.onload = function() {
-    var color = '@color';
+    var idViaje = @(idViaje ?? 0);
+    var viajeActivo = @((idViaje != null && estadoUltimoViaje == true).ToString().ToLower());
+    var colorInicial = '@color';
     var indicador = document.getElementById('color-indicator');
-    if (color && indicador) {
-        indicador.style.backgroundColor = color;
-    }
-}
 
 
-function pedirUbicacion() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            function (position) {
-                const lat = position.coords.latitude.toString().replace('.', ',');
-                const lon = position.coords.longitude.toString().replace('.', ',');
-                document.getElementById("Latitud").value  = lat;
-                document.getElementById("Longitud").value = lon;
-                document.getElementById("formUbicacion").submit();
-            },
-            function () {
-                alert("No se pudo obtener la ubicación o fue denegada.");
-            }
-        );
-    } else {
-        alert("Tu navegador no soporta geolocalización.");
+    function enviarUbicacionAuto() {
+
+        if (!viajeActivo || idViaje === 0) return;
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                function (position) {
+                    const lat = position.coords.latitude.toString().replace('.', ',');
+                    const lon = position.coords.longitude.toString().replace('.', ',');
+
+
+                    fetch('/Home/CompararUbicacion?Latitud=' + lat + '&Longitud=' + lon + '&IdViaje=' + idViaje, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data)
+                         indicador.style.backgroundColor = data.color;
+                    });
+                }
+            );
+        }
     }
-}
+
+    
+    setInterval(enviarUbicacionAuto, 5000);
+
+   
+   
+   
+   
+   
+   
+   
+   /*window.onload = function () {
+        
+        if (colorInicial && indicador) {
+            indicador.style.backgroundColor = colorInicial;
+        }
+
+        if (viajeActivo && idViaje !== 0) {
+            enviarUbicacionAuto();
+            
+        }
+    }*/
 </script>
