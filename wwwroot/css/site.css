@@ -10,6 +10,9 @@ body {
   color: #002F6C;
   line-height: 1.7;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 header {
@@ -48,7 +51,8 @@ header nav a img {
 
 
 main {
-  margin: 2%
+  margin: 2%;
+  flex: 1;
 }
 
 .title {
@@ -77,6 +81,7 @@ main {
   color: #ffffff;
   background-color: #0059ff;
   border: none;
+  text-decoration: none;
   border-radius: 12px;
   padding: 1%;
   width: 18%;
