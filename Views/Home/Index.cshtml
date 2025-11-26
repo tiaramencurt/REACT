@@ -45,4 +45,50 @@
         <a href='@Url.Action("Login", "Account")'>Iniciar sesión</a>
         <a href='@Url.Action("Registrarse", "Account")'>Registrarse</a>
     </div>
+
+    <section id="carouselReact" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="imagenes/slide1.png" class="d-block w-100" alt="imagen 1">
+            </div>
+
+            <div class="carousel-item">
+                <img src="imagenes/slide2.jpg" class="d-block w-100" alt="imagen 2">
+            </div>
+
+            <div class="carousel-item">
+                <img src="imagenes/slide3.jpg" class="d-block w-100" alt="imagen 3">
+            </div>
+        </div>
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselReact" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselReact" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </section>
+
+    <section class="cards">
+        <div class="card">
+            <img src="/imagenes/martin.avif" alt="Martin" class="avatar">
+            <h3>Martin Levy</h3>
+            <p>42 años</p>
+            <p><strong>Empresa de seguros</strong></p>
+            <p><strong>Objetivos:</strong> llegar puntual, manejar tranquilo y no recibir multas</p>
+            <p><strong>Frustraciones:</strong> el tránsito lento y no saber cómo reaccionar ante ambulancias</p>
+        </div>
+
+        <div class="card">
+            <img src="kiara.png" alt="Kiara" class="avatar">
+            <h3>Kiara Cohen</h3>
+            <p>34 años</p>
+            <p><strong>Médica</strong></p>
+            <p><strong>Objetivos:</strong> llegar lo más rápido posible a la emergencia y salvar vidas</p>
+            <p><strong>Frustraciones:</strong> los autos que no respetan el paso de ambulancias y los conductores distraídos</p>
+        </div>
+    </section>
+
+
 </main>
