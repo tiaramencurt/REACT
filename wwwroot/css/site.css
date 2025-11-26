@@ -76,18 +76,25 @@ main {
 }
 
 
-.primary-button {
+button.primary-button,
+a.primary-button,
+button.secondary-button,
+a.secondary-button {
+  display: block;
   font-weight: 600;
   color: #ffffff;
-  background-color: #0059ff;
-  border: none;
-  text-decoration: none;
   border-radius: 12px;
   padding: 1%;
-  width: 18%;
+  width: 20%;
   margin: 1% auto;
   font-size: 1.1rem;
+  text-decoration: none;
   cursor: pointer;
+}
+
+.primary-button {
+  background-color: #0059ff;
+  border: none;
 }
 
 .primary-button:hover {
@@ -96,20 +103,13 @@ main {
 }
 
 .secondary-button {
-  font-weight: 600;
-  color: #ffffff;
-  background-color: #ff1926;
-  border-radius: 12px;
-  padding: 1%;
-  width: 25%;
-  margin: 1% auto;
-  font-size: 1.1rem;
-  text-decoration: none;
-  display: block;
+  background-color: #ffcc00;
+  color: black;
 }
 
+
 .secondary-button:hover {
-  background-color: #cc0010;
+  background-color: #e4b703;
   transform: translateY(-3px);
 }
 
