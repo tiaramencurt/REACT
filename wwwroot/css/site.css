@@ -443,6 +443,12 @@ a.secondary-button {
   align-items: center;
 }
 
+.distancia{
+  text-align: center;
+  font-size: 150%;
+  color: white;
+}
+
 footer {
   background-color: #002F6C;
   padding: 1% 2%;       
@@ -606,14 +612,13 @@ footer p {
     transform: translate(-50%, -50%);
   }
   .viaje-estado {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-  }
+    margin-right: 35%;
+    margin-left: 35%;
+    width: 30%;
+}
 
   .viaje-estado p {
     font-weight: 500;
+    text-align: center;
   }
 }

@@ -18,8 +18,6 @@
         else
         {
             <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="secondary-button">Finalizar viaje</a>
-
-            <!-- MENSAJE + SPINNER CUANDO EL VIAJE ESTÁ ACTIVO -->
             <section class="viaje-estado">
                 <div class="spinner-grow text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
@@ -40,10 +38,11 @@
     </section>
 
     
-    @if (!string.IsNullOrEmpty(color) && distancia != null)
+
+    @if (viajeActivo)
     {
-        <section class="colores">
-            <p>Distancia mínima: @distancia metros.</p>
+        <div id="color-indicador" class="color-indicador"></div>
+        <section class="distancia">
             @if (color == "red")
             {
                 <p>Estás muy cerca de un servicio de emergencia. Despejá el paso.</p>
@@ -57,10 +56,6 @@
                 <p>No hay servicios de emergencia cerca por ahora.</p>
             }
         </section>
-    }
-    @if (viajeActivo)
-    {
-        <div id="color-indicador" class="color-indicador"></div>
     }
 </main>
 
