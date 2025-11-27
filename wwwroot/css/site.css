@@ -240,13 +240,14 @@ a.secondary-button {
 }
 
 .color-indicador {
-  width: 20%;
-  margin-left: 40%;
-  margin-right: 40%;
-  border-radius: 30px;
+  width: 30%;
   height: 100px;
-  margin-top: 3%;
+  margin-right: 35%;
+  margin-top: 10%;
+  margin-left: 35%;
+  background-color: grey;
 }
+
 
 footer {
   background-color: #002F6C;

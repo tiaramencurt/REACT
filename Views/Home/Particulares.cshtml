@@ -18,12 +18,6 @@
         else
         {
             <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="secondary-button">Finalizar viaje</a>
-
-            <form id="formUbicacion" action="/Home/CompararUbicacion" method="post">
-                <input type="hidden" id="Latitud" name="Latitud">
-                <input type="hidden" id="Longitud" name="Longitud">
-                <input type="hidden" id="IdViaje" name="IdViaje" value="@ViewBag.idViaje">
-            </form>
         }
     </section>
 
@@ -31,7 +25,6 @@
     {
         <section class="colores">
             <p>Distancia mínima: @distancia metros.</p>
-
             @if (color == "red")
             {
                 <p>Estás muy cerca de un servicio de emergencia. Despejá el paso.</p>
@@ -44,20 +37,23 @@
             {
                 <p>No hay servicios de emergencia cerca por ahora.</p>
             }
-            <div id="color-indicator" class="color-indicador"></div>
         </section>
     }
+    @if(estadoUltimoViaje == true)
+    {
+        <div id="color-indicador" class="color-indicador"></div>
+    }
+
 </main>
 
 <script>
     var idViaje = @(idViaje ?? 0);
     var viajeActivo = @((idViaje != null && estadoUltimoViaje == true).ToString().ToLower());
     var colorInicial = '@color';
-    var indicador = document.getElementById('color-indicator');
+    var indicador = document.getElementById('color-indicador');
 
 
     function enviarUbicacionAuto() {
-
         if (!viajeActivo || idViaje === 0) return;
 
         if (navigator.geolocation) {
@@ -65,8 +61,6 @@
                 function (position) {
                     const lat = position.coords.latitude.toString().replace('.', ',');
                     const lon = position.coords.longitude.toString().replace('.', ',');
-
-
                     fetch('/Home/CompararUbicacion?Latitud=' + lat + '&Longitud=' + lon + '&IdViaje=' + idViaje, {
                         method: 'GET',
                         headers: {
@@ -85,23 +79,4 @@
 
     
     setInterval(enviarUbicacionAuto, 5000);
-
-   
-   
-   
-   
-   
-   
-   
-   /*window.onload = function () {
-        
-        if (colorInicial && indicador) {
-            indicador.style.backgroundColor = colorInicial;
-        }
-
-        if (viajeActivo && idViaje !== 0) {
-            enviarUbicacionAuto();
-            
-        }
-    }*/
 </script>

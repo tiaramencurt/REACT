@@ -46,8 +46,6 @@ public class HomeController : Controller
             return RedirectToAction("Inicio");
         }
     }
-
-    [HttpPost]
     public IActionResult GuardarUbicacion(string Latitud, string Longitud, int IdViaje)
     {
         if (string.IsNullOrEmpty(HttpContext.Session.GetString("IdUsuario")))
