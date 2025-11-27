@@ -4,23 +4,42 @@
     int? idViaje = ViewBag.idViaje as int?;
     string color = TempData["Color"] as string;
     var distancia = TempData["Distancia"];
+    bool viajeActivo = (idViaje != null && estadoUltimoViaje == true);
 }
 
 <main>
     <section class="principal">
         <h1 class="title">Modo Particular</h1>
 
-        @if (idViaje == null || estadoUltimoViaje == false)
+        @if (!viajeActivo)
         {
             <a href='@Url.Action("CrearViaje", "Home")' class="primary-button">Crear viaje</a>
-            
         }
         else
         {
             <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="secondary-button">Finalizar viaje</a>
+
+            <!-- MENSAJE + SPINNER CUANDO EL VIAJE ESTÁ ACTIVO -->
+            <section class="viaje-estado">
+                <div class="spinner-grow text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p>Tu viaje se está compartiendo correctamente...</p>
+            </section>
+
+            <div class="iframe">
+                <iframe
+                    id="inlineFrameExample"
+                    title="Inline Frame Example"
+                    width="300"
+                    height="200"
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik">
+                </iframe>
+            </div>
         }
     </section>
 
+    
     @if (!string.IsNullOrEmpty(color) && distancia != null)
     {
         <section class="colores">
@@ -39,44 +58,47 @@
             }
         </section>
     }
-    @if(estadoUltimoViaje == true)
+    @if (viajeActivo)
     {
         <div id="color-indicador" class="color-indicador"></div>
     }
-
 </main>
 
 <script>
     var idViaje = @(idViaje ?? 0);
-    var viajeActivo = @((idViaje != null && estadoUltimoViaje == true).ToString().ToLower());
+    var viajeActivo = @viajeActivo.ToString().ToLower();
     var colorInicial = '@color';
     var indicador = document.getElementById('color-indicador');
 
-
     function enviarUbicacionAuto() {
-        if (!viajeActivo || idViaje === 0) return;
+        // si no hay viaje o no hay indicador, no hago nada
+        if (!viajeActivo || idViaje === 0 || !indicador) return;
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                function (position) {
-                    const lat = position.coords.latitude.toString().replace('.', ',');
-                    const lon = position.coords.longitude.toString().replace('.', ',');
-                    fetch('/Home/CompararUbicacion?Latitud=' + lat + '&Longitud=' + lon + '&IdViaje=' + idViaje, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log(data)
-                         indicador.style.backgroundColor = data.color;
-                    });
+        if (!navigator.geolocation) return;
+
+        navigator.geolocation.getCurrentPosition(function (position) {
+            const lat = position.coords.latitude.toString().replace('.', ',');
+            const lon = position.coords.longitude.toString().replace('.', ',');
+
+            fetch('/Home/CompararUbicacion?Latitud=' + lat + '&Longitud=' + lon + '&IdViaje=' + idViaje, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
                 }
-            );
-        }
+            })
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                console.log(data);
+                indicador.style.backgroundColor = data.color;
+            })
+            .catch(function (error) {
+                console.error('Error en fetch CompararUbicacion:', error);
+            });
+        });
     }
 
-    
+    // manda ubicación cada 5 segundos
     setInterval(enviarUbicacionAuto, 5000);
 </script>

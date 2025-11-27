@@ -6,9 +6,16 @@
     <section class="Ingreso">
         <h1 class="title">Iniciar sesión</h1>
 
-        <form action='@Url.Action("Login", "Account")' method="post">
-            <div class="entrada"><p class="label">Username: </p><input type="text" name="Usuario" placeholder="Ingresar usuario" required class="placeholder"/></div><br>
-            <div class="entrada"><p class="label">Constraseña: </p><input type="password" name="Contraseña" placeholder="Ingresar contraseña" required class="placeholder"/></div><br>
+        <form action='@Url.Action("Login", "Account")' method="post" onsubmit="showSpinner()">
+            <div class="entrada">
+                <p class="label">Username: </p>
+                <input type="text" name="Usuario" placeholder="Ingresar usuario" required class="placeholder" />
+            </div><br>
+
+            <div class="entrada">
+                <p class="label">Contraseña: </p>
+                <input type="password" name="Contraseña" placeholder="Ingresar contraseña" required class="placeholder" />
+            </div><br>
 
             @if (!ViewBag.mailExiste)
             {
@@ -20,7 +27,8 @@
             }
 
             <button type="submit" class="primary-button">Iniciar sesión</button><br />
-            <a href='@Url.Action("Registrarse", "Account")' class="secondary-button">Registrate si no tenes cuenta</a>
+            <a href='@Url.Action("Registrarse", "Account")' class="secondary-button">Registrate</a>
         </form>
+
     </section>
 </main>

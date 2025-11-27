@@ -2,13 +2,14 @@
     ViewData["Title"] = "Servicios";
     bool? estadoUltimoViaje = ViewBag.estadoUltimoViaje as bool?;
     int? idViaje = ViewBag.idViaje as int?;
+    bool viajeActivo = (idViaje != null && estadoUltimoViaje == true);
 }
 
 <main>
     <section class="principal">
         <h1 class="title">Servicio de Emergencia</h1>
 
-        @if (idViaje == null || estadoUltimoViaje == false)
+        @if (!viajeActivo)
         {
             <a href='@Url.Action("CrearViaje", "Home")' class="primary-button">Crear viaje</a>
         }
@@ -16,39 +17,43 @@
         {
             <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="secondary-button">Finalizar viaje</a>
 
-            <iframe
-                id="inlineFrameExample"
-                title="Inline Frame Example"
-                width="300"
-                height="200"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik">
-            </iframe>
+        
+            <section class="viaje-estado">
+                <div class="spinner-grow text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <p>Tu viaje se está compartiendo correctamente...</p>
+            </section>
 
+            <div class="iframe">
+                <iframe
+                    id="inlineFrameExample"
+                    title="Inline Frame Example"
+                    width="300"
+                    height="200"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.769465520542!2d-58.43171722425946!3d-34.609990572952015!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca680b697a73%3A0xb6fa8d39f7cf0dc9!2sEscuela%20ORT%20sede%20Almagro!5e0!3m2!1ses!2sar!4v1764261711840!5m2!1ses!2sar">
+                </iframe>
+            </div>
         }
     </section>
 </main>
 
-
 <script>
     var idViaje = @(idViaje ?? 0);
-    var viajeActivo = @((idViaje != null && estadoUltimoViaje == true).ToString().ToLower());
+    var viajeActivo = @viajeActivo.ToString().ToLower();
 
     function enviarUbicacionAuto() {
         if (!viajeActivo || idViaje === 0) return;
 
         if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                function (position) {
-                    const lat = position.coords.latitude.toString().replace('.', ',');
-                    const lon = position.coords.longitude.toString().replace('.', ',');
-                    fetch('/Home/GuardarUbicacion?Latitud=' + lat + '&Longitud=' + lon + '&IdViaje=' + idViaje,{
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        }
-                    });
-                }
-            );
+            navigator.geolocation.getCurrentPosition(function (position) {
+                const lat = position.coords.latitude.toString().replace('.', ',');
+                const lon = position.coords.longitude.toString().replace('.', ',');
+                fetch('/Home/GuardarUbicacion?Latitud=' + lat + '&Longitud=' + lon + '&IdViaje=' + idViaje, {
+                    method: 'GET',
+                    headers: { 'Content-Type': 'application/json' }
+                });
+            });
         }
     }
     setInterval(enviarUbicacionAuto, 5000);
