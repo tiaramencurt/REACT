@@ -6,7 +6,10 @@
 
 body {
   font-family: 'Raleway', sans-serif;
-  background-color: #ffffff;
+  background-image: url("/imagenes/fondo.png");
+  background-size: cover;   
+  background-repeat: no-repeat; 
+  background-position: center;
   color: #002F6C;
   line-height: 1.7;
   text-align: center;
@@ -15,15 +18,17 @@ body {
   min-height: 100vh;
 }
 
+
 header {
-  position: sticky;  
-  top: 0; 
+  position: sticky;
+  top: 0;
   background-color: #002F6C;
-  padding: 1% 2%; 
+  padding: 1% 2%;
   margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 9999;
 }
 
 header section {
@@ -53,6 +58,7 @@ header nav a img {
 main {
   margin: 2%;
   flex: 1;
+  margin-top: 100px;
 }
 
 .title {
@@ -179,6 +185,12 @@ a.secondary-button {
   padding-bottom: 1.5%;
 }
 
+.titulo-landing{
+  color: white;
+  margin-top: 5%;
+  margin-bottom: 2%;
+}
+
 .titulo {
   width: 90%;
   margin: 3% auto 1% auto;
@@ -234,10 +246,42 @@ a.secondary-button {
   background-color: #e6b800;
   transform: translateY(-3px);
 }
-
-.informacion h3{
-  font-size: xx-large;
+.informacion {
+  width: 100%;
+  max-width: 460px;
+  margin: 60px auto;
+  padding: 28px 32px;
+  background: #ffffff;
+  border-radius: 18px;
+  border-left: 6px solid #0059ff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  color: #002F6C;
 }
+
+.informacion h3 {
+  margin: 8px 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.informacion h3::first-letter {
+  color: #0059ff;
+}
+
+.informacion h3 + h3 {
+  margin-top: 12px;
+}
+
+.informacion:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+
+
 
 .color-indicador {
   width: 30%;
@@ -246,6 +290,124 @@ a.secondary-button {
   margin-top: 10%;
   margin-left: 35%;
   background-color: grey;
+}
+
+.d-block-w-100{
+  width: 30%;
+  border-radius: 10px;
+}
+
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 3%;
+  margin: 2% auto;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
+.card {
+  background-color: #d7e4ff !important;
+  width: 30%;
+  min-width: 260px;
+  padding: 2%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  color: #002F6C;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: none !important;
+  margin-bottom: 3%;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1%;
+}
+
+.card p {
+  font-size: 1rem;
+  margin: 0.6% 0;
+  line-height: 1.4;
+}
+
+.avatar {
+  width: 30%;
+  display: block;
+  margin: 0 auto 12px auto;
+}
+
+.creadores{
+  display: flex;
+  justify-content: center;
+  gap: 3%;
+  margin: 2% auto;
+  width: 90%;
+  flex-wrap: wrap;
+}
+
+.creador {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+}
+
+
+.creador .avatar {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;    
+  border-radius: 50%;
+  border: 8px solid #ffcc00; 
+}
+
+/* Nombre con fondo rojo */
+.creador h3 {
+  background-color: #ff1926; 
+  font-weight: bold;
+  color: white;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  display: inline-block; 
+}
+
+/* Rol en azul */
+.creador p {
+  color: #003bb5;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-top: 4px;
+}
+
+
+
+@media (max-width: 800px) {
+
+  .cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 3% 0;
+  }
+
+  .card {
+    width: 80%;
+    padding: 6%;
+    background-color: #d7e4ff !important; 
+    color: #002F6C;
+  }
+
+  .avatar {
+    width: 40%;
+  }
 }
 
 
@@ -349,9 +511,7 @@ footer p {
     margin-right: 5%;
   }
 
-  .informacion h3{
-    font-size: large;
-  }
+ 
 
   .cards {
     display: flex;
