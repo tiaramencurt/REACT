@@ -628,14 +628,7 @@ footer p {
   footer {
     padding: 3% 2%;
   }
-  #loadingSpinner {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+  
   .viaje-estado {
     margin-right: 35%;
     margin-left: 35%;
