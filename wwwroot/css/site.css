@@ -58,7 +58,7 @@ header nav a img {
 main {
   margin: 2%;
   flex: 1;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .title {
@@ -81,6 +81,28 @@ main {
   font-size: 1.1rem;
 }
 
+.callToAction{
+  display: flex;
+  align-items: center;  
+  justify-content: center; 
+  gap: 20px; 
+  width: 70%;
+  margin: 0% auto;
+  background-color: #0059ff;
+  border-radius: 20px;
+  padding: 1.5%;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);           
+}
+
+.callToAction h3{
+  color: white;
+  font-size: x-large;
+}
+
+.callToAction div {
+  display: flex;
+  gap: 15px; 
+}
 
 button.primary-button,
 a.primary-button,
@@ -236,8 +258,11 @@ a.secondary-button {
 }
 
 .Landing div a {
-  display: inline-block;
-  padding: 1% 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  padding-left: 10%;
+  padding-right: 10%;
   margin: 1% 1.2%;
   background-color: #ffcc00;
   color: #000;
@@ -246,6 +271,7 @@ a.secondary-button {
   border-radius: 14px;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(255, 204, 0, 0.4);
+  width: 80%;
 }
 
 .Landing div a:hover {
@@ -407,7 +433,7 @@ a.secondary-button {
 }
 
 .card-uso {
-    background: white;
+    background: #d7e4ff;
     border-radius: 16px;
     padding: 20px;
     margin-bottom: 20px;
@@ -416,9 +442,8 @@ a.secondary-button {
 }
 
 .card-uso img.avatar {
-    width: 80px;
-    height: 80px;
-    border-radius: 100px;
+    width: 30%;
+    height: auto;
     object-fit: cover;
     display: block;
     margin-bottom: 15px;
@@ -505,10 +530,10 @@ footer p {
   a.primary-button,
   button.secondary-button,
   a.secondary-button {
-    width: 80%;          /* más ancho en mobile */
-    padding: 4%;         /* más altos y cómodos */
-    font-size: 1.2rem;   /* más legibles */
-    margin: 3% auto;     /* espacio entre botones */
+    width: 80%;  
+    padding: 4%;  
+    font-size: 1.2rem; 
+    margin: 3% auto;   
   }
 
   .Ingreso form {
