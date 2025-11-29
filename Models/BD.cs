@@ -10,8 +10,8 @@ namespace REACT.Models;
 
 public static class BD
 {
-    //private static string _connectionString = @"Server=localhost; DataBase=REACT; Integrated Security=True; TrustServerCertificate=True;";
-    private static string _connectionString = @"Server=localhost\SQLEXPRESS;Database=REACT;Trusted_Connection=True;Integrated Security=True; TrustServerCertificate=True;";
+    private static string _connectionString = @"Server=localhost; DataBase=REACT; Integrated Security=True; TrustServerCertificate=True;";
+    //private static string _connectionString = @"Server=localhost\SQLEXPRESS;Database=REACT;Trusted_Connection=True;Integrated Security=True; TrustServerCertificate=True;";
     public static Usuario TraerUsuario(string username)
     {
         string query = "TraerUsuario";
