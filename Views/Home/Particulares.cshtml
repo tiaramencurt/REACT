@@ -19,38 +19,31 @@
         {
             <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="secondary-button">Finalizar viaje</a>
             <section class="viaje-estado">
-                <div class="spinner-grow text-primary" role="status">
+                <div class="spinner-grow spinner-rojo" role="status">
                     <span class="visually-hidden">Loading...</span>
                 </div>
                 <p>Tu viaje se está compartiendo correctamente...</p>
             </section>
-@if (viajeActivo)
-    {
-        <div id="color-indicador" class="color-indicador"></div>
-       /*<section class="distancia">
-            @if (color == "red")
-            {
-                <p>Estás muy cerca de un servicio de emergencia. Despejá el paso.</p>
-            }
-            else if (color == "yellow")
-            {
-                <p>Un vehículo de emergencia se aproxima. Mantené precaución.</p>
-            }
-            else
-            {
-                <p>No hay servicios de emergencia cerca por ahora.</p>
-            }
-        </section>*/
-    }
+            <div id="color-indicador" class="color-indicador"></div>
+            <section class="distancia">
+                @if (color == "red")
+                {
+                    <p>Estás muy cerca de un servicio de emergencia. Despejá el paso.</p>
+                }
+                else if (color == "yellow")
+                {
+                    <p>Un vehículo de emergencia se aproxima. Mantené precaución.</p>
+                }
+                else
+                {
+                    <p>No hay servicios de emergencia cerca por ahora.</p>
+                }
+            </section>
             <div class="iframe">
-               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.769640147675!2d-58.431717223530626!3d-34.60998615783049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca680b697a73%3A0xb6fa8d39f7cf0dc9!2sEscuela%20ORT%20sede%20Almagro!5e0!3m2!1ses-419!2sar!4v1764347256242!5m2!1ses-419!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+               <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.769640147675!2d-58.431717223530626!3d-34.60998615783049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca680b697a73%3A0xb6fa8d39f7cf0dc9!2sEscuela%20ORT%20sede%20Almagro!5e0!3m2!1ses-419!2sar!4v1764347256242!5m2!1ses-419!2sar"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         }
     </section>
-
-    
-
-    
 </main>
 
 <script>

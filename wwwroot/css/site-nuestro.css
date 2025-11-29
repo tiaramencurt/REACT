@@ -3,13 +3,14 @@
   padding: 0;
 }
 
+
 body {
   font-family: 'Raleway', sans-serif;
   background-image: url("/imagenes/fondo.png");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-size: cover;   
+  background-repeat: no-repeat; 
   background-position: center;
-  color: rgb(0, 47, 108);
+  color: #002F6C;
   line-height: 1.7;
   text-align: center;
   display: flex;
@@ -17,13 +18,13 @@ body {
   min-height: 100vh;
 }
 
-/* ========================= HEADER ========================= */
 
 header {
   position: sticky;
   top: 0;
-  background-color: rgb(0, 47, 108);
+  background-color: #002F6C;
   padding: 1% 2%;
+  margin: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -36,7 +37,7 @@ header section {
 }
 
 header section img {
-  width: 70%;
+  width: 70%;             
   height: auto;
   display: block;
 }
@@ -44,7 +45,7 @@ header section img {
 header nav {
   display: flex;
   align-items: center;
-  gap: 30%;
+  gap: 30%; 
 }
 
 header nav a img {
@@ -53,7 +54,6 @@ header nav a img {
   display: block;
 }
 
-/* ========================= MAIN ========================= */
 
 main {
   margin: 2%;
@@ -64,8 +64,9 @@ main {
 .title {
   font-weight: 800;
   font-size: xx-large;
-  color: rgb(0, 59, 181);
-  margin: 1% auto;
+  color: #003bb5;
+  margin: 2% auto;
+  padding: 1% auto;
   border-radius: 12px;
   text-align: center;
 }
@@ -80,32 +81,28 @@ main {
   font-size: 1.1rem;
 }
 
-/* ========================= CALL TO ACTION ========================= */
-
-.callToAction {
+.callToAction{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+  align-items: center;  
+  justify-content: center; 
+  gap: 20px; 
   width: 70%;
-  margin: 0 auto;
-  background-color: rgb(0, 89, 255);
+  margin: 0% auto;
+  background-color: #0059ff;
   border-radius: 20px;
   padding: 1.5%;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);           
 }
 
-.callToAction h3 {
-  color: rgb(255, 255, 255);
+.callToAction h3{
+  color: white;
   font-size: x-large;
 }
 
 .callToAction div {
   display: flex;
-  gap: 15px;
+  gap: 15px; 
 }
-
-/* ========================= BUTTONS ========================= */
 
 button.primary-button,
 a.primary-button,
@@ -113,7 +110,7 @@ button.secondary-button,
 a.secondary-button {
   display: block;
   font-weight: 600;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   border-radius: 12px;
   padding: 1%;
   width: 20%;
@@ -125,29 +122,29 @@ a.secondary-button {
 }
 
 .primary-button {
-  background-color: rgb(0, 89, 255);
+  background-color: #0059ff;
   border: none;
 }
 
 .primary-button:hover {
-  background-color: rgb(0, 59, 181);
+  background-color: #003bb5;
   transform: translateY(-3px);
 }
 
 .secondary-button {
-  background-color: rgb(255, 204, 0);
-  color: rgb(0, 0, 0);
+  background-color: #ffcc00;
+  color: black;
 }
 
+
 .secondary-button:hover {
-  background-color: rgb(228, 183, 3);
+  background-color: #e4b703;
   transform: translateY(-3px);
 }
 
-/* ========================= FORM ========================= */
 
 .Ingreso form {
-  background-color: rgb(215, 228, 255);
+  background-color: #d7e4ff;
   width: 70%;
   margin: 2% auto;
   padding: 4%;
@@ -172,8 +169,8 @@ a.secondary-button {
   width: 100%;
   padding: 1.8%;
   border-radius: 14px;
-  border: 2px solid rgb(199, 215, 255);
-  background-color: rgb(248, 249, 255);
+  border: 2px solid #c7d7ff;
+  background-color: #f8f9ff;
   font-size: 1rem;
   margin-bottom: 1.5%;
 }
@@ -181,15 +178,14 @@ a.secondary-button {
 .entrada input:focus,
 .entrada select:focus {
   outline: none;
-  border-color: rgb(0, 89, 255);
+  border-color: #0059ff;
   box-shadow: 0 0 8px rgba(0, 89, 255, 0.4);
 }
 
-/* ========================= BADGES ========================= */
 
 .badge {
   font-weight: 700;
-  background-color: rgb(255, 204, 0);
+  background-color: #ffcc00;
   padding: 0.6rem 1rem;
   border-radius: 8px;
   display: inline-block;
@@ -198,29 +194,27 @@ a.secondary-button {
 }
 
 .tooltip {
-  background-color: rgb(0, 47, 108);
-  color: rgb(255, 255, 255);
+  background-color: #002F6C;
+  color: white;
   padding: 0.6% 1%;
   border-radius: 8px;
   font-size: 0.85rem;
   display: inline-block;
 }
 
-/* ========================= LANDING ========================= */
 
 .Landing {
   text-align: center;
   padding-bottom: 1.5%;
 }
-
-.titulo-landing1 {
-  color: rgb(0, 47, 108);
+.titulo-landing1{
+  color: #002F6C;
   margin-top: 5%;
   margin-bottom: 3%;
 }
 
-.titulo-landing {
-  color: rgb(255, 255, 255);
+.titulo-landing{
+  color: white;
   margin-top: 5%;
   margin-bottom: 3%;
 }
@@ -232,18 +226,19 @@ a.secondary-button {
 
 .titulo img {
   width: 12%;
+  box-shadow: none;
 }
 
 .titulo h2 {
   font-size: 1.9rem;
   font-weight: bold;
-  color: rgb(255, 25, 38);
+  color: #ff1926;
 }
 
 .contenedor-texto {
   width: 80%;
   margin: 2% auto;
-  background-color: rgb(215, 228, 255);
+  background-color: #d7e4ff;
   border-radius: 20px;
   padding: 2.2%;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
@@ -258,17 +253,19 @@ a.secondary-button {
   font-size: 1rem;
 }
 
-/* ========================= LINKS LANDING ========================= */
+.colores p{
+  font-size: larger;
+}
 
 .Landing div a {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
   padding-left: 10%;
   padding-right: 10%;
   margin: 1% 1.2%;
-  background-color: rgb(255, 204, 0);
-  color: rgb(0, 0, 0);
+  background-color: #ffcc00;
+  color: #000;
   font-weight: 700;
   font-size: 1.1rem;
   border-radius: 14px;
@@ -278,22 +275,19 @@ a.secondary-button {
 }
 
 .Landing div a:hover {
-  background-color: rgb(230, 184, 0);
+  background-color: #e6b800;
   transform: translateY(-3px);
 }
-
-/* ========================= INFORMACION BOX ========================= */
-
 .informacion {
   width: 100%;
   max-width: 460px;
   margin: 60px auto;
   padding: 28px 32px;
-  background: rgb(255, 255, 255);
+  background: #ffffff;
   border-radius: 18px;
-  border-left: 6px solid rgb(0, 89, 255);
+  border-left: 6px solid #0059ff;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-  color: rgb(0, 47, 108);
+  color: #002F6C;
 }
 
 .informacion h3 {
@@ -303,7 +297,11 @@ a.secondary-button {
 }
 
 .informacion h3::first-letter {
-  color: rgb(0, 89, 255);
+  color: #0059ff;
+}
+
+.informacion h3 + h3 {
+  margin-top: 12px;
 }
 
 .informacion:hover {
@@ -311,33 +309,21 @@ a.secondary-button {
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* ========================= INDICADORES ========================= */
 
 .color-indicador {
   width: 40%;
   height: 150px;
-  margin: 1% 30%;
-  background-color: rgb(128, 128, 128);
+  margin-right: 30%;
+  margin-top: 3%;
+  margin-left: 30%;
+  background-color: grey;
 }
 
-.d-block-w-100 {
+.d-block-w-100{
   width: 30%;
   border-radius: 10px;
 }
-.viaje-estado {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 1% 5%;
-}
 
-  .spinner-rojo {
-    color: rgb(255,25,38);
-    margin-bottom: 1%;
-}
-/* ========================= CARDS ========================= */
 
 .cards {
   display: flex;
@@ -349,15 +335,15 @@ a.secondary-button {
 }
 
 .card {
-  background-color: rgb(215, 228, 255);
+  background-color: #d7e4ff !important;
   width: 30%;
   min-width: 260px;
   padding: 2%;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   text-align: center;
-  color: rgb(0, 47, 108);
+  color: #002F6C;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: none;
+  border: none !important;
   margin-bottom: 3%;
 }
 
@@ -380,13 +366,13 @@ a.secondary-button {
 
 .avatar {
   width: 30%;
-  margin: 0 auto 12px auto;
+  height: auto;
   display: block;
+  margin: 0 auto 12px auto;
 }
 
-/* ========================= CREADORES ========================= */
 
-.creadores {
+.creadores{
   display: flex;
   justify-content: center;
   gap: 3%;
@@ -395,119 +381,126 @@ a.secondary-button {
   flex-wrap: wrap;
 }
 
+
 .creador {
   text-align: center;
   font-family: 'Raleway', sans-serif;
 }
 
+
 .creador .avatar {
   width: 160px;
   height: 160px;
-  object-fit: cover;
+  object-fit: cover;    
   border-radius: 50%;
-  border: 8px solid rgb(255, 204, 0);
+  border: 8px solid #ffcc00; 
 }
 
+
 .creador h3 {
-  background-color: rgb(255, 25, 38);
+  background-color: #ff1926; 
   font-weight: bold;
-  color: rgb(255, 255, 255);
+  color: white;
   padding: 8px 20px;
   border-radius: 25px;
   font-size: 1.1rem;
   margin-top: 15px;
   margin-bottom: 5px;
-  display: inline-block;
+  display: inline-block; 
 }
 
+
 .creador p {
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   font-weight: 600;
   font-size: 0.95rem;
   margin-top: 4px;
 }
 
-/* ========================= CARDS USO ========================= */
-
 .cards-uso {
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
+.cards-uso > .card-uso:nth-of-type(1),
+.cards-uso > .card-uso:nth-of-type(2) {
+    display: inline-block;
+    width: 48%;
+    vertical-align: top;
+}
+
 
 .card-uso {
-  background-color: rgb(215, 228, 255);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 20px;
-  font-family: 'Raleway', sans-serif;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  transition: transform .2s ease, box-shadow .2s ease;
+    background: #d7e4ff;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-family: "Raleway", sans-serif;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
-.card-uso:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+.card-uso:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
 }
+
+
 
 .card-uso img {
-  width: 80%;
-  margin: 0 auto 15px auto;
-  display: block;
+    width: 80%;
+    height: auto;
+    margin-left: 10%;
+    margin-right: 10%;
+    display: block;
+    margin-bottom: 15px;
 }
 
-/* ========================= LAYOUTS ========================= */
-
 .contenedor-doble {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-top: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
 }
 
 .columna {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.iframe {
+.iframe{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.iframe iframe {
-    width: 50%;
-    height: 300px;
-    border: none;
-}
 
-.error-message {
+.error-message{
+  
   text-align: center;
-  color: rgb(255, 0, 0);
+  color:red;
 }
 
-.distancia {
+.distancia{
   text-align: center;
   font-size: 150%;
-  color: rgb(255, 255, 255);
+  color: white;
 }
 
-/* ========================= FOOTER ========================= */
-
 footer {
-  background-color: rgb(0, 47, 108);
-  padding: 1% 2%;
+  background-color: #002F6C;
+  padding: 1% 2%;       
+  margin: 0;
   margin-top: 2%;
-  text-align: center;
-  color: rgb(255, 221, 0);
+  text-align: center;       
+  color: rgb(255, 221, 0);  
 }
 
 footer section {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2%;
+  gap:2%;        
   margin-bottom: 0.8%;
 }
 
@@ -515,50 +508,52 @@ footer section img {
   width: 75%;
   height: auto;
   display: block;
+  box-shadow: none;
 }
 
 footer p {
   font-size: 1rem;
   font-weight: bold;
   margin: 0;
-  color: rgb(255, 221, 0);
+  color: rgb(255, 221, 0);  
 }
 
-/* ========================= RESPONSIVE ========================= */
 
 @media (max-width: 800px) {
-
-  header {
-    padding: 2% 5%;
+  header{
+    padding: 2% 5%; 
   }
 
   .callToAction {
-    flex-direction: column;
-    width: 90%;
-    padding: 6%;
-    gap: 15px;
+    flex-direction: column !important;
+    width: 90% !important;
+    padding: 6% !important;
+    gap: 15px !important;
   }
 
   .callToAction h3 {
-    font-size: 1.1rem;
+      font-size: 1.1rem !important;
+      text-align: center;
+      width: 100%;
   }
 
   .callToAction div {
-    width: 100%;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
   }
 
   .callToAction a,
   .callToAction button {
-    width: 90%;
-    padding: 10px;
-    font-size: 1rem;
+      width: 90% !important;
+      padding: 10px !important;
+      font-size: 1rem !important;
   }
-
   .title {
     padding: 4%;
+    text-align: center;
     font-size: x-large;
   }
 
@@ -576,10 +571,10 @@ footer p {
   a.primary-button,
   button.secondary-button,
   a.secondary-button {
-    width: 80%;
-    padding: 4%;
-    font-size: 1.2rem;
-    margin: 3% auto;
+    width: 80%;  
+    padding: 4%;  
+    font-size: 1.2rem; 
+    margin: 3% auto;   
   }
 
   .Ingreso form {
@@ -593,40 +588,105 @@ footer p {
     margin-bottom: 5%;
   }
 
+  .contenedor-texto h3{
+    font-size: 1rem;
+  }
+
+  .contenedor-texto p{
+    font-size: 0.9rem;
+  }
+
+  .titulo h2{
+    font-size: x-large;
+  }
+
   .titulo img {
     width: 40%;
+  }
+
+  .titulo-landing1{
+    font-size: x-large;
+  }
+
+  .titulo-landing .card-uso{
+    width: 30%;
+  }
+
+  .Landing div a {
+    width: 70%;
+    padding: 2%;
+  }
+
+  .entrada {
+    width: 70%;
+    margin: 0 auto;
+    text-align: left;
+  }
+  
+  .entrada input,
+  .entrada select {
+    padding: 5%;
+    font-size: medium;
+  }
+
+  .colores p{
+    font-size: medium;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 
   .cards {
     flex-direction: column;
     align-items: center;
+    padding: 3% 0;
+    display: flex;
     gap: 2%;
+    justify-content: center;
   }
 
   .card {
     width: 80%;
     padding: 6%;
+    background-color: #d7e4ff !important; 
+    color: #002F6C;
   }
 
   .avatar {
     width: 40%;
   }
 
-  .contenedor-doble {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+   .contenedor-doble {
+      display: flex ;
+      flex-direction: column ;
+      gap: 25px;
+  }
+
+  .columna {
+      width: 100% ;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
   }
 
   .cards-uso {
-    width: 100%;
-    flex-direction: column;
-    gap: 25px;
+      width: 100% ;
+      display: flex;
+      flex-direction: column ;
+      gap: 25px;
   }
 
   .card-uso {
-    width: 90%;
-    margin: 0 auto;
+      width: 90% ;
+      margin: 0 auto ;
+  }
+
+  .card-uso h3{
+    font-size: large;
+    font-weight: bold;
+  }
+
+  .card-uso p{
+    font-size: medium;
   }
 
   .creadores {
@@ -640,11 +700,36 @@ footer p {
     border-width: 6px;
   }
 
-  .d-block-w-100 {
+  .creador h3 {
+    font-size: 0.9rem;
+    padding: 6px 16px;
+  }
+
+  .creador p {
+    font-size: 0.9rem;
+  }
+
+  .d-block-w-100{
     width: 50%;
+    height: auto;
+  }
+  
+  .iframe{
+   
   }
 
   footer {
     padding: 3% 2%;
+  }
+  
+  .viaje-estado {
+    margin-right: 35%;
+    margin-left: 35%;
+    width: 30%;
+}
+
+  .viaje-estado p {
+    font-weight: 500;
+    text-align: center;
   }
 }
