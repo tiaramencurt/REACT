@@ -429,20 +429,12 @@ a.secondary-button {
 
 /* ========================= CARDS USO ========================= */
 
+/* ========================= LAYOUTS ========================= */
+
 .cards-uso {
   width: 90%;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-.card-uso {
-  background-color: rgb(215, 228, 255);
-  border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 20px;
-  font-family: 'Raleway', sans-serif;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  transition: transform .2s ease, box-shadow .2s ease;
 }
 
 .card-uso:hover {
@@ -450,35 +442,46 @@ a.secondary-button {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
 }
 
-.card-uso img {
-  width: 80%;
-  margin: 0 auto 15px auto;
-  display: block;
-}
-
-/* ========================= LAYOUTS ========================= */
-
 .cards-uso .contenedor-doble {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  margin-top: 40px;
-
-  /* 💥 Esta es la clave */
-  grid-auto-rows: 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+    align-items: stretch; 
 }
 
 .cards-uso .columna {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .cards-uso .card-uso {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+    width: 100%;
+    background-color: rgb(230, 242, 255); 
+    padding: 20px;
+    border-radius: 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-family: 'Raleway', sans-serif;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    transition: transform .2s ease, box-shadow .2s ease;
 }
+
+.cards-uso .columna h1
+{
+  text-align: center;
+  color: rgb(0, 47, 108);
+}
+.cards-uso img {
+    width: 100%;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
 
 
 
