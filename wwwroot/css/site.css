@@ -87,7 +87,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 20px;
-  width: 70%;
+  width: 75%;
   margin: 0 auto;
   background-color: rgb(0, 89, 255);
   border-radius: 20px;
@@ -348,7 +348,7 @@ a.secondary-button {
   flex-wrap: wrap;
 }
 
-.card {
+.mi-card {
   background-color: rgb(215, 228, 255);
   width: 30%;
   min-width: 260px;
@@ -361,18 +361,18 @@ a.secondary-button {
   margin-bottom: 3%;
 }
 
-.card:hover {
+.mi-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
 }
 
-.card h3 {
+.mi-card h3 {
   font-size: 1.4rem;
   font-weight: 700;
   margin-bottom: 1%;
 }
 
-.card p {
+.mi-card p {
   font-size: 1rem;
   margin: 0.6% 0;
   line-height: 1.4;
@@ -458,18 +458,48 @@ a.secondary-button {
 
 /* ========================= LAYOUTS ========================= */
 
-.contenedor-doble {
+.cards-uso .contenedor-doble {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
   margin-top: 40px;
+
+  /* 💥 Esta es la clave */
+  grid-auto-rows: 1fr;
 }
 
-.columna {
+.cards-uso .columna {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
+
+.cards-uso .card-uso {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+
+
+/*.cards-uso .contenedor-doble {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 40px;
+  align-items: stretch;
+}
+
+.cards-uso .columna {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  min-height: 0;
+}
+.cards-uso .columna .card-uso {
+  flex: 1;
+}*/
 
 .iframe {
   display: flex;
@@ -523,6 +553,7 @@ footer p {
   margin: 0;
   color: rgb(255, 221, 0);
 }
+
 
 /* ========================= RESPONSIVE ========================= */
 
