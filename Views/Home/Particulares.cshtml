@@ -14,6 +14,8 @@
         @if (!viajeActivo)
         {
             <a href='@Url.Action("CrearViaje", "Home")' class="primary-button">Crear viaje</a>
+            <img src="/imagenes/flecha.png" alt="Flecha" class="flecha">
+            <h2 class="titulo-landing">Tocá allí para Crear un Viaje y poder ver los servicios de emergencia más cercanos a vos.</h2>
         }
         else
         {
@@ -24,6 +26,8 @@
                 </div>
                 <p>Tu viaje se está compartiendo correctamente...</p>
             </section>
+            <div class="doble-bloque">
+            <div class="bloque">
             <div id="color-indicador" class="color-indicador"></div>
             <section class="distancia">
                 @if (color == "red")
@@ -39,8 +43,14 @@
                     <p>No hay servicios de emergencia cerca por ahora.</p>
                 }
             </section>
+            </div>
+            <div class="bloque">
+            <h2 class="ubicacion">Tu ubicación actual:</h2>
             <div class="iframe">
+                
                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.769640147675!2d-58.431717223530626!3d-34.60998615783049!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca680b697a73%3A0xb6fa8d39f7cf0dc9!2sEscuela%20ORT%20sede%20Almagro!5e0!3m2!1ses-419!2sar!4v1764347256242!5m2!1ses-419!2sar"  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            </div>
             </div>
         }
     </section>

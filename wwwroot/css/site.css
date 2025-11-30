@@ -58,7 +58,6 @@ header nav a img {
 main {
   margin: 2%;
   flex: 1;
-  margin-top: 50px;
 }
 
 .title {
@@ -72,12 +71,14 @@ main {
 
 .subtitle {
   font-weight: 700;
-  font-size: 1.8rem;
+  font-size: 180%;
   margin-bottom: 1%;
+  text-align: center;
+  color: white;
 }
 
 .paragraph {
-  font-size: 1.1rem;
+  font-size: 110%;
 }
 
 /* ========================= CALL TO ACTION ========================= */
@@ -118,7 +119,7 @@ a.secondary-button {
   padding: 1%;
   width: 20%;
   margin: 1% auto;
-  font-size: 1.1rem;
+  font-size: 110%;
   text-decoration: none;
   cursor: pointer;
   text-align: center;
@@ -163,7 +164,7 @@ a.secondary-button {
 
 .entrada p {
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 100%;
   margin-bottom: 0.5%;
 }
 
@@ -174,7 +175,7 @@ a.secondary-button {
   border-radius: 14px;
   border: 2px solid rgb(199, 215, 255);
   background-color: rgb(248, 249, 255);
-  font-size: 1rem;
+  font-size: 100%;
   margin-bottom: 1.5%;
 }
 
@@ -190,11 +191,11 @@ a.secondary-button {
 .badge {
   font-weight: 700;
   background-color: rgb(255, 204, 0);
-  padding: 0.6rem 1rem;
+  padding: 60% 100%;
   border-radius: 8px;
   display: inline-block;
   margin: 1.75% auto;
-  font-size: 0.9rem;
+  font-size: 90%;
 }
 
 .tooltip {
@@ -202,7 +203,7 @@ a.secondary-button {
   color: rgb(255, 255, 255);
   padding: 0.6% 1%;
   border-radius: 8px;
-  font-size: 0.85rem;
+  font-size: 85%;
   display: inline-block;
 }
 
@@ -215,16 +216,22 @@ a.secondary-button {
 
 .titulo-landing1 {
   color: rgb(0, 47, 108);
-  margin-top: 5%;
-  margin-bottom: 3%;
+  text-align: center;
+  margin: 1% auto 1% auto;
 }
 
 .titulo-landing {
   color: rgb(255, 255, 255);
-  margin-top: 5%;
-  margin-bottom: 3%;
+  text-align: center;
+  width: 60%;
+  margin: 1% auto 1% auto;
 }
-
+.ubicacion {
+  color: rgb(0, 47, 108);
+  text-align: center;
+  font-size: x-large;
+  margin: 1% auto 1% auto;
+}
 .titulo {
   width: 90%;
   margin: 3% auto 1% auto;
@@ -235,7 +242,7 @@ a.secondary-button {
 }
 
 .titulo h2 {
-  font-size: 1.9rem;
+  font-size: 190%;
   font-weight: bold;
   color: rgb(255, 25, 38);
 }
@@ -250,12 +257,12 @@ a.secondary-button {
 }
 
 .contenedor-texto h3 {
-  font-size: 1.4rem;
+  font-size: 140%;
   margin-bottom: 1%;
 }
 
 .contenedor-texto p {
-  font-size: 1rem;
+  font-size: 100%;
 }
 
 /* ========================= LINKS LANDING ========================= */
@@ -270,7 +277,7 @@ a.secondary-button {
   background-color: rgb(255, 204, 0);
   color: rgb(0, 0, 0);
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 110%;
   border-radius: 14px;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(255, 204, 0, 0.4);
@@ -298,12 +305,8 @@ a.secondary-button {
 
 .informacion h3 {
   margin: 8px 0;
-  font-size: 1.05rem;
+  font-size: 105%;
   font-weight: 600;
-}
-
-.informacion h3::first-letter {
-  color: rgb(0, 89, 255);
 }
 
 .informacion:hover {
@@ -314,14 +317,14 @@ a.secondary-button {
 /* ========================= INDICADORES ========================= */
 
 .color-indicador {
-  width: 40%;
+  width: 60%;
   height: 150px;
-  margin: 1% 30%;
+  margin: 1% auto;
   background-color: rgb(128, 128, 128);
 }
 
 .d-block-w-100 {
-  width: 30%;
+  width: 50%;
   border-radius: 10px;
 }
 .viaje-estado {
@@ -338,6 +341,21 @@ a.secondary-button {
     margin-bottom: 1%;
 }
 /* ========================= CARDS ========================= */
+
+.doble-bloque {
+    width: 90%;
+    margin: 1% auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+}
+
+.bloque {
+    flex: 1;
+    padding: 20px;
+    border-radius: 12px;
+}
 
 .cards {
   display: flex;
@@ -367,13 +385,13 @@ a.secondary-button {
 }
 
 .mi-card h3 {
-  font-size: 1.4rem;
+  font-size: 140%;
   font-weight: 700;
   margin-bottom: 1%;
 }
 
 .mi-card p {
-  font-size: 1rem;
+  font-size: 100%;
   margin: 0.6% 0;
   line-height: 1.4;
 }
@@ -383,7 +401,11 @@ a.secondary-button {
   margin: 0 auto 12px auto;
   display: block;
 }
-
+.flecha {
+  width: 10%;
+  margin: 0 auto 12px auto;
+  display: block;
+}
 /* ========================= CREADORES ========================= */
 
 .creadores {
@@ -414,7 +436,7 @@ a.secondary-button {
   color: rgb(255, 255, 255);
   padding: 8px 20px;
   border-radius: 25px;
-  font-size: 1.1rem;
+  font-size: 110%;
   margin-top: 15px;
   margin-bottom: 5px;
   display: inline-block;
@@ -423,11 +445,9 @@ a.secondary-button {
 .creador p {
   color: rgb(255, 255, 255);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 95%;
   margin-top: 4px;
 }
-
-/* ========================= CARDS USO ========================= */
 
 /* ========================= LAYOUTS ========================= */
 
@@ -458,7 +478,7 @@ a.secondary-button {
 
 .cards-uso .card-uso {
     width: 100%;
-    background-color: rgb(230, 242, 255); 
+    background-color: rgb(215, 228, 255); 
     padding: 20px;
     border-radius: 10px;
     flex: 1;
@@ -510,8 +530,8 @@ a.secondary-button {
   align-items: center;
 }
 .iframe iframe {
-    width: 50%;
-    height: 300px;
+    width: 70%;
+    height: auto;
     border: none;
 }
 
@@ -551,14 +571,13 @@ footer section img {
 }
 
 footer p {
-  font-size: 1rem;
+  font-size: 100%;
   font-weight: bold;
   margin: 0;
   color: rgb(255, 221, 0);
 }
 
 
-/* ========================= RESPONSIVE ========================= */
 
 @media (max-width: 800px) {
 
@@ -574,7 +593,7 @@ footer p {
   }
 
   .callToAction h3 {
-    font-size: 1.1rem;
+    font-size: 110%;
   }
 
   .callToAction div {
@@ -588,7 +607,7 @@ footer p {
   .callToAction button {
     width: 90%;
     padding: 10px;
-    font-size: 1rem;
+    font-size: 100%;
   }
 
   .title {
@@ -597,12 +616,12 @@ footer p {
   }
 
   .subtitle {
-    font-size: 1.3rem;
+    font-size: 130%;
   }
 
   .titulo-landing,
   .titulo-landing1 {
-    font-size: 1.4rem;
+    font-size: 140%;
     margin-top: 8%;
   }
 
@@ -612,7 +631,7 @@ footer p {
   a.secondary-button {
     width: 80%;
     padding: 4%;
-    font-size: 1.2rem;
+    font-size: 120%;
     margin: 3% auto;
   }
 
@@ -680,5 +699,73 @@ footer p {
 
   footer {
     padding: 3% 2%;
+  }
+}
+/* ========================================================= */
+/* =============== RESPONSIVE - TABLETS ==================== */
+/* ========================================================= */
+
+@media (max-width: 900px) {
+
+  /* ----- TEXTOS Y TITULOS ----- */
+  .title {
+    font-size: x-large;
+    width: 90%;
+  }
+
+  .subtitle {
+    font-size: 140%;
+  }
+
+  /* ----- CTA ----- */
+  .callToAction {
+    width: 90%;
+    gap: 15px;
+    padding: 3%;
+  }
+
+  .callToAction h3 {
+    font-size: 120%;
+  }
+
+  .callToAction div {
+    gap: 12px;
+  }
+
+  /* ----- BOTONES ----- */
+  button.primary-button,
+  a.primary-button,
+  button.secondary-button,
+  a.secondary-button {
+    width: 50%;
+    padding: 3%;
+    font-size: 110%;
+  }
+
+  /* ----- CARDS (se hacen de 2 columnas) ----- */
+  .cards {
+    gap: 20px;
+  }
+
+  .mi-card {
+    width: 45%;
+  }
+
+  /* ----- DOS BLOQUES LADO A LADO → SE APILAN ----- */
+  .doble-bloque {
+    flex-direction: column;
+    gap: 20px;
+    width: 95%;
+  }
+
+  /* ----- CARDS DE USO (grid → 1 columna) ----- */
+  .cards-uso .contenedor-doble {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  /* ----- IFRAME ----- */
+  .iframe iframe {
+    width: 90%;
   }
 }
