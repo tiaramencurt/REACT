@@ -631,7 +631,14 @@ footer p {
   .contenedor-doble {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+  }
+
+  .contenedor-doble .conductor {
+    order: 1;
+  }
+
+  .contenedor-doble .emergencia {
+    order: 2;
   }
 
   .doble-bloque {
