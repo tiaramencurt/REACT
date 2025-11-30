@@ -14,7 +14,6 @@ body {
   text-align: center;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 header {
@@ -351,7 +350,6 @@ a.secondary-button {
 .mi-card {
   background-color: rgb(215, 228, 255);
   width: 30%;
-  min-width: 260px;
   padding: 2%;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   text-align: center;
@@ -380,7 +378,7 @@ a.secondary-button {
 
 .avatar {
   width: 30%;
-  margin: 0 auto 12px auto;
+  margin: 2% auto;
   display: block;
 }
 
@@ -416,11 +414,11 @@ a.secondary-button {
   background-color: rgb(255, 25, 38);
   font-weight: bold;
   color: rgb(255, 255, 255);
-  padding: 8px 20px;
+  padding: 5%;
   border-radius: 25px;
   font-size: 110%;
-  margin-top: 15px;
-  margin-bottom: 5px;
+  margin-top: 10%;
+  margin-bottom: 5%;
   display: inline-block;
 }
 
@@ -428,12 +426,11 @@ a.secondary-button {
   color: rgb(255, 255, 255);
   font-weight: 600;
   font-size: 95%;
-  margin-top: 4px;
+  margin-top: 2%;
 }
 
 .cards-uso {
   width: 90%;
-  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -446,7 +443,7 @@ a.secondary-button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  margin-top: 40px;
+  margin-top: 7%;
   align-items: stretch;
 }
 
@@ -459,13 +456,13 @@ a.secondary-button {
 .cards-uso .card-uso {
   width: 100%;
   background-color: rgb(215, 228, 255);
-  padding: 20px;
+  padding: 3%;
   border-radius: 10px;
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 2%;
   font-family: 'Raleway', sans-serif;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
   transition: transform .2s ease, box-shadow .2s ease;
@@ -478,7 +475,7 @@ a.secondary-button {
 
 .cards-uso img {
   width: 100%;
-  margin: 0 auto 15px auto;
+  margin: 5% auto;
   display: block;
 }
 
@@ -504,6 +501,18 @@ a.secondary-button {
   font-size: 150%;
   color: rgb(255, 255, 255);
 }
+
+.callToAction .secondary-button,
+.callToAction .primary-button {
+  width: 50%;
+  padding: 1%;
+  margin: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 110%;
+}
+
 
 /* ========================= FOOTER ========================= */
 
@@ -663,9 +672,17 @@ footer p {
     margin: 0 auto;
   }
 
+  .mi-card{
+    width: 80%;
+  }
+
   .creadores {
     flex-direction: column;
     gap: 30px;
+  }
+
+  .creador{
+    margin-bottom: 7%;
   }
 
   .creador .avatar {
