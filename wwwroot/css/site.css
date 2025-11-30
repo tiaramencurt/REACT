@@ -17,8 +17,6 @@ body {
   min-height: 100vh;
 }
 
-/* ========================= HEADER ========================= */
-
 header {
   position: sticky;
   top: 0;
@@ -53,8 +51,6 @@ header nav a img {
   display: block;
 }
 
-/* ========================= MAIN ========================= */
-
 main {
   margin: 2%;
   flex: 1;
@@ -81,8 +77,6 @@ main {
   font-size: 110%;
 }
 
-/* ========================= CALL TO ACTION ========================= */
-
 .callToAction {
   display: flex;
   align-items: center;
@@ -105,8 +99,6 @@ main {
   display: flex;
   gap: 15px;
 }
-
-/* ========================= BUTTONS ========================= */
 
 button.primary-button,
 a.primary-button,
@@ -144,8 +136,6 @@ a.secondary-button {
   background-color: rgb(228, 183, 3);
   transform: translateY(-3px);
 }
-
-/* ========================= FORM ========================= */
 
 .Ingreso form {
   background-color: rgb(215, 228, 255);
@@ -186,8 +176,6 @@ a.secondary-button {
   box-shadow: 0 0 8px rgba(0, 89, 255, 0.4);
 }
 
-/* ========================= BADGES ========================= */
-
 .badge {
   font-weight: 700;
   background-color: rgb(255, 204, 0);
@@ -207,8 +195,6 @@ a.secondary-button {
   display: inline-block;
 }
 
-/* ========================= LANDING ========================= */
-
 .Landing {
   text-align: center;
   padding-bottom: 1.5%;
@@ -226,12 +212,14 @@ a.secondary-button {
   width: 60%;
   margin: 1% auto 1% auto;
 }
+
 .ubicacion {
   color: rgb(0, 47, 108);
   text-align: center;
   font-size: x-large;
   margin: 1% auto 1% auto;
 }
+
 .titulo {
   width: 90%;
   margin: 3% auto 1% auto;
@@ -265,8 +253,6 @@ a.secondary-button {
   font-size: 100%;
 }
 
-/* ========================= LINKS LANDING ========================= */
-
 .Landing div a {
   display: flex;
   justify-content: center;
@@ -288,8 +274,6 @@ a.secondary-button {
   background-color: rgb(230, 184, 0);
   transform: translateY(-3px);
 }
-
-/* ========================= INFORMACION BOX ========================= */
 
 .informacion {
   width: 100%;
@@ -314,8 +298,6 @@ a.secondary-button {
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
 }
 
-/* ========================= INDICADORES ========================= */
-
 .color-indicador {
   width: 60%;
   height: 150px;
@@ -327,34 +309,34 @@ a.secondary-button {
   width: 50%;
   border-radius: 10px;
 }
+
 .viaje-estado {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    padding: 1% 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1% 5%;
 }
 
-  .spinner-rojo {
-    color: rgb(255,25,38);
-    margin-bottom: 1%;
+.spinner-rojo {
+  color: rgb(255, 25, 38);
+  margin-bottom: 1%;
 }
-/* ========================= CARDS ========================= */
 
 .doble-bloque {
-    width: 90%;
-    margin: 1% auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
+  width: 90%;
+  margin: 1% auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
 }
 
 .bloque {
-    flex: 1;
-    padding: 20px;
-    border-radius: 12px;
+  flex: 1;
+  padding: 20px;
+  border-radius: 12px;
 }
 
 .cards {
@@ -401,12 +383,12 @@ a.secondary-button {
   margin: 0 auto 12px auto;
   display: block;
 }
+
 .flecha {
   width: 10%;
   margin: 0 auto 12px auto;
   display: block;
 }
-/* ========================= CREADORES ========================= */
 
 .creadores {
   display: flex;
@@ -449,8 +431,6 @@ a.secondary-button {
   margin-top: 4px;
 }
 
-/* ========================= LAYOUTS ========================= */
-
 .cards-uso {
   width: 90%;
   max-width: 1200px;
@@ -463,49 +443,6 @@ a.secondary-button {
 }
 
 .cards-uso .contenedor-doble {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-top: 40px;
-    align-items: stretch; 
-}
-
-.cards-uso .columna {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-}
-
-.cards-uso .card-uso {
-    width: 100%;
-    background-color: rgb(215, 228, 255); 
-    padding: 20px;
-    border-radius: 10px;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-    font-family: 'Raleway', sans-serif;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.cards-uso .columna h1
-{
-  text-align: center;
-  color: rgb(0, 47, 108);
-}
-.cards-uso img {
-    width: 100%;
-    margin: 0 auto 15px auto;
-    display: block;
-}
-
-
-
-
-/*.cards-uso .contenedor-doble {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
@@ -515,24 +452,46 @@ a.secondary-button {
 
 .cards-uso .columna {
   display: flex;
-  flex-direction: column;
-  gap: 20px;
-  height: 100%;
-  min-height: 0;
+  justify-content: center;
+  width: 100%;
 }
-.cards-uso .columna .card-uso {
+
+.cards-uso .card-uso {
+  width: 100%;
+  background-color: rgb(215, 228, 255);
+  padding: 20px;
+  border-radius: 10px;
   flex: 1;
-}*/
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-family: 'Raleway', sans-serif;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.cards-uso .columna h1 {
+  text-align: center;
+  color: rgb(0, 47, 108);
+}
+
+.cards-uso img {
+  width: 100%;
+  margin: 0 auto 15px auto;
+  display: block;
+}
 
 .iframe {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .iframe iframe {
-    width: 70%;
-    height: auto;
-    border: none;
+  width: 70%;
+  height: auto;
+  border: none;
 }
 
 .error-message {
@@ -580,9 +539,24 @@ footer p {
 
 
 @media (max-width: 800px) {
-
   header {
     padding: 2% 5%;
+  }
+
+  .title {
+    padding: 4%;
+    font-size: x-large;
+    width: 90%;
+  }
+
+  .subtitle {
+    font-size: 130%;
+  }
+
+  .titulo-landing,
+  .titulo-landing1 {
+    font-size: 160%;
+    margin: 7% auto 4% auto;
   }
 
   .callToAction {
@@ -593,13 +567,13 @@ footer p {
   }
 
   .callToAction h3 {
-    font-size: 110%;
+    font-size: 120%;
   }
 
   .callToAction div {
     width: 100%;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
   }
 
@@ -608,21 +582,6 @@ footer p {
     width: 90%;
     padding: 10px;
     font-size: 100%;
-  }
-
-  .title {
-    padding: 4%;
-    font-size: x-large;
-  }
-
-  .subtitle {
-    font-size: 130%;
-  }
-
-  .titulo-landing,
-  .titulo-landing1 {
-    font-size: 140%;
-    margin-top: 8%;
   }
 
   button.primary-button,
@@ -653,12 +612,16 @@ footer p {
   .cards {
     flex-direction: column;
     align-items: center;
-    gap: 2%;
+    gap: 20px;
   }
 
   .card {
     width: 80%;
     padding: 6%;
+  }
+
+  .mi-card {
+    width: 45%;
   }
 
   .avatar {
@@ -671,9 +634,20 @@ footer p {
     gap: 25px;
   }
 
+  .doble-bloque {
+    flex-direction: column;
+    gap: 20px;
+    width: 95%;
+  }
+
   .cards-uso {
     width: 100%;
     flex-direction: column;
+    gap: 25px;
+  }
+
+  .cards-uso .contenedor-doble {
+    grid-template-columns: 1fr;
     gap: 25px;
   }
 
@@ -688,8 +662,8 @@ footer p {
   }
 
   .creador .avatar {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-width: 6px;
   }
 
@@ -697,75 +671,33 @@ footer p {
     width: 50%;
   }
 
-  footer {
-    padding: 3% 2%;
-  }
-}
-/* ========================================================= */
-/* =============== RESPONSIVE - TABLETS ==================== */
-/* ========================================================= */
-
-@media (max-width: 900px) {
-
-  /* ----- TEXTOS Y TITULOS ----- */
-  .title {
-    font-size: x-large;
-    width: 90%;
-  }
-
-  .subtitle {
-    font-size: 140%;
-  }
-
-  /* ----- CTA ----- */
-  .callToAction {
-    width: 90%;
-    gap: 15px;
-    padding: 3%;
-  }
-
-  .callToAction h3 {
-    font-size: 120%;
-  }
-
-  .callToAction div {
-    gap: 12px;
-  }
-
-  /* ----- BOTONES ----- */
-  button.primary-button,
-  a.primary-button,
-  button.secondary-button,
-  a.secondary-button {
-    width: 50%;
-    padding: 3%;
-    font-size: 110%;
-  }
-
-  /* ----- CARDS (se hacen de 2 columnas) ----- */
-  .cards {
-    gap: 20px;
-  }
-
-  .mi-card {
-    width: 45%;
-  }
-
-  /* ----- DOS BLOQUES LADO A LADO → SE APILAN ----- */
-  .doble-bloque {
+  .bloque {
+    display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 95%;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
   }
 
-  /* ----- CARDS DE USO (grid → 1 columna) ----- */
-  .cards-uso .contenedor-doble {
-    grid-template-columns: 1fr;
-    gap: 25px;
+  .bloque .ubicacion {
+    width: 100%;
+    text-align: center;
+    margin: 0;
   }
 
-  /* ----- IFRAME ----- */
+  .iframe {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
   .iframe iframe {
     width: 90%;
+    height: auto;
+    border: 0;
+  }
+
+  footer {
+    padding: 3% 2%;
   }
 }
