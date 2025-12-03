@@ -27,9 +27,28 @@
                 <p class="error-message">Ambas contraseñas no coinciden</p>
             }
 
-            <button type="submit" class="primary-button">Registrarse</button>
+            <button type="button" class="primary-button" onclick="MostrarAlert()">Registrarse</button>
 
             <a href='@Url.Action("Login", "Account")' class="secondary-button">Iniciar sesión si ya tenes cuenta</a>
         </form>
     </section>
 </main>
+
+
+<script>
+  function MostrarAlert() {
+    Swal.fire({
+      title: "Registro exitoso",
+      text: "Ya podés iniciar sesión",
+      icon: "success",
+      timer: 4000,
+      showConfirmButton: true,
+      confirmButtonText: "Aceptar",
+      customClass: {
+        confirmButton: 'btn-amarillo'
+      }
+    }).then(() => {
+      document.querySelector("form").submit();
+    });
+  }
+</script>

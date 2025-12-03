@@ -10,13 +10,13 @@
         <h1 class="title">Servicio de Emergencia</h1>
         @if (!viajeActivo)
         {
-            <a href='@Url.Action("CrearViaje", "Home")' class="primary-button">Crear viaje</a>
+            <a href='@Url.Action("CrearViaje", "Home")' class="primary-button" onclick="return MostrarCrearViaje(event, this.href)">Crear viaje</a>
             <img src="/imagenes/flecha.png" alt="Flecha" class="flecha">
             <h2 class="titulo-landing">Tocá allí para Crear un Viaje y mandar tu ubicación a los conductores cercanos.</h2>
         }
         else
         {
-            <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="secondary-button">Finalizar
+            <a href='@Url.Action("FinalizarViaje", "Home", new { IdViaje = idViaje })' class="secondary-button"  onclick="return MostrarFinalizarViaje(event, this.href)">Finalizar
                 viaje</a>
             <section class="viaje-estado">
                 <div class="spinner-grow spinner-rojo" role="status">
@@ -88,4 +88,42 @@
         }
     }
     setInterval(enviarUbicacionAuto, 5000);
+
+    function MostrarCrearViaje(event, url) {
+    event.preventDefault();
+    Swal.fire({
+      title: "Acabas de crear un viaje",
+      text: "Cuando termines de viajar puedes finalizar en cualquier momento.",
+      icon: "success",
+      confirmButtonText: "Aceptar",
+      timer: 6000,
+      timerProgressBar: true,
+      customClass: {
+        confirmButton: 'btn-amarillo'
+      }
+    }).then(() => {
+      window.location.href = url;
+    });
+
+    return false;
+  }
+
+  function MostrarFinalizarViaje(event, url) {
+    event.preventDefault();
+    Swal.fire({
+      title: "Finalizaste tu viaje",
+      text: "Si vuelves a viajar puedes crear un nuevo viaje en cualquier momento.",
+      icon: "warning",
+      confirmButtonText: "Aceptar",
+      timer: 6000,
+      timerProgressBar: true,
+      customClass: {
+        confirmButton: 'btn-amarillo'
+      }
+    }).then(() => {
+      window.location.href = url;
+    });
+
+    return false;
+  }
 </script>

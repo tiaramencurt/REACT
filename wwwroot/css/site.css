@@ -546,7 +546,17 @@ footer p {
   color: rgb(255, 221, 0);
 }
 
+.btn-amarillo {
+    background-color: rgb(255, 220, 50);
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    border-radius: 12px;
+    padding: 0.6rem 1.2rem;
+  }
 
+  .btn-amarillo:hover {
+    background-color: rgb(255, 200, 0);
+  }
 
 @media (max-width: 800px) {
   header {
